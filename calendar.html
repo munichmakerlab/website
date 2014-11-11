@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Munich Maker Lab</title>
+    <title>Munich Maker Lab - Calendar</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -17,14 +17,15 @@
     <!-- Custom CSS -->
     <link href="css/clean-blog.min.css" rel="stylesheet">
 
+	<!-- Calendar CSS -->
+	<link href='lib/fullcalendar/fullcalendar.css' rel='stylesheet' />
+	<link href='lib/fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
+	
     <!-- Custom Fonts -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
-    <link rel="stylesheet" href="lib/responsiveslides/responsiveslides.css">
-    <link rel="stylesheet" href="css/tumblr.css">
-	
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -77,14 +78,14 @@
 
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url('img/arduino.jpg')">
+    <header class="intro-header" style="background-image: url('img/about-bg.jpg')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="site-heading">
-                        <h1>Munich Maker Lab</h1>
+                    <div class="page-heading">
+                        <h1>Calendar</h1>
                         <hr class="small">
-                        <span class="subheading">Munich's freshest hackerspace</span>
+                        <span class="subheading">This is what is going on at the MuMaLand.</span>
                     </div>
                 </div>
             </div>
@@ -94,14 +95,8 @@
     <!-- Main Content -->
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div id="log">loading...</div>
-                <!-- Pager -->
-                <ul class="pager">
-                    <li class="next">
-                        <a href="http://log.munichmakerlab.de/">View all posts in the Log &rarr;</a>
-                    </li>
-                </ul>
+            <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1" id="cal_out">
+                
             </div>
         </div>
     </div>
@@ -154,20 +149,40 @@
     <!-- Custom Theme JavaScript -->
     <script src="js/clean-blog.min.js"></script>
 	
-	<script src="lib/responsiveslides/responsiveslides.min.js"></script>
-	<!-- RSS Feed -->
-	<script src="lib/tumblr-rss.js"></script>
+	<script src='lib/fullcalendar/lib/moment.min.js'></script>
+	<script src='lib/fullcalendar/fullcalendar.min.js'></script>
+	<script src='lib/jquery.ics-0.3.js'></script>
 	<script>
-		$(function() {
-			var tumblr = new TumblrRSS($('#log'), 'http://log.munichmakerlab.de/', 10);
-			tumblr.start(function() {
-				$(".rslides").responsiveSlides({
-					auto: false,
-					nav: true,
-					pager: false,
+		$(document).ready(function() {
+			var cal = $.parseIcs("calendar/events.ics");
+			var events = [];
+			
+			cal.event.forEach(function(val, idx, arr) {
+				events.push({
+					title: val.summary[0].value,
+					start: moment(val.dtstart[0].value,'YYYYMMDDTHHmmss'),
+					end: moment(val.dtend[0].value,'YYYYMMDDTHHmmss'),
+					url: val.url[0].value
 				});
 			});
+
+			$('#cal_out').fullCalendar({
+				eventLimit: true, // allow "more" link when too many events
+				events: events,
+				eventClick: function(event) {
+					// opens events in a popup window
+					window.open(event.url, 'event', 'width=700,height=600');
+					return false;
+				},
+				header: {
+					left: 'prev,next today',
+					center: 'title',
+					right: 'month,basicWeek,basicDay'
+				},
+			});
+			
 		});
+
 	</script>
 </body>
 

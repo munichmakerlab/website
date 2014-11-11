@@ -1,0 +1,66 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Meetup//RemoteApi//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-ORIGINAL-URL:http://www.meetup.com/The-Hacking-Room-Project-Munich/even
+ ts/ical/
+X-WR-CALNAME:Events - The Hacking Room Project\, Munich
+X-MS-OLK-FORCEINSPECTOROPEN:TRUE
+BEGIN:VTIMEZONE
+TZID:Europe/Berlin
+X-LIC-LOCATION:Europe/Berlin
+BEGIN:DAYLIGHT
+TZOFFSETFROM:+0100
+TZOFFSETTO:+0200
+TZNAME:CEST
+DTSTART:19700329T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:+0200
+TZOFFSETTO:+0100
+TZNAME:CET
+DTSTART:19701025T030000
+RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+DTSTAMP:20141110T202903Z
+DTSTART;TZID=Europe/Berlin:20141113T190000
+DTEND;TZID=Europe/Berlin:20141113T220000
+STATUS:CONFIRMED
+SUMMARY:Weekly Meetup - HackADay Party
+DESCRIPTION:The Hacking Room Project\, Munich\nThursday\, November 13 at 
+ 7:00 PM\n\nOne of our favorite hacking blogs is in town\, and throwing a
+  party\, right next to our space. The Hackaday Munich party is happening
+  all day in the Tec...\n\nDetails: http://www.meetup.com/The-Hacking-Roo
+ m-Project-Munich/events/218327762/
+CLASS:PUBLIC
+CREATED:20141107T224117Z
+GEO:48.13;11.57
+LOCATION:Munich Maker Lab (inside Werk1 München) (Grafinger Straße 6\, Mü
+ nchen\, Germany)
+URL:http://www.meetup.com/The-Hacking-Room-Project-Munich/events/21832776
+ 2/
+LAST-MODIFIED:20141107T224117Z
+UID:event_218327762@meetup.com
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20141110T202903Z
+DTSTART;TZID=Europe/Berlin:20141120T190000
+DTEND;TZID=Europe/Berlin:20141120T220000
+STATUS:CONFIRMED
+SUMMARY:Weekly Meetup - Nochne Party
+DESCRIPTION:woopwoop
+CLASS:PUBLIC
+CREATED:20141107T224117Z
+GEO:48.13;11.57
+LOCATION:Munich Maker Lab (inside Werk1 München) (Grafinger Straße 6\, Mü
+ nchen\, Germany)
+URL:http://www.meetup.com/The-Hacking-Room-Project-Munich/events/21832776
+ 2/
+LAST-MODIFIED:20141107T224117Z
+UID:event_218327763@meetup.com
+END:VEVENT
+END:VCALENDAR
