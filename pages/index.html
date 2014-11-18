@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block custom_css %} 
+	<link rel="stylesheet" href="{{ STATIC_URL }}/lib/responsiveslides/responsiveslides.css">	
+	<link rel="stylesheet" href="{{ STATIC_URL }}/lib/lightbox/css/lightbox.css">
+	<link rel="stylesheet" href="{{ STATIC_URL }}/css/tumblr.css">
+{% endblock %}	
+
+{% block title %}Munich Maker Lab{% endblock %}
+
+{% block headline %}Munich Maker Lab{% endblock %}
+
+{% block sub_headline %}Munich's freshest hackerspace{% endblock %}
+
+{% block content %}
+	<div id="log">loading...</div>
+	<!-- Pager -->
+	<ul class="pager">
+			<li class="next">
+					<a href="http://log.munichmakerlab.de/">View all posts in the Log &rarr;</a>
+			</li>
+	</ul>
+{% endblock %}
+
+{% block custom_js %}
+	<script src="{{ STATIC_URL }}/lib/responsiveslides/responsiveslides.min.js"></script>
+	<!-- RSS Feed -->
+	<script src="{{ STATIC_URL }}/lib/tumblr-rss.js"></script>
+	<script src="{{ STATIC_URL }}/lib/lightbox/js/lightbox.min.js"></script>
+	<script>
+		$(function() {
+			var tumblr = new TumblrRSS($('#log'), 'http://log.munichmakerlab.de/', 10);
+			tumblr.start(function() {
+				$(".rslides").responsiveSlides({
+					auto: false,
+					nav: true,
+					pager: false,
+				});
+			});
+		});
+	</script>
+{% endblock %}

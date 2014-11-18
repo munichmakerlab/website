@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}Munich Maker Lab - Calendar{% endblock %}
+
+{% block header_img %}{{ STATIC_URL }}/img/osci.jpg{% endblock %}
+
+{% block headline %}Calendar{% endblock %}
+{% block sub_headline %}This is what is going on at the MuMaLand.{% endblock %}
+
+{% block content_container %}
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1" id="cal_out">
+                
+            </div>
+        </div>
+{% endblock %}        
+
+{% block custom_css %}
+	<!-- Calendar CSS -->
+	<link href='{{ STATIC_URL }}/lib/fullcalendar/fullcalendar.css' rel='stylesheet' />
+	<link href='l{{ STATIC_URL }}/ib/fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
+{% endblock %}
+
+{% block custom_js %}
+	<script src='{{ STATIC_URL }}/lib/fullcalendar/lib/moment.min.js'></script>
+	<script src='{{ STATIC_URL }}/lib/fullcalendar/fullcalendar.min.js'></script>
+	<script src='{{ STATIC_URL }}/lib/jquery.ics-0.3.js'></script>
+	<script>
+		$(document).ready(function() {
+			var cal = $.parseIcs("{{ STATIC_URL }}/calendar/events.ics");
+			var events = [];
+			
+			cal.event.forEach(function(val, idx, arr) {
+				events.push({
+					title: val.summary[0].value,
+					start: moment(val.dtstart[0].value,'YYYYMMDDTHHmmss'),
+					end: moment(val.dtend[0].value,'YYYYMMDDTHHmmss'),
+					url: val.url[0].value
+				});
+			});
+
+			$('#cal_out').fullCalendar({
+				eventLimit: true, // allow "more" link when too many events
+				events: events,
+				eventClick: function(event) {
+					// opens events in a popup window
+					window.open(event.url, 'event', 'width=700,height=600');
+					return false;
+				},
+				header: {
+					left: 'prev,next today',
+					center: 'title',
+					right: 'month,basicWeek,basicDay'
+				},
+			});
+			
+		});
+
+	</script>
+{% endblock %}

@@ -9,24 +9,21 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Munich Maker Lab</title>
+    <title>{% block title %}Munich Maker Lab{% endblock %}</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/clean-blog.min.css" rel="stylesheet">
-	<link href="css/mumalab.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}/css/clean-blog.min.css" rel="stylesheet">
+	<link href="{{ STATIC_URL }}/css/mumalab.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
-	
-    <link rel="stylesheet" href="lib/responsiveslides/responsiveslides.css">
-    <link rel="stylesheet" href="lib/lightbox/css/lightbox.css">
-	<link rel="stylesheet" href="css/tumblr.css">
+	  {% block custom_css %} {% endblock %}
 	
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -83,14 +80,14 @@
 
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url('img/arduino.jpg')">
+    <header class="intro-header" style="background-image: url('{% block header_img %}{{ STATIC_URL }}/img/arduino.jpg{% endblock %}')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="site-heading">
-                        <h1>Munich Maker Lab</h1>
+                        <h1>{% block headline %} Munich Maker Lab{% endblock %}</h1>
                         <hr class="small">
-                        <span class="subheading">Munich's freshest hackerspace</span>
+                        <span class="subheading">{% block sub_headline %} Munich's freshest hackerspace{% endblock %}</span>
                     </div>
                 </div>
             </div>
@@ -99,8 +96,10 @@
 
     <!-- Main Content -->
     <div class="container">
+				{% block content_container %}
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+							{% block content %}
                 <div id="log">loading...</div>
                 <!-- Pager -->
                 <ul class="pager">
@@ -108,8 +107,10 @@
                         <a href="http://log.munichmakerlab.de/">View all posts in the Log &rarr;</a>
                     </li>
                 </ul>
+              {% endblock %}
             </div>
         </div>
+        {% endblock %}
     </div>
 
     <hr>
@@ -152,37 +153,30 @@
     </footer>
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="{{ STATIC_URL }}/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="{{ STATIC_URL }}/js/bootstrap.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="js/clean-blog.min.js"></script>
-	
-	<script src="lib/responsiveslides/responsiveslides.min.js"></script>
-	<!-- RSS Feed -->
-	<script src="lib/tumblr-rss.js"></script>
-	<script src="lib/lightbox/js/lightbox.min.js"></script>
-	<script>
-		$(function() {
-			var tumblr = new TumblrRSS($('#log'), 'http://log.munichmakerlab.de/', 10);
-			tumblr.start(function() {
-				$(".rslides").responsiveSlides({
-					auto: false,
-					nav: true,
-					pager: false,
+    <script src="{{ STATIC_URL }}/js/clean-blog.min.js"></script>
+
+		<script>
+			$(function() {
+				$.getJSON("http://status.munichmakerlab.de/spaceapi.php", function(data) {
+					if(data.state.open) {
+						$("#status_label").html('<a class="label label-success">Open</a>');
+					} else {
+						$("#status_label").html('<a class="label label-danger">Closed</a>');
+					}
 				});
 			});
-			$.getJSON("http://status.munichmakerlab.de/spaceapi.php", function(data) {
-				if(data.state.open) {
-					$("#status_label").html('<a class="label label-success">Open</a>');
-				} else {
-					$("#status_label").html('<a class="label label-danger">Closed</a>');
-				}
-			});
-		});
-	</script>
+		</script>
+
+		
+		{% block custom_js %}
+		
+		{% endblock %}
 </body>
 
 </html>
