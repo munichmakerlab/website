@@ -16,6 +16,7 @@
 
     <!-- Custom CSS -->
     <link href="css/clean-blog.min.css" rel="stylesheet">
+	<link href="css/mumalab.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -70,6 +71,9 @@
                     <li>
                         <a href="contact.html">Impressum</a>
                     </li>
+					<li id="status_label">
+						<a class="label label-success">Open</a>
+					</li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -169,6 +173,13 @@
 					nav: true,
 					pager: false,
 				});
+			});
+			$.getJSON("http://status.munichmakerlab.de/spaceapi.php", function(data) {
+				if(data.state.open) {
+					$("#status_label").html('<a class="label label-success">Open</a>');
+				} else {
+					$("#status_label").html('<a class="label label-danger">Closed</a>');
+				}
 			});
 		});
 	</script>
