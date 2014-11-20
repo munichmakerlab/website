@@ -36,6 +36,31 @@
 
 <body>
 
+	<div class="modal fade" id="spacestatus_modal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title">Space Status</h4>
+				</div>
+				<div class="modal-body">
+					<img src="//status.munichmakerlab.de/image.php" style="width:100px;height:100px;">
+					<p>
+						If there are people at the space, this light will be green. 
+						If the space is currently closed, it'll be red.
+					</p>
+					<p>
+						For more details, take a look at the <a href="https://wiki.munichmakerlab.de/wiki/StartYourEngines">Start Your Engines</a> project in our wiki.
+					</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
         <div class="container-fluid">
@@ -165,9 +190,9 @@
 			$(function() {
 				$.getJSON("http://status.munichmakerlab.de/spaceapi.php", function(data) {
 					if(data.state.open) {
-						$("#status_label").html('<a class="label label-success">Open</a>');
+						$("#status_label").html('<a class="label label-success" data-toggle="modal" data-target="#spacestatus_modal">Open</a>');
 					} else {
-						$("#status_label").html('<a class="label label-danger">Closed</a>');
+						$("#status_label").html('<a class="label label-danger" data-toggle="modal" data-target="#spacestatus_modal">Closed</a>');
 					}
 				});
 			});
