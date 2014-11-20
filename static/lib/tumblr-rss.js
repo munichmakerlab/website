@@ -234,7 +234,9 @@ TumblrRSS.prototype.getVideoMarkup = function(post) {
         portrait = 'false';
     }
     markup.push('<div class="post-preview">');
-	markup.push(player);    
+	  markup.push('<div class="iframe_container">');    
+	  markup.push(player);    
+	  markup.push('</div>');    
     markup.push('<p>' + post['video-caption'] + '</p>');
     markup.push('<p class="post-meta">Posted on ' + post['date'] + ' - <a target="_blank" href="' + post['url-with-slug'] + '">View on Tumblr</a></p>');
     markup.push('</div><hr>');
