@@ -46,8 +46,9 @@
 				<div class="modal-body">
 					<img src="//status.munichmakerlab.de/image.php" style="width:100px;height:100px;">
 					<p>
-						If there are people at the space, this light will be green. 
-						If the space is currently closed, it'll be red.
+						If there are people at the space, this light will be green.<br>
+						If the space is currently closed, it'll be red.<br>
+						If the light is grey, something is broken and our highly trained monkeys are already on the way to get it fixed.
 					</p>
 					<p>
 						For more details, take a look at the <a href="https://wiki.munichmakerlab.de/wiki/StartYourEngines">Start Your Engines</a> project in our wiki.
@@ -188,11 +189,13 @@
 
 		<script>
 			$(function() {
-				$.getJSON("http://status.munichmakerlab.de/spaceapi.php", function(data) {
-					if(data.state.open) {
+				$.getJSON("http://status.munichmakerlab.de/api.php", function(data) {
+					if(data.door == "open") {
 						$("#status_label").html('<a class="label label-success" data-toggle="modal" data-target="#spacestatus_modal">Open</a>');
-					} else {
+					} else if (data.door == "closed") {
 						$("#status_label").html('<a class="label label-danger" data-toggle="modal" data-target="#spacestatus_modal">Closed</a>');
+					} else {
+						$("#status_label").html('<a class="label label-default" data-toggle="modal" data-target="#spacestatus_modal">Unknown</a>');
 					}
 				});
 			});
