@@ -1,20 +1,20 @@
 <IfModule mod_expires.c>
   ExpiresActive On
   
-  ExpiresByType text/html “access plus 2 houres ”
-  ExpiresByType text/xml “access plus 2 houres”
+  ExpiresByType text/html "access plus 2 hours"
+  ExpiresByType text/xml "access plus 2 hours"
   
-  ExpiresByType image/gif “access plus 3 weeks”
-  ExpiresByType image/jpg “access plus 2 weeks”
-  ExpiresByType image/png “access plus 3 weeks”
+  ExpiresByType image/gif "access plus 3 weeks"
+  ExpiresByType image/jpg "access plus 2 weeks"
+  ExpiresByType image/png "access plus 3 weeks"
   
-  ExpiresByType video/quicktime “access plus 2 months”
-  ExpiresByType audio/mpeg “access plus 2 months”
+  ExpiresByType video/quicktime "access plus 2 months"
+  ExpiresByType audio/mpeg "access plus 2 months"
   
-  ExpiresByType application/pdf “access plus 2 weeks”
-  ExpiresByType application/ps “access plus 2 weeks”
+  ExpiresByType application/pdf "access plus 2 weeks"
+  ExpiresByType application/ps "access plus 2 weeks"
   
-  ExpiresByType application/xml “modification plus 2 weeks”
+  ExpiresByType application/xml "modification plus 2 weeks"
   
   ExpiresByType text/css "access plus 7 days"
   ExpiresByType text/javascript "access plus 7 days"
