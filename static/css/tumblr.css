@@ -74,7 +74,7 @@
 
 .iframe_container iframe{
   max-height: 400px;
-  width: 500px;
+  max-width: 100%;
   margin: 0px auto;
   display: block;
   }
