@@ -19,7 +19,8 @@
 									<h3 class="panel-title" id="event_title">Panel title</h3>
 								</div>
 								<div class="panel-body">
-									<i><span id="event_start"></span></i>
+									<i><span id="event_start"></span></i><br>
+									Location: <span id="event_location"></span>
 									<blockquote id="event_text"></blockquote>
 								</div>
 							</div>
@@ -40,19 +41,6 @@
 	<script src='{{ STATIC_URL }}/lib/jquery.ics-0.3.js'></script>
 	<script>
 		$(document).ready(function() {
-			var cal = $.parseIcs("{{ STATIC_URL }}/calendar/events.ics");
-			var events = [];
-			
-			cal.event.forEach(function(val, idx, arr) {
-				events.push({
-					title: val.summary[0].value,
-					start: moment(val.dtstart[0].value,'YYYYMMDDTHHmmss'),
-					end: moment(val.dtend[0].value,'YYYYMMDDTHHmmss'),
-					text: val.description[0].value.replace(/\\,/g, ",").replace(/\\n/g, "<br>").replace(/\\;/g, ";")
-					//url: val.url[0].value
-				});
-			});
-			
 			$('#cal_out').fullCalendar({
 				googleCalendarApiKey: 'AIzaSyDhw2ehOIaDoox7_68SCq2ag7fjNV82Ank',
 				events: {
@@ -63,9 +51,9 @@
 					// opens events in a popup window
 					//window.open(event.url, 'event', 'width=700,height=600');
 					$("#event_title").text(event.title);
-					var description = event.description.replace(/\n/g,"<br>");
-					
+					var description = event.description.replace(/\n/g,"<br>");					
 					$("#event_text").html(description);
+					$("#event_location").html("<a href=\"https://maps.google.com/maps?q=" + event.location + "\">" + event.location + "</a>");
 					$("#event_start").html(event.start.format('MMMM Do YYYY, HH:mm'));
 					$("#event_info").show();
 					$("#event_info")[0].scrollIntoView();
