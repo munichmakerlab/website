@@ -12,6 +12,18 @@
             <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1" id="cal_out">
                 
             </div>
+            
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" id="event_info" style="margin-top:20px; display:none;">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h3 class="panel-title" id="event_title">Panel title</h3>
+								</div>
+								<div class="panel-body">
+									<i><span id="event_start"></span></i>
+									<div id="event_text"></div>
+								</div>
+							</div>
+						</div>
         </div>
 {% endblock %}        
 
@@ -35,16 +47,22 @@
 					title: val.summary[0].value,
 					start: moment(val.dtstart[0].value,'YYYYMMDDTHHmmss'),
 					end: moment(val.dtend[0].value,'YYYYMMDDTHHmmss'),
-					url: val.url[0].value
+					text: val.description[0].value.replace(/\\,/g, ",").replace(/\\n/g, "<br>").replace(/\\;/g, ";")
+					//url: val.url[0].value
 				});
 			});
-
+			
 			$('#cal_out').fullCalendar({
 				eventLimit: true, // allow "more" link when too many events
 				events: events,
 				eventClick: function(event) {
 					// opens events in a popup window
-					window.open(event.url, 'event', 'width=700,height=600');
+					//window.open(event.url, 'event', 'width=700,height=600');
+					$("#event_title").text(event.title);
+					$("#event_text").html(event.text);
+					$("#event_start").html(event.start.format('MMMM Do YYYY, HH:mm'));
+					$("#event_info").show();
+					$("#event_info")[0].scrollIntoView();
 					return false;
 				},
 				header: {
