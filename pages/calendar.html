@@ -20,7 +20,7 @@
 								</div>
 								<div class="panel-body">
 									<i><span id="event_start"></span></i>
-									<div id="event_text"></div>
+									<blockquote id="event_text"></blockquote>
 								</div>
 							</div>
 						</div>
@@ -36,6 +36,7 @@
 {% block custom_js %}
 	<script src='{{ STATIC_URL }}/lib/fullcalendar/lib/moment.min.js'></script>
 	<script src='{{ STATIC_URL }}/lib/fullcalendar/fullcalendar.min.js'></script>
+	<script src='{{ STATIC_URL }}/lib/fullcalendar/gcal.js'></script>
 	<script src='{{ STATIC_URL }}/lib/jquery.ics-0.3.js'></script>
 	<script>
 		$(document).ready(function() {
@@ -53,16 +54,22 @@
 			});
 			
 			$('#cal_out').fullCalendar({
+				googleCalendarApiKey: 'AIzaSyDhw2ehOIaDoox7_68SCq2ag7fjNV82Ank',
+				events: {
+					googleCalendarId: 'lbd0aa2rlahecp7juvp35hd0k0@group.calendar.google.com'
+				},
 				eventLimit: true, // allow "more" link when too many events
-				events: events,
 				eventClick: function(event) {
 					// opens events in a popup window
 					//window.open(event.url, 'event', 'width=700,height=600');
 					$("#event_title").text(event.title);
-					$("#event_text").html(event.text);
+					var description = event.description.replace(/\n/g,"<br>");
+					
+					$("#event_text").html(description);
 					$("#event_start").html(event.start.format('MMMM Do YYYY, HH:mm'));
 					$("#event_info").show();
 					$("#event_info")[0].scrollIntoView();
+					//console.log(event);
 					return false;
 				},
 				header: {
