@@ -25,7 +25,7 @@ TumblrRSS.prototype.fetchFeed = function(callback) {
      * @type {!TumblrRSS}
      */
     var that = this;
-    
+
     $.ajax({
         url: that.url + 'api/read/json?',
         dataType: 'script',
@@ -41,41 +41,41 @@ TumblrRSS.prototype.fetchFeed = function(callback) {
  * @return {undefined}
  */
 TumblrRSS.prototype.handleResponse = function(response) {
-    
+
     /**
      * @type {!TumblrRSS}
      */
     var that = this;
-    
+
     var feed = response['posts'],
         html = [],
         i    = 0;
-    
+
     for ( var post in feed ) {
         if ( i === that.count ) {
             break;
         }
-        
+
         var obj    = feed[post],
             type   = obj['type'];
-        
+
         obj['date'] = obj['date'].replace(/(\d\d:\d+:\d+)/, '');
-        
+
         var markup = that.getMarkup(obj, type);
 
         if ( markup === '' ) {
             continue;
         }
-        
+
         html.push('<div class="mod"><div class="inner">' + markup + '</div></div>');
-        
+
         i++;
     }
-    
+
     html = html.join('');
-    
+
     this.container.html(html);
-    
+
 }
 
 /**
@@ -88,9 +88,9 @@ TumblrRSS.prototype.getMarkup = function(post, type) {
      * @type {!TumblrRSS}
      */
     var that = this;
-    
+
     var markup = '';
-    
+
     switch( type ) {
         case 'photo':   markup = that.getPhotoMarkup(post);
             break;
@@ -106,7 +106,7 @@ TumblrRSS.prototype.getMarkup = function(post, type) {
             break;
         default:break;
     }
-    
+
     return markup;
 }
 
@@ -117,7 +117,7 @@ TumblrRSS.prototype.getMarkup = function(post, type) {
 TumblrRSS.prototype.getPhotoMarkup = function(post) {
     var markup  = [],
         caption = post['photo-caption'];
-    
+
 	markup.push('<div class="post-preview">');
 	if (post.photos.length > 0) {
 		markup.push('<div class="rslides_container">');
@@ -140,7 +140,7 @@ TumblrRSS.prototype.getPhotoMarkup = function(post) {
     markup.push('<p class="post-meta">Posted on ' + post['date'] + ' - <a target="_blank" href="' + post['url-with-slug'] + '">View on Tumblr</a></p>');
     markup.push('</div><hr>');
     markup = markup.join('');
-    
+
     return markup;
 }
 
@@ -154,9 +154,9 @@ TumblrRSS.prototype.getQuoteMarkup = function(post) {
     markup.push('<h4>' + post['date'] + '</h4>');
     markup.push('<blockquote><p>' + post['quote-text'] + '</p></blockquote>');
     markup.push('<p><a target="_blank" href="' + post['url-with-slug'] + '">View The Post</a></p>');
-    
+
     markup = markup.join('');
-    
+
     return markup;
 }
 
@@ -166,14 +166,14 @@ TumblrRSS.prototype.getQuoteMarkup = function(post) {
  */
 TumblrRSS.prototype.getLinkMarkup = function(post) {
     var markup = [];
-    
+
     markup.push('<h4>' + post['date'] + '</h4>');
     markup.push('<p><a target="_blank" href="' + post['link-url'] + '">' + post['link-text'] + '</a></p>');
     markup.push('<p>' + post['link-description'] + '</p>');
     markup.push('<p><a target="_blank" href="' + post['url-with-slug'] + '">View The Post</a></p>');
-    
+
     markup = markup.join('');
-    
+
     return markup;
 }
 
@@ -183,13 +183,15 @@ TumblrRSS.prototype.getLinkMarkup = function(post) {
  */
 TumblrRSS.prototype.getRegularMarkup = function(post) {
     var markup = [];
-    
-    markup.push('<h4>' + post['date'] + '</h4>');
+
+    markup.push('<div class="post-preview">');
+    markup.push('<h2><a target="_blank" href="' + post['url-with-slug'] + '">' + post['regular-title'] + '</a></h2>');
     markup.push('<p>' + post['regular-body'] + '</p>');
-    markup.push('<p><a target="_blank" href="' + post['url-with-slug'] + '">View The Post</a></p>');
-    
+    markup.push('<p class="post-meta">Posted on ' + post['date'] + ' - <a target="_blank" href="' + post['url-with-slug'] + '">View on Tumblr</a></p>');
+    markup.push('</div><hr>');
+
     markup = markup.join('');
-    
+
     return markup;
 }
 
@@ -200,14 +202,14 @@ TumblrRSS.prototype.getRegularMarkup = function(post) {
 TumblrRSS.prototype.getAudioMarkup = function(post) {
     var markup = [],
         player = post['audio-player'];
-    
+
     markup.push('<h4>' + post['date'] + '</h4>');
     markup.push(post['audio-caption']);
     markup.push(player);
     markup.push('<p><a target="_blank" href="' + post['url-with-slug'] + '">View The Post</a></p>');
-    
+
     markup = markup.join('');
-    
+
     return markup;
 }
 
@@ -216,7 +218,7 @@ TumblrRSS.prototype.getAudioMarkup = function(post) {
  * @return {string}
  */
 TumblrRSS.prototype.getVideoMarkup = function(post) {
-    
+
     var markup = [],
         id     = post['id'],
         source = post['video-source'],
@@ -227,21 +229,20 @@ TumblrRSS.prototype.getVideoMarkup = function(post) {
         //height      = source.match(/"height";i:(\d+)/)[1],
         //frames      = player.match(/poster=(.*)/)
 		;
-        
-        
+
+
     if ( !source.match(/portrait/) ) {
         orientation = 'landscape';
         portrait = 'false';
     }
     markup.push('<div class="post-preview">');
-	  markup.push('<div class="iframe_container">');    
-	  markup.push(player);    
-	  markup.push('</div>');    
+	  markup.push('<div class="iframe_container">');
+	  markup.push(player);
+	  markup.push('</div>');
     markup.push('<p>' + post['video-caption'] + '</p>');
     markup.push('<p class="post-meta">Posted on ' + post['date'] + ' - <a target="_blank" href="' + post['url-with-slug'] + '">View on Tumblr</a></p>');
     markup.push('</div><hr>');
     markup = markup.join('');
-    
+
     return markup;
 }
-
