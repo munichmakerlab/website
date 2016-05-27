@@ -9,6 +9,6 @@ env:
 	./env/bin/cactus build && touch .build
 
 deploy: .build
-	rsync -azL --delete --progress .build/ beta.tiefpunkt.com:/srv/www/vhosts/munichmakerlab.de/www/htdocs/
+	rsync -azL --delete --progress .build/ mars.munichmakerlab.de:/var/www/vhosts/munichmakerlab.de/www/htdocs/
 
 
