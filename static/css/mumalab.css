@@ -11,3 +11,8 @@
 	color: white;
   }
 }
+
+.jumbotron p {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
