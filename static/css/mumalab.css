@@ -16,3 +16,11 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+.site-heading, .navbar {
+  text-shadow: 1px 1px #333333;
+}
+
+#status_label {
+  text-shadow: 0px 0px;
+}
