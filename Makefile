@@ -4,7 +4,7 @@ env:
 	virtualenv env
 	./env/bin/pip install -r requirements.txt
 
-.build: env/* pages/* static/* templates/*
+.build: env pages/* static/* templates/*
 	git submodule update --init
 	./env/bin/cactus build && touch .build
 
@@ -16,5 +16,5 @@ deploy_ci: .build
 	mkdir -p ~/.ssh
 	eval $(ssh-agent -s)
 	echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
-	ssh-add <(echo "$SSH_PRIVATE_KEY")
+	ssh-add <(echo "$SSH_PRIVATE_KEY" | base64 -d)
 	rsync -azL --delete --progress .build/ root@mars.munichmakerlab.de:/var/www/vhosts/munichmakerlab.de/www/htdocs/
