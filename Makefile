@@ -14,6 +14,6 @@ deploy: .build
 deploy_ci: .build
 	mkdir -p ~/.ssh
 	echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
-	echo "${SSH_PRIVATE_KEY}" | base64 -d > $HOME/.ssh/deploy.id_rsa
-	chmod 700 $HOME/.ssh/deploy.id_rsa
-	rsync -azL -e "ssh -i $HOME/.ssh/deploy.id_rsa" --delete --progress .build/ root@mars.munichmakerlab.de:/var/www/vhosts/munichmakerlab.de/www/htdocs/
+	echo "${SSH_PRIVATE_KEY}" | base64 -d > ${HOME}/.ssh/deploy.id_rsa
+	chmod 700 ${HOME}/.ssh/deploy.id_rsa
+	rsync -azL -e "ssh -i ${HOME}/.ssh/deploy.id_rsa" --delete --progress .build/ root@mars.munichmakerlab.de:/var/www/vhosts/munichmakerlab.de/www/htdocs/
