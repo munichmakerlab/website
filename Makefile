@@ -10,3 +10,11 @@ env:
 
 deploy: .build
 	rsync -azL --delete --progress .build/ mars.munichmakerlab.de:/var/www/vhosts/munichmakerlab.de/www/htdocs/
+
+deploy_ci: .build
+	which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )
+	mkdir -p ~/.ssh
+	eval $(ssh-agent -s)
+	echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+	ssh-add <(echo "$SSH_PRIVATE_KEY")
+	rsync -azL --delete --progress .build/ root@mars.munichmakerlab.de:/var/www/vhosts/munichmakerlab.de/www/htdocs/
