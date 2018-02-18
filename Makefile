@@ -5,6 +5,7 @@ env:
 	./env/bin/pip install -r requirements.txt
 
 .build: env pages/* static/* templates/*
+	export BOTO_CONFIG=/dev/null
 	git submodule update --init
 	./env/bin/cactus build && touch .build
 
