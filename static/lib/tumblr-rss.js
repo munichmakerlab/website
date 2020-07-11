@@ -56,11 +56,13 @@ TumblrRSS.prototype.handleResponse = function(response) {
             break;
         }
 
-        var obj    = feed[post],
-            type   = obj['type'];
+        var obj    = feed[post];
 
         obj['date'] = obj['date'].replace(/(\d\d:\d+:\d+)/, '');
 
+        obj = that.regularToPhoto(obj);
+
+        var type = type   = obj['type'];
         var markup = that.getMarkup(obj, type);
 
         if ( markup === '' ) {
@@ -76,6 +78,38 @@ TumblrRSS.prototype.handleResponse = function(response) {
 
     this.container.html(html);
 
+}
+
+TumblrRSS.prototype.regularToPhoto = function(post) {
+    const regex = /^(<figure .*>(<img .*\/>)*<\/figure>)([\s\S]*)$/gm;
+    if (post['type'] == "regular") {
+        var m = regex.exec(post["regular-body"]);
+        if (m) {
+            console.log("photo post marked as regular found");
+            post["type"] = "photo";
+            post["photo-caption"] = m[3];
+            post["photos"] = []
+
+            var dom = $(m[1]);
+            var photos = [];
+            $("img",dom).each(function(i) {
+                photos.push($(this)[0].src);
+            });
+            if (photos.length == 1) {
+                post['photo-url-1280'] = photos[0];
+                post['photo-url-500'] = photos[0];
+            } else {
+                photos.forEach(function(url){
+                    post["photos"].push({
+                        'photo-url-1280': url,
+                        'photo-url-500': url
+                    });
+                });
+            }
+        }
+    }
+    //console.log(post);
+    return post;
 }
 
 /**
