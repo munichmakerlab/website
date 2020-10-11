@@ -8,6 +8,9 @@ env:
 	git submodule update --init
 	./env/bin/cactus build && touch .build
 
+serve: env pages/* static/* templates/*
+	./env/bin/cactus serve
+
 deploy: .build
 	rsync -azL --delete --progress .build/ mars.munichmakerlab.de:/var/www/vhosts/munichmakerlab.de/www/htdocs/
 
