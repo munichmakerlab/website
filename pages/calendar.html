@@ -2,7 +2,7 @@
 
 {% block title %}Munich Maker Lab - Calendar{% endblock %}
 
-{% block header_img %}{{ STATIC_URL }}/img/bg_arduino.png{% endblock %}
+{% block header_img %}{% static '/static/img/bg_arduino.png' %}{% endblock %}
 
 {% block headline %}Calendar{% endblock %}
 {% block sub_headline %}This is what is going on at the MuMaLand.{% endblock %}
@@ -10,9 +10,9 @@
 {% block content_container %}
         <div class="row">
             <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1" id="cal_out">
-                
+
             </div>
-            
+
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" id="event_info" style="margin-top:20px; display:none;">
 							<div class="panel panel-default">
 								<div class="panel-heading">
@@ -26,19 +26,19 @@
 							</div>
 						</div>
         </div>
-{% endblock %}        
+{% endblock %}
 
 {% block custom_css %}
 	<!-- Calendar CSS -->
-	<link href='{{ STATIC_URL }}/lib/fullcalendar/fullcalendar.css' rel='stylesheet' />
-	<link href='{{ STATIC_URL }}/lib/fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
+	<link href="{% static '/static/lib/fullcalendar/fullcalendar.css' %}" rel='stylesheet' />
+	<link href="{% static '/static/lib/fullcalendar/fullcalendar.print.css' %}" rel='stylesheet' media='print' />
 {% endblock %}
 
 {% block custom_js %}
-	<script src='{{ STATIC_URL }}/lib/fullcalendar/lib/moment.min.js'></script>
-	<script src='{{ STATIC_URL }}/lib/fullcalendar/fullcalendar.min.js'></script>
-	<script src='{{ STATIC_URL }}/lib/fullcalendar/gcal.js'></script>
-	<script src='{{ STATIC_URL }}/lib/jquery.ics-0.3.js'></script>
+	<script src="{% static '/static/lib/fullcalendar/lib/moment.min.js' %}"></script>
+	<script src="{% static '/static/lib/fullcalendar/fullcalendar.min.js' %}"></script>
+	<script src="{% static '/static/lib/fullcalendar/gcal.js' %}"></script>
+	<script src="{% static '/static/lib/jquery.ics-0.3.js' %}"></script>
 	<script>
 		$(document).ready(function() {
 			$('#cal_out').fullCalendar({
@@ -51,7 +51,7 @@
 					// opens events in a popup window
 					//window.open(event.url, 'event', 'width=700,height=600');
 					$("#event_title").text(event.title);
-					var description = event.description.replace(/\n/g,"<br>");					
+					var description = event.description.replace(/\n/g,"<br>");
 					$("#event_text").html(description);
 					$("#event_location").html("<a href=\"https://maps.google.com/maps?q=" + event.location + "\">" + event.location + "</a>");
 					$("#event_start").html(event.start.format('MMMM Do YYYY, HH:mm'));
@@ -65,8 +65,9 @@
 					center: 'title',
 					right: 'month,basicWeek,basicDay'
 				},
+                firstDay: 1
 			});
-			
+
 		});
 
 	</script>

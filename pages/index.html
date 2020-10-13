@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
 {% block custom_css %}
-	<link rel="stylesheet" href="{{ STATIC_URL }}/lib/responsiveslides/responsiveslides.css">
-	<link rel="stylesheet" href="{{ STATIC_URL }}/lib/lightbox/css/lightbox.css">
-	<link rel="stylesheet" href="{{ STATIC_URL }}/css/tumblr.css">
+	<link rel="stylesheet" href="{% static '/static/lib/responsiveslides/responsiveslides.css' %}">
+	<link rel="stylesheet" href="{% static '/static/lib/lightbox/css/lightbox.css' %}">
+	<link rel="stylesheet" href="{% static '/static/css/tumblr.css' %}">
 
 	<link rel="alternate" type="application/rss+xml" href="http://log.munichmakerlab.de/rss">
 {% endblock %}
@@ -57,10 +57,10 @@
 {% endblock %}
 
 {% block custom_js %}
-	<script src="{{ STATIC_URL }}/lib/responsiveslides/responsiveslides.min.js"></script>
+	<script src="{% static '/static/lib/responsiveslides/responsiveslides.min.js' %}"></script>
 	<!-- RSS Feed -->
-	<script src="{{ STATIC_URL }}/lib/tumblr-rss.js"></script>
-	<script src="{{ STATIC_URL }}/lib/lightbox/js/lightbox.min.js"></script>
+	<script src="{% static '/static/lib/tumblr-rss.js' %}"></script>
+	<script src="{% static '/static/lib/lightbox/js/lightbox.min.js' %}"></script>
 	<script>
 		$(function() {
 			var tumblr = new TumblrRSS($('#log'), 'https://munichmakerlab.de/', 10);

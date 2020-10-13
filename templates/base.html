@@ -12,11 +12,11 @@
     <title>{% block title %}Munich Maker Lab{% endblock %}</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="{{ STATIC_URL }}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static '/static/css/bootstrap.min.css' %}" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="{{ STATIC_URL }}/css/clean-blog.min.css" rel="stylesheet">
-	<link href="{{ STATIC_URL }}/css/mumalab.css" rel="stylesheet">
+    <link href="{% static '/static/css/clean-blog.min.css' %}" rel="stylesheet">
+	<link href="{% static '/static/css/mumalab.css' %}" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -106,7 +106,7 @@
 
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url('{% block header_img %}{{ STATIC_URL }}/img/bg_main.png{% endblock %}')">
+    <header class="intro-header" style="background-image: url('{% block header_img %}{% static '/static/img/bg_main.png' %}{% endblock %}')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -197,13 +197,13 @@
     </footer>
 
     <!-- jQuery -->
-    <script src="{{ STATIC_URL }}/js/jquery.js"></script>
+    <script src="{% static '/static/js/jquery.js' %}"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="{{ STATIC_URL }}/js/bootstrap.min.js"></script>
+    <script src="{% static '/static/js/bootstrap.min.js' %}"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="{{ STATIC_URL }}/js/clean-blog.min.js"></script>
+    <script src="{% static '/static/js/clean-blog.min.js' %}"></script>
 
 		<script>
 			$(function() {
