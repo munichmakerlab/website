@@ -2,7 +2,7 @@ boto==2.49.0
 Cactus==3.3.3
 colorama==0.4.4
 colorlog==4.4.0
-Django==1.6.11
+Django==1.11.29
 django-markwhat==1.6.2
 keyring==5.7.1
 markdown2==2.3.9
