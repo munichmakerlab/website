@@ -1,6 +1,10 @@
-Cactus==2.3.1
-Django==1.5.5
-Markdown==2.5.1
-argparse==1.2.1
-boto==2.34.0
-wsgiref==0.1.2
+boto==2.49.0
+Cactus==3.3.3
+colorama==0.4.4
+colorlog==4.4.0
+Django==1.6.11
+django-markwhat==1.6.2
+keyring==5.7.1
+markdown2==2.3.9
+six==1.15.0
+tornado==6.0.4
