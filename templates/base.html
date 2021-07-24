@@ -189,7 +189,7 @@
                         </li>
                     </ul>
                     <p class="copyright text-muted">
-                        Munich Maker Lab e.V. 2020<br>
+                        Munich Maker Lab e.V. 2021<br>
                         <a href="imprint.html">Impressum/Imprint</a> - <a href="privacy.html">Datenschutzerklärung/Privacy Policy</a><br> Edit this page on <a href="https://github.com/munichmakerlab/website">Github</a></p>
                 </div>
             </div>
@@ -208,8 +208,12 @@
 		<script>
 			$(function() {
 				$.getJSON("https://status.munichmakerlab.de/api.php", function(data) {
+					var people = "";
+					if (data.people) {
+						people = " (" + data.people.present + "/" + data.people.allowed + ")";
+					}
 					if(data.door == "open") {
-						$("#status_label").html('<a class="label label-success" data-toggle="modal" data-target="#spacestatus_modal">Open</a>');
+						$("#status_label").html('<a class="label label-success" data-toggle="modal" data-target="#spacestatus_modal">Open' + people + '</a>');
 					} else if (data.door == "closed") {
 						$("#status_label").html('<a class="label label-danger" data-toggle="modal" data-target="#spacestatus_modal">Closed</a>');
 					} else {
