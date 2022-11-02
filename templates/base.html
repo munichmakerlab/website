@@ -19,9 +19,9 @@
 	<link href="{% static '/static/css/mumalab.css' %}" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href='{% static '/static/css/fonts-lora.css' %}' rel='stylesheet' type='text/css'>
-    <link href='{% static '/static/css/fonts-opensans.css' %}' rel='stylesheet' type='text/css'>
+    <link href="{% static '/static/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static '/static/css/font-lora.css' %}" rel='stylesheet' type='text/css'>
+    <link href=""{% static '/static/css/font-opensans.css' %}" rel='stylesheet' type='text/css'>
 
 	  {% block custom_css %} {% endblock %}
 
@@ -189,7 +189,7 @@
                         </li>
                     </ul>
                     <p class="copyright text-muted">
-                        Munich Maker Lab e.V. 2021<br>
+                        Munich Maker Lab e.V. 2022<br>
                         <a href="imprint.html">Impressum/Imprint</a> - <a href="privacy.html">Datenschutzerklärung/Privacy Policy</a><br> Edit this page on <a href="https://github.com/munichmakerlab/website">Github</a></p>
                 </div>
             </div>
@@ -209,9 +209,9 @@
 			$(function() {
 				$.getJSON("https://status.munichmakerlab.de/api.php", function(data) {
 					var people = "";
-					if (data.people) {
+					/* if (data.people) {
 						people = " (" + data.people.present + "/" + data.people.allowed + ")";
-					}
+					} */
 					if(data.door == "open") {
 						$("#status_label").html('<a class="label label-success" data-toggle="modal" data-target="#spacestatus_modal">Open' + people + '</a>');
 					} else if (data.door == "closed") {
