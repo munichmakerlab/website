@@ -1,4 +1,6 @@
-.build
-env*
-*.pyc
+_site
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor
 id_rsa*

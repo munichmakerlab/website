@@ -1,14 +1,10 @@
-{% extends "base.html" %}
-
-{% block title %}About Us{% endblock %}
-
-{% block header_img %}{% static '/static/img/bg_make.png' %}{% endblock %}
-
-{% block headline %}About Us{% endblock %}
-
-{% block sub_headline %}What's the Munich Maker Lab?{% endblock %}
-
-{% block content %}
+---
+layout: page
+title: About Us
+header_image: /static/img/bg_make.png
+headline: About Us
+sub_headline: What's the Munich Maker Lab?
+---
 		<p>The Munich Maker Lab is a non-profit organization, creating an open community workspace, where you can learn, teach, share, make, hack, create, enjoy or simply relax. We try to create an environment that supports the do-it-yourself-, hacker-, and maker-culture by providing workspace, tools and infrastructure to our members and everyone else.</p>
 
 		<p><a href="statues.html">Our statues</a> and <a href="scaleoffees.html">our scale of fees</a></p>
@@ -26,4 +22,3 @@
 			</blockquote>
 		Make sure to send us an email to <a href="mailto:vorstand@munichmakerlab.de?subject=Donation">vorstand@munichmakerlab.de</a>, so we can get you your receipt.
 		</p>
-{% endblock %}

@@ -1,0 +1,28 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - master
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: recursive
+    - name: Setup Pages
+        uses: actions/configure-pages@v3
+    - name: Build
+        uses: actions/jekyll-build-pages@v1
+    - name: deploy website
+      shell: bash
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      run: |
+        mkdir -p ~/.ssh
+        echo "${SSH_PRIVATE_KEY}" | base64 -d > ${HOME}/.ssh/deploy.id_rsa
+        chmod 700 ${HOME}/.ssh/deploy.id_rsa
+        rsync -azL -e "ssh -i ${HOME}/.ssh/deploy.id_rsa -o StrictHostKeyChecking=no" --delete --progress _site/ root@mars.munichmakerlab.de:/var/www/vhosts/munichmakerlab.de/www/htdocs/
