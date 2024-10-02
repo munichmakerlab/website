@@ -32,4 +32,4 @@ jobs:
         mkdir -p ~/.ssh
         echo "${SSH_PRIVATE_KEY}" | base64 -d > ${HOME}/.ssh/deploy.id_rsa
         chmod 700 ${HOME}/.ssh/deploy.id_rsa
-        rsync -azL -e "ssh -i ${HOME}/.ssh/deploy.id_rsa -o StrictHostKeyChecking=no" --delete --progress _site/ root@mars.munichmakerlab.de:/var/www/vhosts/munichmakerlab.de/www/htdocs/
+        rsync -azL -e "ssh -i ${HOME}/.ssh/deploy.id_rsa -o StrictHostKeyChecking=no" --delete --progress _site/ root@saturn.munichmakerlab.de:/data/website/htdocs/
