@@ -41,6 +41,7 @@ jobs:
         ssh -i ${HOME}/.ssh/deploy.id_rsa -o StrictHostKeyChecking=no root@saturn.munichmakerlab.de << EOF
           set -x  # Enable command echoing
           docker pull ghcr.io/munichmakerlab/website:main
+          docker images | grep ghcr.io/munichmakerlab/website | grep -v main | awk '{print $3}' | xargs docker rmi #remove old images
           systemctl restart docker-website.service
           systemctl status docker-website.service
         EOF
