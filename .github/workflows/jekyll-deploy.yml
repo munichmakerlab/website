@@ -24,7 +24,7 @@ jobs:
       run: bundle exec jekyll build
       env:
         JEKYLL_ENV: production
-    - name: deploy website
+    - name: Create SSH key
       shell: bash
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
@@ -32,11 +32,8 @@ jobs:
         mkdir -p ~/.ssh
         echo "${SSH_PRIVATE_KEY}" | base64 -d > ${HOME}/.ssh/deploy.id_rsa
         chmod 700 ${HOME}/.ssh/deploy.id_rsa
-        rsync -azL -e "ssh -i ${HOME}/.ssh/deploy.id_rsa -o StrictHostKeyChecking=no" --delete --progress _site/ root@saturn.munichmakerlab.de:/data/website/htdocs/
     - name: Update Docker container
       shell: bash
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
       run: |
         ssh -i ${HOME}/.ssh/deploy.id_rsa -o StrictHostKeyChecking=no root@saturn.munichmakerlab.de << EOF
           docker pull ghcr.io/munichmakerlab/website:main
