@@ -81,4 +81,14 @@
 
 #log .inner {
     word-wrap: break-word;
+    max-width: 100%;
+}
+
+#log .inner img {
+  max-height: 400px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.4em;
+  display: block;
 }
