@@ -1,6 +1,6 @@
 # New MuMaLab Website
 
-Based on [Clean Blog](http://startbootstrap.com/template-overviews/clean-blog/) by [Start Bootstrap](http://startbootstrap.com/), which was released under [Apache 2.0](https://github.com/IronSummitMedia/startbootstrap-clean-blog/blob/gh-pages/LICENSE) license.
+Based on [Clean Blog](https://startbootstrap.com/theme/clean-blog) by [Start Bootstrap](http://startbootstrap.com/), which was released under [Apache 2.0](https://github.com/IronSummitMedia/startbootstrap-clean-blog/blob/gh-pages/LICENSE) license.
 
 ## Additional libraries
 * [tumblr-rss.js](https://github.com/calvinbushor/Tumblr-RSS-Client-Side-JS-Plugin)
