@@ -1,0 +1,58 @@
+---
+const { header_image, headline, sub_headline } = Astro.props
+---
+
+<div class='header'>
+  <img class='header-image' src={header_image} alt='header image' />
+  <div class='text'>
+    <h1>{headline}</h1>
+    <div class='divider'></div>
+    <span>{sub_headline}</span>
+  </div>
+</div>
+
+<style>
+  .header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    text-shadow: 1px 1px #333333;
+  }
+
+  .header-image {
+    position: relative;
+    width: 100vw;
+    z-index: -1;
+  }
+
+  .header > .text {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .header h1 {
+    font-weight: 800;
+    font-size: 5rem;
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 920px) {
+    .header h1 {
+      font-size: 5vw;
+    }
+  }
+  .header .divider {
+    background-color: white;
+    display: block;
+    height: 0.3rem;
+    width: 10vw;
+    margin: 1rem 0 1.5rem 0;
+  }
+</style>

@@ -1,0 +1,22 @@
+{
+  "name": "mumalab-website",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/markdoc": "^0.12.8",
+    "@astrojs/mdx": "^4.0.8",
+    "@astrojs/rss": "^4.0.11",
+    "@astrojs/vue": "^5.0.6",
+    "@iconify-json/mdi": "^1.2.3",
+    "astro": "^5.2.2",
+    "astro-icon": "^1.1.5",
+    "swiper": "^11.2.2",
+    "vue": "^3.5.13"
+  }
+}

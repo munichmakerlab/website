@@ -1,2 +1,0 @@
-RewriteEngine on
-RewriteRule ^api/read/json      /static/blog.php [L]

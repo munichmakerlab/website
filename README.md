@@ -1,20 +1,48 @@
-# New MuMaLab Website
+# Astro Starter Kit: Basics
 
-Based on [Clean Blog](https://startbootstrap.com/theme/clean-blog) by [Start Bootstrap](http://startbootstrap.com/), which was released under [Apache 2.0](https://github.com/IronSummitMedia/startbootstrap-clean-blog/blob/gh-pages/LICENSE) license.
+```sh
+npm create astro@latest -- --template basics
+```
 
-## Additional libraries
-* [tumblr-rss.js](https://github.com/calvinbushor/Tumblr-RSS-Client-Side-JS-Plugin)
-** heavily modified to work with our template
-* [ResponsiveSlides.js](https://github.com/viljamis/ResponsiveSlides.js)
-* [jquery.ics](http://bitfish.eu/projects/jquery-ics/)
-** fixed for multiline values in .ics files
-* [FullCalendar](http://fullcalendar.io/)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
+[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
 
-## Webserver
-Even though this is a static page, we have some weird-ish quirks in here that could be fixed eventually
-* We proxy the tumblr json via a PHP script (``/static/blog.php``), which gets redirected via mod_redirect from ``/api/read/json`` (via ``.htaccess``)
-  * This is used by the frontpage blog, and iirc did this to ensure all content is loaded via HTTPS, which it otherwise would not.
-* We proxy our calendar, which comes in via google, via mod_proxy
-  * Not sure if this is actually still being used.
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-All this requires this to be served via an Apache webserver at the moment, with PHP and the proxy, proxy_http, ssl and redirect modules enabled. The blog.php script uses the PHP extension APCu.
+![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+
+## 🚀 Project Structure
+
+Inside of your Astro project, you'll see the following folders and files:
+
+```text
+/
+├── public/
+│   └── favicon.svg
+├── src/
+│   ├── layouts/
+│   │   └── Layout.astro
+│   └── pages/
+│       └── index.astro
+└── package.json
+```
+
+To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+
+## 🧞 Commands
+
+All commands are run from the root of the project, from a terminal:
+
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
+
+## 👀 Want to learn more?
+
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

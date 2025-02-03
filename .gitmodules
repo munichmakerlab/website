@@ -1,6 +1,0 @@
-[submodule "static/lib/responsiveslides"]
-	path = static/lib/responsiveslides
-	url = https://github.com/viljamis/ResponsiveSlides.js.git
-[submodule "static/lib/lightbox"]
-	path = static/lib/lightbox
-	url = https://github.com/lokesh/lightbox2.git
