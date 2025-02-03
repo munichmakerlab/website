@@ -11,6 +11,7 @@
   "dependencies": {
     "@astrojs/markdoc": "^0.12.8",
     "@astrojs/mdx": "^4.0.8",
+    "@astrojs/node": "^9.0.2",
     "@astrojs/vue": "^5.0.6",
     "@iconify-json/mdi": "^1.2.3",
     "astro": "^5.2.2",
