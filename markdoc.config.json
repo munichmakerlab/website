@@ -1,6 +1,6 @@
 [
     {
-      "id": "mumalab-website",
+      "id": "website",
       "path": "src/content",
       "schema": {
         "path": "markdoc.config.mjs",
