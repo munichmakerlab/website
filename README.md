@@ -1,20 +1,39 @@
-# New MuMaLab Website
+MunichMakerLab Website
 
-Based on [Clean Blog](https://startbootstrap.com/theme/clean-blog) by [Start Bootstrap](http://startbootstrap.com/), which was released under [Apache 2.0](https://github.com/IronSummitMedia/startbootstrap-clean-blog/blob/gh-pages/LICENSE) license.
+this website has been built with astro and tries to minimize the gotchas and special purpose additions for maintainabilities sake.
 
-## Additional libraries
-* [tumblr-rss.js](https://github.com/calvinbushor/Tumblr-RSS-Client-Side-JS-Plugin)
-** heavily modified to work with our template
-* [ResponsiveSlides.js](https://github.com/viljamis/ResponsiveSlides.js)
-* [jquery.ics](http://bitfish.eu/projects/jquery-ics/)
-** fixed for multiline values in .ics files
-* [FullCalendar](http://fullcalendar.io/)
+## 🚀 Project Structure
 
-## Webserver
-Even though this is a static page, we have some weird-ish quirks in here that could be fixed eventually
-* We proxy the tumblr json via a PHP script (``/static/blog.php``), which gets redirected via mod_redirect from ``/api/read/json`` (via ``.htaccess``)
-  * This is used by the frontpage blog, and iirc did this to ensure all content is loaded via HTTPS, which it otherwise would not.
-* We proxy our calendar, which comes in via google, via mod_proxy
-  * Not sure if this is actually still being used.
+Inside of this project, you'll see the following folders and files:
 
-All this requires this to be served via an Apache webserver at the moment, with PHP and the proxy, proxy_http, ssl and redirect modules enabled. The blog.php script uses the PHP extension APCu.
+```text
+/
+├── public/
+│   └── favicon.svg
+├── src/
+│   ├── layouts/
+│   │   └── Layout.astro
+│   └── pages/
+│       └── index.astro
+└── package.json
+```
+
+To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+Tl;dr: The actual pages of the website are in [src/pages](/src/pages/) and are mostly markdown. Adding another page should be as easy as just creating another file, copy-pasting the head section and customizing it and the page itself.
+
+## 🧞 Commands
+
+All commands are run from the root of the project, from a terminal:
+
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
+
+## 👀 Want to learn more?
+
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

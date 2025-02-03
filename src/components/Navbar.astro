@@ -1,0 +1,46 @@
+---
+import Status from "./Status.vue";
+---
+
+<nav>
+  <a class='logo' href="/">Munich Maker Lab</a>
+  <div class="links">
+      <a href='/'>Home</a>
+      <a href='about'>About Us</a>
+      <a href='/calendar'>Calendar</a>
+      <a href='https://wiki.munichmakerlab.de/'>Wiki</a>
+      <a href='/contact'>Contact</a>
+      <Status client:only />
+  </div>
+</nav>
+
+<style>
+  nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-between;
+    color: white;
+    padding: 1.5rem;
+    font-weight: 800;
+    text-shadow: 1px 1px #333333;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    z-index: 10;
+  }
+
+  .links {
+    display: flex;
+    gap: 3vw;
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+    align-self: flex-end;
+  }
+</style>

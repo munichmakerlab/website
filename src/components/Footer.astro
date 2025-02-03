@@ -1,0 +1,65 @@
+---
+import { Icon } from 'astro-icon/components'
+---
+
+<footer>
+      <div class="links">
+          <a rel='me' href='https://chaos.social/@munichmakerlab'>
+            <Icon name='mdi:mastodon' />
+          </a>
+          <a href='https://twitter.com/munichmakerlab'>
+            <Icon name='mdi:twitter' />
+          </a>
+          <a href='https://www.instagram.com/munichmakerlab'>
+            <Icon name='mdi:instagram' />
+          </a>
+          <a href='https://www.facebook.com/munichmakerlab'>
+            <Icon name='mdi:facebook' />
+          </a>
+          <a href='http://log.munichmakerlab.de'>
+            <Icon name='mdi:tumblr' />
+          </a>
+          <a href='https://github.com/munichmakerlab'>
+            <Icon name='mdi:github' />
+          </a>
+      </div>
+      <div class="text">
+            Munich Maker Lab e.V. 2024
+            <br />
+            <a href='imprint.html'>Impressum/Imprint</a> - <a href='privacy.html'
+              >Datenschutzerklärung/Privacy Policy</a
+            >
+            <br />
+            Edit this page on <a
+              href='https://github.com/munichmakerlab/website'>Github</a
+            >
+      </div>
+</footer>
+
+<style>
+    footer {
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 3rem 0 5rem 0;
+        margin-top: 5rem;
+        border-top: 1px solid #eee;
+    }
+
+    .links>a {
+        text-decoration: none;
+        color: var(--text-color);
+        font-size: 2rem;
+    }
+
+    .text {
+        text-align: center;
+        font-size: .7rem;
+        color: #888;
+    }
+
+    .text a {
+        color: var(--text-color);
+    }
+</style>
