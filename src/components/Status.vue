@@ -59,6 +59,13 @@ let doorStatus = await fetchStatus.json()
   background-color: red;
 }
 
+@media (max-width: 950px) {
+  .status {
+    margin: 0 0 1rem 0;
+    transform: none;
+  }
+}
+
 .tally {
   width: 100%;
   height: 1rem;
@@ -85,6 +92,7 @@ let doorStatus = await fetchStatus.json()
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 100;
 }
 
 .modal-close {

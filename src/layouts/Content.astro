@@ -1,8 +1,8 @@
 ---
 import Hero from '../components/Hero.astro'
-import Navbar from '../components/Navbar.astro'
 import Footer from '../components/Footer.astro'
 import ClientRouter from 'astro/components/ClientRouter.astro'
+import Navbar from '../components/Navbar.vue'
 
 const { frontmatter } = Astro.props
 ---
@@ -12,10 +12,9 @@ const { frontmatter } = Astro.props
     <meta charset='UTF-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <title>{frontmatter.title}</title>
-    <ClientRouter />
   </head>
   <body>
-    <Navbar />
+    <Navbar client:only />
     <Hero
       header_image={frontmatter.header_image}
       headline={frontmatter.headline}
@@ -60,5 +59,11 @@ const { frontmatter } = Astro.props
     width: 50vw;
     margin: auto;
     margin-top: 5rem;
+  }
+
+  @media (max-width: 700px) {
+    .content {
+      width: 90vw;
+    }
   }
 </style>
