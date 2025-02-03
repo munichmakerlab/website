@@ -49,6 +49,7 @@ const toggleCollapse = () => {
 </script>
 
 <style scoped>
+/* Mobile Menu */
 @media (max-width: 950px) {
   .hamburger {
     display: block;
@@ -85,6 +86,8 @@ const toggleCollapse = () => {
     display: none;
   }
 }
+
+/* Desktop Menu */
 @media (min-width: 951px) {
   .hamburger {
     display: none;
