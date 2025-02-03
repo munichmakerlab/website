@@ -19,6 +19,17 @@ const { frontmatter } = Astro.props
     <link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png' />
     <meta name='apple-mobile-web-app-title' content='Mumalab' />
     <link rel='manifest' href='/site.webmanifest' />
+    <meta property='og:type' content='website' />
+    <meta property='og:title' content='Munich Maker Lab' />
+    <meta property='og:url' content='https://munichmakerlab.de' />
+    <meta
+      property='og:image'
+      content='https://munichmakerlab.de/web-app-manifest-512x512.png'
+    />
+    <meta
+      property='og:description'
+      content="Munich's freshest makerspace! Join us in making and hacking whatever your heart desires."
+    />
   </head>
   <body>
     <Navbar client:only />
