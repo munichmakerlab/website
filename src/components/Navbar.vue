@@ -27,6 +27,14 @@ const links = [
     name: 'About',
     path: '/about',
   },
+   {
+    name: 'Visit',
+    path: '/visit',
+  },
+  {
+    name: 'Contact',
+    path: '/contact',
+  },
   {
     name: 'Calendar',
     path: '/calendar',
@@ -35,10 +43,7 @@ const links = [
     name: 'Wiki',
     path: 'https://wiki.munichmakerlab.de/',
   },
-  {
-    name: 'Contact',
-    path: '/contact',
-  },
+ 
 ]
 
 const isCollapsed = ref(true)

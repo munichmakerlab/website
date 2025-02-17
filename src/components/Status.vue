@@ -11,13 +11,6 @@
           ? "The Space is currently open! You may come over and hang out. Keep in mind that there is no guarantee that people will be there for an extended period of time (unless it's currently the open thursday)."
           : 'The Lab is currently closed. A member will need to come in and open it for visitors.'
       }}
-      <br />
-      <br />
-      For more details, take a look at the
-      <a href="https://wiki.munichmakerlab.de/wiki/StartYourEngines"
-        >Start Your Engines</a
-      >
-      project in our wiki.
     </div>
   </div>
 </template>
