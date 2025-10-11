@@ -14,7 +14,7 @@
     "@astrojs/node": "^9.4.3",
     "@astrojs/vue": "^5.1.0",
     "@iconify-json/mdi": "^1.2.3",
-    "astro": "^5.13.3",
+    "astro": "^5.14.4",
     "astro-icon": "^1.1.5",
     "swiper": "^11.2.10",
     "vue": "^3.5.19"
