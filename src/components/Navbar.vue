@@ -35,10 +35,10 @@ const links = [
     name: 'Contact',
     path: '/contact',
   },
-  {
-    name: 'Calendar',
-    path: '/calendar',
-  },
+    {
+      name: 'Events',
+      path: '/events',
+    },
   {
     name: 'Wiki',
     path: 'https://wiki.munichmakerlab.de/',
