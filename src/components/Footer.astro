@@ -6,36 +6,32 @@ import { Icon } from 'astro-icon/components'
   <div class="links">
     <a rel='me' href='https://chaos.social/@munichmakerlab'>
       <Icon name='mdi:mastodon' />
-
     </a>
     <a href="https://bsky.app/profile/munichmakerlab.bsky.social" target="_blank" rel="noopener noreferrer" aria-label="Bluesky">
-    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="33" height="33" viewBox="0 0 24 24">
-<path d="M5.769,3.618C8.291,5.512,11.004,9.352,12,11.412c0.996-2.06,3.709-5.9,6.231-7.793C20.051,2.252,23,1.195,23,4.559	c0,0.672-0.385,5.644-0.611,6.451c-0.785,2.806-3.647,3.522-6.192,3.089c4.449,0.757,5.581,3.265,3.137,5.774	c-4.643,4.764-6.672-1.195-7.193-2.722c-0.095-0.28-0.14-0.411-0.14-0.3c-0.001-0.112-0.045,0.019-0.14,0.3	c-0.521,1.527-2.55,7.486-7.193,2.722c-2.445-2.509-1.313-5.017,3.137-5.774c-2.546,0.433-5.407-0.282-6.192-3.089	C1.385,10.203,1,5.231,1,4.559C1,1.195,3.949,2.252,5.769,3.618L5.769,3.618z"></path>
-</svg>
+      <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="33" height="33" viewBox="0 0 24 24">
+        <path d="M5.769,3.618C8.291,5.512,11.004,9.352,12,11.412c0.996-2.06,3.709-5.9,6.231-7.793C20.051,2.252,23,1.195,23,4.559	c0,0.672-0.385,5.644-0.611,6.451c-0.785,2.806-3.647,3.522-6.192,3.089c4.449,0.757,5.581,3.265,3.137,5.774	c-4.643,4.764-6.672-1.195-7.193-2.722c-0.095-0.28-0.14-0.411-0.14-0.3c-0.001-0.112-0.045,0.019-0.14,0.3	c-0.521,1.527-2.55,7.486-7.193,2.722c-2.445-2.509-1.313-5.017,3.137-5.774c-2.546,0.433-5.407-0.282-6.192-3.089	C1.385,10.203,1,5.231,1,4.559C1,1.195,3.949,2.252,5.769,3.618L5.769,3.618z"></path>
+      </svg>
     </a>
-
     <a href='https://www.instagram.com/munichmakerlab'>
       <Icon name='mdi:instagram' />
     </a>
     <a href='https://www.facebook.com/munichmakerlab'>
       <Icon name='mdi:facebook' />
     </a>
-    </a>
     <a href='https://github.com/munichmakerlab'>
       <Icon name='mdi:github' />
     </a>
-
-     <a href='https://www.meetup.com/the-hacking-room-project-munich/' target="_blank" rel="noopener noreferrer" aria-label="Meetup">
+    <a href='https://www.meetup.com/the-hacking-room-project-munich/' target="_blank" rel="noopener noreferrer" aria-label="Meetup">
       <Icon name='mdi:meetup' />
-    </a>
-
     </a>
     <a href='https://www.youtube.com/channel/UCTZVQ5naAWNuawd1DLnmlQA'>
       <Icon name='mdi:youtube' />
     </a>
+  </div>
 
-   <div>
-      <span>Former channels:</span>
+  <div class="former-channels">
+    <span>Former channels:</span>
+    <div class="former-links">
       <a href='https://twitter.com/munichmakerlab'>
         <Icon name='mdi:twitter' />
       </a>
@@ -43,7 +39,6 @@ import { Icon } from 'astro-icon/components'
         <Icon name='mdi:tumblr' />
       </a>
     </div>
-
   </div>
   <div class="text">
     Munich Maker Lab e.V.
@@ -65,16 +60,66 @@ import { Icon } from 'astro-icon/components'
     border-top: 1px solid #eee;
   }
 
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
   .links>a {
     text-decoration: none;
     color: var(--text-color);
     font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .text {
-    text-align: center;
-    font-size: .7rem;
-    color: #888;
+  .links > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .links > div span {
+    font-size: 0.8rem;
+    color: #666;
+    font-weight: 500;
+  }
+
+  .links > div > a {
+    font-size: 1.5rem;
+  }
+
+  .former-channels {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .former-channels span {
+    font-size: 0.8rem;
+    color: #666;
+    font-weight: 500;
+  }
+
+  .former-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .former-links a {
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .text a {
