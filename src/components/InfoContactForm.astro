@@ -3,6 +3,7 @@
 import '../styles/contact-form.css';
 ---
 
+<div class="contact-form-wrapper">
 <form
   action="https://api.web3forms.com/submit"
   method="POST"
@@ -59,6 +60,7 @@ import '../styles/contact-form.css';
   </button>
   <div id="result" class="mt-3 text-center"></div>
 </form>
+</div>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
@@ -111,3 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 }, { once: true });
 </script>
+
+<style>
+  @import "tailwindcss";
+</style>
