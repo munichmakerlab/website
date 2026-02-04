@@ -9,14 +9,14 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/markdoc": "^0.15.8",
-    "@astrojs/mdx": "^4.3.7",
-    "@astrojs/node": "^9.5.0",
-    "@astrojs/vue": "^5.1.1",
+    "@astrojs/markdoc": "^0.15.10",
+    "@astrojs/mdx": "^4.3.13",
+    "@astrojs/node": "^9.5.2",
+    "@astrojs/vue": "^5.1.4",
     "@iconify-json/mdi": "^1.2.3",
-    "astro": "^5.14.6",
+    "astro": "^5.17.1",
     "astro-icon": "^1.1.5",
-    "swiper": "^12.0.2",
-    "vue": "^3.5.22"
+    "swiper": "^12.1.0",
+    "vue": "^3.5.27"
   }
 }
