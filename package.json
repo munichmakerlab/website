@@ -16,6 +16,8 @@
     "@fullcalendar/core": "^6.1.20",
     "@fullcalendar/daygrid": "^6.1.20",
     "@fullcalendar/icalendar": "^6.1.20",
+    "@fullcalendar/list": "^6.1.20",
+    "@fullcalendar/timegrid": "^6.1.20",
     "@fullcalendar/vue3": "^6.1.20",
     "@iconify-json/mdi": "^1.2.3",
     "astro": "^5.17.1",
