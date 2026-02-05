@@ -14,7 +14,7 @@ import node from '@astrojs/node';
 // https://astro.build/config
 export default defineConfig({
   integrations: [markdoc(), mdx(), icon(), vue()],
-
+  output: 'server',
   adapter: node({
     mode: 'standalone'
   })

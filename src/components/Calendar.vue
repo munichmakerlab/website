@@ -14,13 +14,17 @@ const calendarOptions = ref({
   plugins: [dayGridPlugin, iCalendarPlugin],
   initialView: 'dayGridMonth',
   eventSources: [
-    {
-      url: 'https://tickets.munichmakerlab.de/mumalab/events/ical/?locale=de',
-      format: 'ics'
+{
+      url: '/api/get-calendar?source=pretix',
+      format: 'ics',
+      color: '#3788d8',
+      label: 'Workshops'
     },
     {
-      url: 'https://calendar.google.com/calendar/ical/lbd0aa2rluhecp7juvp35hd0k0%40group.calendar.google.com/public/basic.ics',
-      format: 'ics'
+      url: '/api/get-calendar?source=events',
+      format: 'ics',
+      color: '#f89538ff',
+      label: 'Open Events'
     }
   ],
   headerToolbar: {
