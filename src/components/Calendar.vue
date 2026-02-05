@@ -14,8 +14,11 @@
       <div class="popover-time">
         {{ popover.time }}
       </div>
-      <div v-if="popover.description" class="popover-body">
-        {{ popover.description }}
+      <div 
+        v-if="popover.description"
+        class="popover-body"
+        v-html="popover.description"
+      >
       </div>
     </div>
   </div>
@@ -71,6 +74,24 @@ const formatEventTime = (event) => {
   
   return start
 }
+
+const cleanAndLinkify = (text) => {
+  if (!text) return '';
+
+  // Strip HTML tags using the browser's DOM parser
+  const doc = new DOMParser().parseFromString(text, 'text/html');
+  const plainText = doc.body.textContent || "";
+
+  // Find URLs and turn them into clickable links
+  // This regex finds URLs starting with http/https
+  const urlRegex = /(https?:\/\/[^\s]+)/g;
+  
+  return plainText.replace(urlRegex, (url) => {
+    // Basic cleanup in case the URL ends with a punctuation mark from the text
+    const cleanUrl = url.replace(/[.,!?;:]+$/, '');
+    return `<a href="${cleanUrl}" target="_blank" rel="noopener noreferrer">${cleanUrl}</a>`;
+  });
+}
 // --- End of Popover State & Logic ---
 
 
@@ -99,20 +120,17 @@ const calendarOptions = ref({
   // Click Handler for Popover with event details
   eventClick: (info) => {
     info.jsEvent.preventDefault();
-    // Stop propagation so the global window click listener doesn't immediately close the popover
     info.jsEvent.stopPropagation();
 
     const { event, jsEvent } = info;
     
     popover.value = {
       visible: true,
-      // Position based on mouse click coordinates
       x: jsEvent.clientX,
       y: jsEvent.clientY,
       title: event.title,
       time: formatEventTime(event),
-      // iCal feeds usually put descriptions in extendedProps
-      description: event.extendedProps.description || '' 
+      description: cleanAndLinkify(event.extendedProps.description || '') 
     }
   },
   eventSources: [
