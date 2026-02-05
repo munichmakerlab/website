@@ -143,7 +143,7 @@ const calendarOptions = ref({
     {
       url: '/api/get-calendar?source=events',
       format: 'ics',
-      color: '#f89538ff',
+      color: '#f89538',
       label: 'Open Events'
     }
   ],
