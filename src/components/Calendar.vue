@@ -28,7 +28,6 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import FullCalendar from '@fullcalendar/vue3'
 import dayGridPlugin from '@fullcalendar/daygrid'
-import timeGridPlugin from '@fullcalendar/timegrid'
 import iCalendarPlugin from '@fullcalendar/icalendar'
 import listPlugin from '@fullcalendar/list'
 
@@ -97,10 +96,11 @@ const cleanAndLinkify = (text) => {
 
 // --- Calendar Configuration ---
 const calendarOptions = ref({
-  plugins: [dayGridPlugin, iCalendarPlugin, listPlugin, timeGridPlugin],
+  plugins: [dayGridPlugin, iCalendarPlugin, listPlugin],
   initialView: 'dayGridMonth',
   firstDay: 1,
-  locale: 'de',
+  showNonCurrentDates: false,
+  fixedWeekCount: false,
   eventTimeFormat: {
     hour: '2-digit',
     minute: '2-digit',
@@ -150,7 +150,7 @@ const calendarOptions = ref({
   headerToolbar: {
     left: 'prev,next today',
     center: 'title',
-    right: 'dayGridMonth,timeGridWeek,listWeek'
+    right: 'dayGridMonth,listWeek'
   }
 })
 </script>
