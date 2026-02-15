@@ -5,10 +5,12 @@
     <div 
       v-if="popover.visible" 
       class="event-popover"
-      :style="{ 
-        top: `${popover.y}px`, 
-        left: `${popover.x}px`, 
-        width: `${popover.width}px`, 
+      :style="{
+        top: `${popover.y}px`,
+        left: `${popover.x}px`,
+        width: `${popover.width}px`,
+        maxHeight: `${popover.maxHeight}px`,
+        overflowY: 'auto',
       }"
       @click.stop 
     >
@@ -38,6 +40,7 @@ import listPlugin from '@fullcalendar/list'
 // --- Popover State & Logic ---
 
 const POPOVER_WIDTH = 250;
+const MIN_POPOVER_HEIGHT = 280;
 const MIN_POPOVER_MARGIN = 5;
 const SMALL_SCREEN_WIDTH = 500;
 
@@ -49,6 +52,7 @@ const popover = ref({
   width: POPOVER_WIDTH,
   x: 0,
   y: 0,
+  maxHeight: 0,
   title: '',
   time: '',
   description: ''
@@ -139,21 +143,22 @@ const calendarOptions = computed(() => ({
     jsEvent.preventDefault();
     jsEvent.stopPropagation();
 
-    const windowWidth = window.innerWidth;
-    let popoverX = jsEvent.clientX;
+    const popoverX = Math.min(jsEvent.clientX,
+      window.innerWidth - POPOVER_WIDTH - MIN_POPOVER_MARGIN);
 
-    if (popoverX + POPOVER_WIDTH > windowWidth) {
-      popoverX = windowWidth - POPOVER_WIDTH - MIN_POPOVER_MARGIN;
-    }
+    const popoverY = Math.max(MIN_POPOVER_MARGIN,
+      Math.min(jsEvent.clientY, window.innerHeight - MIN_POPOVER_HEIGHT - MIN_POPOVER_MARGIN));
+    const maxPopoverHeight = window.innerHeight - popoverY - MIN_POPOVER_MARGIN;
 
     popover.value = {
       visible: true,
       width: POPOVER_WIDTH,
       x: popoverX,
-      y: jsEvent.clientY,
+      y: popoverY,
+      maxHeight: maxPopoverHeight,
       title: event.title,
       time: formatEventTime(event),
-      description: cleanAndLinkify(event.extendedProps.description || '') 
+      description: cleanAndLinkify(event.extendedProps.description || '')
     }
   },
   eventSources: [
