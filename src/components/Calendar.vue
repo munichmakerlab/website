@@ -1,6 +1,6 @@
 <template>
   <div class="calendar-container">
-    <FullCalendar :options="calendarOptions" />
+    <FullCalendar v-if="isReady" :options="calendarOptions" />
 
     <div 
       v-if="popover.visible" 
@@ -29,7 +29,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
 import FullCalendar from '@fullcalendar/vue3'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import iCalendarPlugin from '@fullcalendar/icalendar'
@@ -39,6 +39,10 @@ import listPlugin from '@fullcalendar/list'
 
 const POPOVER_WIDTH = 250;
 const MIN_POPOVER_MARGIN = 5;
+const SMALL_SCREEN_WIDTH = 500;
+
+const isSmallScreen = ref(false);
+const isReady = ref(false);
 
 const popover = ref({
   visible: false,
@@ -62,7 +66,9 @@ const handleGlobalClick = () => {
 }
 
 onMounted(() => {
-  window.addEventListener('click', handleGlobalClick)
+  window.addEventListener('click', handleGlobalClick);
+  isSmallScreen.value = window.innerWidth <= SMALL_SCREEN_WIDTH;
+  isReady.value = true;
 })
 
 onUnmounted(() => {
@@ -102,11 +108,10 @@ const cleanAndLinkify = (text) => {
 }
 // --- End of Popover State & Logic ---
 
-
 // --- Calendar Configuration ---
-const calendarOptions = ref({
+const calendarOptions = computed(() => ({
   plugins: [dayGridPlugin, iCalendarPlugin, listPlugin],
-  initialView: 'dayGridMonth',
+  initialView: isSmallScreen.value ? 'listMonth' : 'dayGridMonth',
   firstDay: 1,
   showNonCurrentDates: false,
   fixedWeekCount: false,
@@ -134,7 +139,7 @@ const calendarOptions = ref({
     jsEvent.preventDefault();
     jsEvent.stopPropagation();
 
-    const windowWidth = document.documentElement.clientWidth;
+    const windowWidth = window.innerWidth;
     let popoverX = jsEvent.clientX;
 
     if (popoverX + POPOVER_WIDTH > windowWidth) {
@@ -170,7 +175,8 @@ const calendarOptions = ref({
     center: 'title',
     right: 'dayGridMonth,listMonth'
   }
-})
+}));
+
 </script>
 // --- End of Calendar Configuration ---
 
