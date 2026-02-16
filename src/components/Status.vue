@@ -18,6 +18,13 @@
 <script setup>
 import { ref } from 'vue'
 
+defineProps({
+  doorStatus: {
+    type: Object,
+    required: true,
+  },
+})
+
 const modalOpen = ref(false)
 
 const openModal = () => {
@@ -27,9 +34,6 @@ const openModal = () => {
 const closeModal = () => {
   modalOpen.value = false
 }
-
-const fetchStatus = await fetch('https://status.munichmakerlab.de/api.php')
-let doorStatus = await fetchStatus.json()
 </script>
 
 <style>
@@ -54,8 +58,9 @@ let doorStatus = await fetchStatus.json()
 
 @media (max-width: 950px) {
   .status {
-    margin: 0 0 1rem 0;
+    margin: 5px 5px 5px 0;
     transform: none;
+    font-size: 0.8em;
   }
 }
 
