@@ -103,8 +103,8 @@ const closeModal = () => {
 
 .modal-window {
   position: relative;
-  background-color: white;
-  color: var(--text-color);
+  background-color: var(--bg);
+  color: var(--fg);
   text-shadow: none;
   font-weight: normal;
   padding: 2rem;
