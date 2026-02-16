@@ -1,22 +1,33 @@
 <template>
-  <div class="hamburger" @click="toggleCollapse"><img :src="isCollapsed ? '/img/menu.svg' : '/img/window-close.svg'" alt="menu handle"></div>
+  <div class="mobile-nav-status-wrapper">
+    <div class="hamburger" @click="toggleCollapse"><img :src="isCollapsed ? '/img/menu.svg' : '/img/window-close.svg'" alt="menu handle"></div>
+    <div class="show-mobile">
+      <Status v-if="doorStatus" :doorStatus="doorStatus" />
+    </div>
+  </div>
   <nav :class="isCollapsed ? 'collapsed' : ''">
     <a class="logo" href="/">Munich Maker Lab</a>
     <div class="links">
       <a v-for="link in links" :key="link.path" :href="link.path">{{
         link.name
       }}</a>
-      <Suspense>
-        <Status />
-        <template #fallback> Loading... </template>
-      </Suspense>
+      <div class="show-desktop">
+        <Status v-if="doorStatus" :doorStatus="doorStatus" />
+      </div>
     </div>
   </nav>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import Status from './Status.vue'
+
+const doorStatus = ref(null)
+
+onMounted(async () => {
+  const res = await fetch('https://status.munichmakerlab.de/api.php')
+  doorStatus.value = await res.json()
+})
 
 const links = [
   {
@@ -80,7 +91,6 @@ const toggleCollapse = () => {
     gap: 2rem;
   }
 
-
   a {
     text-decoration: none;
     padding-bottom: 2rem;
@@ -90,11 +100,25 @@ const toggleCollapse = () => {
   nav.collapsed {
     display: none;
   }
+
+  .show-desktop {
+    display: none;
+  }
+
+  .mobile-nav-status-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
 /* Desktop Menu */
 @media (min-width: 951px) {
   .hamburger {
+    display: none;
+  }
+
+  .show-mobile {
     display: none;
   }
 
