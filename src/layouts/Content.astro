@@ -78,9 +78,12 @@ const { frontmatter } = Astro.props
     margin-top: 5rem;
   }
 
-  @media (max-width: 700px) {
-    .content {
-      width: 90vw;
-    }
+  @media (max-width: 950px) {
+  .content {
+     width: 90vw;
+   }
+  .content img {
+    max-width: 100%;
+    height: auto;
   }
 </style>

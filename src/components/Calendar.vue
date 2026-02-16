@@ -1,11 +1,17 @@
 <template>
   <div class="calendar-container">
-    <FullCalendar :options="calendarOptions" />
+    <FullCalendar v-if="isReady" :options="calendarOptions" />
 
     <div 
       v-if="popover.visible" 
       class="event-popover"
-      :style="{ top: `${popover.y}px`, left: `${popover.x}px` }"
+      :style="{
+        top: `${popover.y}px`,
+        left: `${popover.x}px`,
+        width: `${popover.width}px`,
+        maxHeight: `${popover.maxHeight}px`,
+        overflowY: 'auto',
+      }"
       @click.stop 
     >
       <div class="popover-header">
@@ -25,17 +31,28 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
 import FullCalendar from '@fullcalendar/vue3'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import iCalendarPlugin from '@fullcalendar/icalendar'
 import listPlugin from '@fullcalendar/list'
 
 // --- Popover State & Logic ---
+
+const POPOVER_WIDTH = 250;
+const MIN_POPOVER_HEIGHT = 280;
+const MIN_POPOVER_MARGIN = 5;
+const SMALL_SCREEN_WIDTH = 500;
+
+const isSmallScreen = ref(false);
+const isReady = ref(false);
+
 const popover = ref({
   visible: false,
+  width: POPOVER_WIDTH,
   x: 0,
   y: 0,
+  maxHeight: 0,
   title: '',
   time: '',
   description: ''
@@ -53,7 +70,9 @@ const handleGlobalClick = () => {
 }
 
 onMounted(() => {
-  window.addEventListener('click', handleGlobalClick)
+  window.addEventListener('click', handleGlobalClick);
+  isSmallScreen.value = window.innerWidth <= SMALL_SCREEN_WIDTH;
+  isReady.value = true;
 })
 
 onUnmounted(() => {
@@ -88,19 +107,19 @@ const cleanAndLinkify = (text) => {
   return plainText.replace(urlRegex, (url) => {
     // Basic cleanup in case the URL ends with a punctuation mark from the text
     const cleanUrl = url.replace(/[.,!?;:]+$/, '');
-    return `<a href="${cleanUrl}" target="_blank" rel="noopener noreferrer">${cleanUrl}</a>`;
+    return `<span class="event-link-wrapper"><a href="${cleanUrl}" target="_blank" rel="noopener noreferrer" class="event-link">${cleanUrl}</a></span>`;
   });
 }
 // --- End of Popover State & Logic ---
 
-
 // --- Calendar Configuration ---
-const calendarOptions = ref({
+const calendarOptions = computed(() => ({
   plugins: [dayGridPlugin, iCalendarPlugin, listPlugin],
-  initialView: 'dayGridMonth',
+  initialView: isSmallScreen.value ? 'listMonth' : 'dayGridMonth',
   firstDay: 1,
   showNonCurrentDates: false,
   fixedWeekCount: false,
+  contentHeight: 'auto',
   eventTimeFormat: {
     hour: '2-digit',
     minute: '2-digit',
@@ -119,18 +138,27 @@ const calendarOptions = ref({
   },
   // Click Handler for Popover with event details
   eventClick: (info) => {
-    info.jsEvent.preventDefault();
-    info.jsEvent.stopPropagation();
-
     const { event, jsEvent } = info;
-    
+
+    jsEvent.preventDefault();
+    jsEvent.stopPropagation();
+
+    const popoverX = Math.min(jsEvent.clientX,
+      window.innerWidth - POPOVER_WIDTH - MIN_POPOVER_MARGIN);
+
+    const popoverY = Math.max(MIN_POPOVER_MARGIN,
+      Math.min(jsEvent.clientY, window.innerHeight - MIN_POPOVER_HEIGHT - MIN_POPOVER_MARGIN));
+    const maxPopoverHeight = window.innerHeight - popoverY - MIN_POPOVER_MARGIN;
+
     popover.value = {
       visible: true,
-      x: jsEvent.clientX,
-      y: jsEvent.clientY,
+      width: POPOVER_WIDTH,
+      x: popoverX,
+      y: popoverY,
+      maxHeight: maxPopoverHeight,
       title: event.title,
       time: formatEventTime(event),
-      description: cleanAndLinkify(event.extendedProps.description || '') 
+      description: cleanAndLinkify(event.extendedProps.description || '')
     }
   },
   eventSources: [
@@ -150,25 +178,31 @@ const calendarOptions = ref({
   headerToolbar: {
     left: 'prev,next today',
     center: 'title',
-    right: 'dayGridMonth,listWeek'
+    right: 'dayGridMonth,listMonth'
   }
-})
+}));
+
 </script>
 // --- End of Calendar Configuration ---
 
 
 // --- Styles for Popover ---
 <style scoped>
+.calendar-container *,
+.calendar-container *::before,
+.calendar-container *::after {
+  box-sizing: border-box;
+}
+
 .calendar-container {
   position: relative;
   /* Ensure z-index context */
-  z-index: 1; 
+  z-index: 1;
 }
 
 .event-popover {
   position: fixed; /* Fixed allows it to float over everything regardless of calendar scroll */
   z-index: 1000;
-  width: 250px;
   background-color: white;
   border: 1px solid #ddd;
   border-radius: 6px;
@@ -196,5 +230,31 @@ const calendarOptions = ref({
   white-space: pre-wrap; /* Preserves line breaks from description */
   border-top: 1px solid #eee;
   padding-top: 8px;
+}
+
+.popover-body :deep(.event-link-wrapper) {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+@media (max-width: 500px) {
+  .calendar-container :deep(.fc-header-toolbar) {
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .calendar-container :deep(.fc-toolbar-chunk) {
+    display: flex;
+    justify-content: center;
+  }
+
+  .calendar-container :deep(.fc-button) {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+  }
 }
 </style>
