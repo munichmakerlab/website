@@ -52,6 +52,12 @@ const { frontmatter } = Astro.props
 </html>
 
 <style is:global>
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
   :root {
     color-scheme: light;
     font-family: 'Lora', Arial, Helvetica, sans-serif;
