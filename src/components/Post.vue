@@ -65,7 +65,7 @@ onUnmounted(() => {
     border-radius: 5px;
     padding: 20px;
     width: 100%;
-    max-width: 900px;
+    max-width: 750px;
     display: flex;
     flex-direction: column;
     align-items: center;
