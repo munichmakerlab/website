@@ -1,15 +1,14 @@
 <template>
-    <div class="posts">
-        <Post v-for="post in posts" :post="post" :key="post.id" />
-        <a href="https://chaos.social/@munichmakerlab">See all Posts =></a>
-    </div>
+  <div class="posts">
+    <Post v-for="post in posts" :post="post" :key="post.id" />
+    <a href="https://chaos.social/@munichmakerlab">See all Posts =></a>
+  </div>
 </template>
 
 <script setup>
 import Post from './Post.vue';
 
-const postsUrl =
-  'https://chaos.social/api/v1/accounts/111578979164883551/statuses'
+const postsUrl = 'https://chaos.social/api/v1/accounts/111578979164883551/statuses'
 
 const fetchPosts = await fetch(postsUrl)
 
@@ -21,9 +20,9 @@ posts = posts.map((post) => (post.reblog ? post.reblog : post))
 
 <style>
 .posts {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
 }
 </style>
