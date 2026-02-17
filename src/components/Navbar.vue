@@ -1,7 +1,10 @@
 <template>
   <div class="mobile-nav-status-wrapper">
-    <div class="hamburger" @click="toggleCollapse"><img :src="isCollapsed ? '/img/menu.svg' : '/img/window-close.svg'" alt="menu handle"></div>
-    <div class="show-mobile">
+    <div class="hamburger" @click="toggleCollapse">
+      <HamburgerButton :isOpen="!isCollapsed" />
+    </div>
+    <div class="status-theme-controls show-mobile">
+      <ThemeToggle class="theme-toggle-mobile" />
       <Status v-if="doorStatus" :doorStatus="doorStatus" />
     </div>
   </div>
@@ -14,6 +17,7 @@
       <div class="show-desktop">
         <Status v-if="doorStatus" :doorStatus="doorStatus" />
       </div>
+      <ThemeToggle class="theme-toggle show-desktop" />
     </div>
   </nav>
 </template>
@@ -21,6 +25,8 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import Status from './Status.vue'
+import ThemeToggle from './ThemeToggle.vue'
+import HamburgerButton from './HamburgerButton.vue'
 
 const doorStatus = ref(null)
 
@@ -110,6 +116,17 @@ const toggleCollapse = () => {
     justify-content: space-between;
     align-items: center;
   }
+
+  .status-theme-controls {
+    display: flex;
+    align-items: center;
+    gap: 5px
+  }
+
+  .theme-toggle-mobile {
+    color: var(--fg);
+    margin-right: 4px;
+  }
 }
 
 /* Desktop Menu */
@@ -150,5 +167,12 @@ const toggleCollapse = () => {
     color: white;
     align-self: flex-end;
   }
+
+  .theme-toggle {
+    color: white;
+    align-self: flex-end;
+    filter: drop-shadow(1px 1px 0 #333333);
+  }
+
 }
 </style>

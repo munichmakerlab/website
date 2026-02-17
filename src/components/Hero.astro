@@ -23,7 +23,7 @@ const { header_image, headline, sub_headline } = Astro.props
   .header-image {
     position: relative;
     width: 100vw;
-    z-index: -1;
+    z-index: 1;
   }
 
   .header > .text {
@@ -35,6 +35,7 @@ const { header_image, headline, sub_headline } = Astro.props
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    z-index: 1;
   }
 
   .header h1 {

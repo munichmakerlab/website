@@ -200,10 +200,18 @@ const calendarOptions = computed(() => ({
   z-index: 1;
 }
 
+.calendar-container :deep(.fc) {
+  --fc-neutral-bg-color: var(--card);
+  --fc-border-color: var(--border);
+  --fc-page-bg-color: var(--bg);
+  --fc-list-event-hover-bg-color: var(--card);
+}
+
 .event-popover {
   position: fixed; /* Fixed allows it to float over everything regardless of calendar scroll */
   z-index: 1000;
-  background-color: white;
+  background-color: var(--bg);
+  color: var(--fg);
   border: 1px solid #ddd;
   border-radius: 6px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -215,18 +223,18 @@ const calendarOptions = computed(() => ({
 
 .popover-header {
   margin-bottom: 4px;
-  color: #333;
+  color: var(--fg);
 }
 
 .popover-time {
   font-size: 0.85rem;
-  color: #666;
+  color: var(--muted);
   margin-bottom: 8px;
 }
 
 .popover-body {
   font-size: 0.85rem;
-  color: #444;
+  color: var(--fg);
   white-space: pre-wrap; /* Preserves line breaks from description */
   border-top: 1px solid #eee;
   padding-top: 8px;
