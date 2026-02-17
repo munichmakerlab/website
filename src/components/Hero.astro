@@ -1,12 +1,12 @@
 ---
-const { header_image, headline, sub_headline } = Astro.props
+const { header_image, headline, sub_headline } = Astro.props;
 ---
 
-<div class='header'>
-  <img class='header-image' src={header_image} alt='header image' />
-  <div class='text'>
+<div class="header">
+  <img class="header-image" src={header_image} alt="header image" />
+  <div class="text">
     <h1>{headline}</h1>
-    <div class='divider'></div>
+    <div class="divider"></div>
     <span>{sub_headline}</span>
   </div>
 </div>

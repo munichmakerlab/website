@@ -8,14 +8,14 @@
 <script setup>
 import Post from './Post.vue';
 
-const postsUrl = 'https://chaos.social/api/v1/accounts/111578979164883551/statuses'
+const postsUrl = 'https://chaos.social/api/v1/accounts/111578979164883551/statuses';
 
-const fetchPosts = await fetch(postsUrl)
+const fetchPosts = await fetch(postsUrl);
 
-let posts = await fetchPosts.json()
+let posts = await fetchPosts.json();
 // Format Reblogs
 
-posts = posts.map((post) => (post.reblog ? post.reblog : post))
+posts = posts.map((post) => (post.reblog ? post.reblog : post));
 </script>
 
 <style>

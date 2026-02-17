@@ -1,35 +1,32 @@
 ---
-import Hero from '../components/Hero.astro'
-import Footer from '../components/Footer.astro'
-import Navbar from '../components/Navbar.vue'
+import Hero from '../components/Hero.astro';
+import Footer from '../components/Footer.astro';
+import Navbar from '../components/Navbar.vue';
 
-const { frontmatter } = Astro.props
+const { frontmatter } = Astro.props;
 ---
 
-<html lang='en'>
+<html lang="en">
   <head>
-    <meta charset='UTF-8' />
-    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{frontmatter.title}</title>
 
-    <link rel='icon' type='image/png' href='/favicon-96x96.png' sizes='96x96' />
-    <link rel='shortcut icon' href='/favicon.ico' />
-    <link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png' />
-    <meta name='apple-mobile-web-app-title' content='Mumalab' />
-    <link rel='manifest' href='/site.webmanifest' />
-    <meta property='og:type' content='website' />
-    <meta property='og:title' content='Munich Maker Lab' />
-    <meta property='og:url' content='https://munichmakerlab.de' />
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Mumalab" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Munich Maker Lab" />
+    <meta property="og:url" content="https://munichmakerlab.de" />
+    <meta property="og:image" content="https://munichmakerlab.de/web-app-manifest-512x512.png" />
     <meta
-      property='og:image'
-      content='https://munichmakerlab.de/web-app-manifest-512x512.png'
-    />
-    <meta
-      property='og:description'
+      property="og:description"
       content="Munich's freshest makerspace! Join us in making and hacking whatever your heart desires."
     />
     <script is:inline>
-      (function() {
+      (function () {
         const stored = localStorage.getItem('theme');
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         const theme = stored ?? (prefersDark ? 'dark' : 'light');
@@ -38,13 +35,13 @@ const { frontmatter } = Astro.props
     </script>
   </head>
   <body>
-    <Navbar client:only />
+    <Navbar client:only="vue" />
     <Hero
       header_image={frontmatter.header_image}
       headline={frontmatter.headline}
       sub_headline={frontmatter.sub_headline}
     />
-    <div class='content'>
+    <div class="content">
       <slot />
     </div>
     <Footer />
@@ -69,7 +66,7 @@ const { frontmatter } = Astro.props
     --border: #e4e4e7;
     --link: #2563eb;
   }
-  :root[data-theme="dark"] {
+  :root[data-theme='dark'] {
     color-scheme: dark;
     --bg: #212830;
     --fg: #f0f6fc;
@@ -108,11 +105,12 @@ const { frontmatter } = Astro.props
   }
 
   @media (max-width: 950px) {
-  .content {
-     width: 90vw;
-   }
-  .content img {
-    max-width: 100%;
-    height: auto;
+    .content {
+      width: 90vw;
+    }
+    .content img {
+      max-width: 100%;
+      height: auto;
+    }
   }
 </style>

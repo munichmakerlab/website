@@ -2,7 +2,7 @@ name: Deploy
 
 on:
   workflow_run:
-    workflows: ["Create and publish a Docker image"]
+    workflows: ['Create and publish a Docker image']
     branches: [main]
     types:
       - completed
@@ -12,19 +12,19 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
-    - name: Setup SSH key
-      shell: bash
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-      run: |
-        mkdir -p ~/.ssh
-        echo "${SSH_PRIVATE_KEY}" | base64 -d > ${HOME}/.ssh/deploy.id_rsa
-        chmod 700 ${HOME}/.ssh/deploy.id_rsa
-    - name: Update Docker container
-      shell: bash
-      run: |
-        ssh -i ${HOME}/.ssh/deploy.id_rsa -o StrictHostKeyChecking=no root@saturn.munichmakerlab.de << EOF
-          docker pull ghcr.io/munichmakerlab/website:main
-          systemctl restart docker-website.service
-          systemctl status docker-website.service
-        EOF
+      - name: Setup SSH key
+        shell: bash
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "${SSH_PRIVATE_KEY}" | base64 -d > ${HOME}/.ssh/deploy.id_rsa
+          chmod 700 ${HOME}/.ssh/deploy.id_rsa
+      - name: Update Docker container
+        shell: bash
+        run: |
+          ssh -i ${HOME}/.ssh/deploy.id_rsa -o StrictHostKeyChecking=no root@saturn.munichmakerlab.de << EOF
+            docker pull ghcr.io/munichmakerlab/website:main
+            systemctl restart docker-website.service
+            systemctl status docker-website.service
+          EOF

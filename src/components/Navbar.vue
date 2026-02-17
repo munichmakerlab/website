@@ -11,9 +11,7 @@
   <nav :class="isCollapsed ? 'collapsed' : ''">
     <a class="logo" href="/">Munich Maker Lab</a>
     <div class="links">
-      <a v-for="link in links" :key="link.path" :href="link.path">{{
-        link.name
-      }}</a>
+      <a v-for="link in links" :key="link.path" :href="link.path">{{ link.name }}</a>
       <div class="show-desktop">
         <Status v-if="doorStatus" :doorStatus="doorStatus" />
       </div>
@@ -23,17 +21,17 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import Status from './Status.vue'
-import ThemeToggle from './ThemeToggle.vue'
-import HamburgerButton from './HamburgerButton.vue'
+import { ref, onMounted } from 'vue';
+import Status from './Status.vue';
+import ThemeToggle from './ThemeToggle.vue';
+import HamburgerButton from './HamburgerButton.vue';
 
-const doorStatus = ref(null)
+const doorStatus = ref(null);
 
 onMounted(async () => {
-  const res = await fetch('https://status.munichmakerlab.de/api.php')
-  doorStatus.value = await res.json()
-})
+  const res = await fetch('https://status.munichmakerlab.de/api.php');
+  doorStatus.value = await res.json();
+});
 
 const links = [
   {
@@ -44,7 +42,7 @@ const links = [
     name: 'About',
     path: '/about',
   },
-   {
+  {
     name: 'Visit',
     path: '/visit',
   },
@@ -52,22 +50,21 @@ const links = [
     name: 'Contact',
     path: '/contact',
   },
-    {
-      name: 'Events',
-      path: '/events',
-    },
+  {
+    name: 'Events',
+    path: '/events',
+  },
   {
     name: 'Wiki',
     path: 'https://wiki.munichmakerlab.de/',
   },
- 
-]
+];
 
-const isCollapsed = ref(true)
+const isCollapsed = ref(true);
 
 const toggleCollapse = () => {
-  isCollapsed.value = !isCollapsed.value
-}
+  isCollapsed.value = !isCollapsed.value;
+};
 </script>
 
 <style scoped>
@@ -120,7 +117,7 @@ const toggleCollapse = () => {
   .status-theme-controls {
     display: flex;
     align-items: center;
-    gap: 5px
+    gap: 5px;
   }
 
   .theme-toggle-mobile {
@@ -173,6 +170,5 @@ const toggleCollapse = () => {
     align-self: flex-end;
     filter: drop-shadow(1px 1px 0 #333333);
   }
-
 }
 </style>
