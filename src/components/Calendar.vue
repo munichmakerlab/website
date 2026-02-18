@@ -31,6 +31,16 @@ import FullCalendar from '@fullcalendar/vue3';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import iCalendarPlugin from '@fullcalendar/icalendar';
 import listPlugin from '@fullcalendar/list';
+import { getUiTranslations } from '../i18n/ui/ui-i18n-helper';
+
+const props = defineProps({
+  locale: {
+    type: String,
+    default: 'en',
+  },
+});
+
+const t = getUiTranslations(props.locale);
 
 // --- Popover State & Logic ---
 
@@ -162,13 +172,13 @@ const calendarOptions = computed(() => ({
       url: '/api/get-calendar?source=pretix',
       format: 'ics',
       color: '#3788d8',
-      label: 'Workshops',
+      label: t.calendar.workshops,
     },
     {
       url: '/api/get-calendar?source=events',
       format: 'ics',
       color: '#f89538',
-      label: 'Open Events',
+      label: t.calendar.openEvents,
     },
   ],
   headerToolbar: {

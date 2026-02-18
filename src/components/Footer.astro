@@ -1,5 +1,10 @@
 ---
 import { Icon } from 'astro-icon/components';
+import { getUiTranslations } from '../i18n/ui/ui-i18n-helper';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+const locale = Astro.currentLocale ?? 'en';
+const t = getUiTranslations(locale);
 ---
 
 <footer>
@@ -51,7 +56,7 @@ import { Icon } from 'astro-icon/components';
   </div>
 
   <div>
-    <span>Former channels:</span>
+    <span>{t.footer.formerChannels}</span>
     <a href="https://twitter.com/munichmakerlab">
       <Icon name="mdi:twitter" />
     </a>
@@ -63,9 +68,12 @@ import { Icon } from 'astro-icon/components';
   <div class="text">
     Munich Maker Lab e.V.
     <br />
-    <a href="imprint">Impressum/Imprint</a> - <a href="privacy">Datenschutzerklärung/Privacy Policy</a>
+    <a href={getRelativeLocaleUrl(locale, 'imprint')}>{t.footer.imprint}</a> - <a
+      href={getRelativeLocaleUrl(locale, 'privacy')}>{t.footer.privacyPolicy}</a
+    >
     <br />
-    Edit this page on <a href="https://github.com/munichmakerlab/website">Github</a>
+    {t.footer.editOnGithub}
+    <a href="https://github.com/munichmakerlab/website">Github</a>
   </div>
 </footer>
 
