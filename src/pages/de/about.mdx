@@ -1,10 +1,14 @@
 ---
 layout: ../../layouts/Content.astro
-title: "Über uns"
-header_image: "/img/bg_make.png"
-headline: "Über uns"
-sub_headline: "Was ist das Munich Maker Lab?"
----------------------------------------------
+title: 'Über uns'
+header_image: '/img/bg_make.png'
+headline: 'Über uns'
+sub_headline: 'Was ist das Munich Maker Lab?'
+---
+
+---
+
+import { getRelativeLocaleUrl } from 'astro:i18n';
 
 Das Munich Maker Lab ist eine gemeinnützige Organisation, die einen offenen Community-Workspace schafft, in dem du lernen, lehren, teilen, bauen, hacken, gestalten, Spaß haben oder einfach entspannen kannst. Wir möchten ein Umfeld schaffen, das die Do-it-yourself-, Hacker- und Maker-Kultur unterstützt, indem wir unseren Mitgliedern und allen anderen Arbeitsplätze, Werkzeuge und Infrastruktur zur Verfügung stellen.
 
@@ -15,7 +19,7 @@ Obwohl die meisten Menschen im Lab Deutsch sprechen, haben wir uns darauf geeini
 
 Das Hacking Room Project wurde im April 2013 ins Leben gerufen, um einen neuen Hacker- und Makerspace in München zu schaffen. Weniger als ein Jahr später, im Februar 2014, gründeten wir den Verein Munich Maker Lab e.V. und zogen in unseren ersten Raum, ein 25 m² großes Zimmer im Werk1 München. Ein Jahr später erweiterten wir uns und zogen in neue Räume in Obersendling. Seit Anfang 2017 verfügen wir über eine Industriefläche im Kreativquartier.
 
-Besuche eines unserer nächsten Treffen, um mehr zu erfahren: [Besuch uns](visit)
+Besuche eines unserer nächsten Treffen, um mehr zu erfahren: <a href={getRelativeLocaleUrl('de', 'visit')}>Besuch uns</a>
 
 ## Der Community-Ansatz
 
@@ -37,11 +41,11 @@ Eine Mitgliedschaft ist nicht erforderlich, um den Raum zu nutzen. Du kannst jed
 Wenn du dich für eine Mitgliedschaft entscheidest, findest du weitere Informationen zum Aufnahmeprozess auf unserer Wiki-Seite: [Onboarding](https://wiki.munichmakerlab.de/wiki/Onboarding).
 
 Mitglieder genießen zusätzliche Vorteile, wie zum Beispiel die Möglichkeit, einen persönlichen Schlüssel für den Raum zu erhalten.
-Weitere Details findest du in unserer [Satzung](statutes) und unserer [Beitragsordnung](scaleoffees).
+Weitere Details findest du in unserer <a href={getRelativeLocaleUrl('de', 'statutes')}>Satzung</a> und unserer <a href={getRelativeLocaleUrl('de', 'scaleoffees')}>Beitragsordnung</a>.
 
 ## Weitere Fragen?
 
-[Sieh dir unsere häufig gestellten Fragen an](https://wiki.munichmakerlab.de/wiki/Frequently_Asked_Questions) oder [Kontaktiere uns](contact)
+[Sieh dir unsere häufig gestellten Fragen an](https://wiki.munichmakerlab.de/wiki/Frequently_Asked_Questions) oder <a href={getRelativeLocaleUrl('de', 'contact')}>Kontaktiere uns</a>
 
 ## Inventar
 

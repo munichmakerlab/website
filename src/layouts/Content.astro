@@ -4,9 +4,10 @@ import Footer from '../components/Footer.astro';
 import Navbar from '../components/Navbar.vue';
 
 const { frontmatter } = Astro.props;
+const currentLocale = Astro.currentLocale ?? 'en';
 ---
 
-<html lang="en">
+<html lang={currentLocale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -35,7 +36,7 @@ const { frontmatter } = Astro.props;
     </script>
   </head>
   <body>
-    <Navbar client:only="vue" />
+    <Navbar client:only="vue" locale={currentLocale} />
     <Hero
       header_image={frontmatter.header_image}
       headline={frontmatter.headline}

@@ -1,7 +1,9 @@
 ---
 import Posts from '../../components/Posts.vue';
 import Content from '../../layouts/Content.astro';
+import { getRelativeLocaleUrl } from 'astro:i18n';
 
+const locale = Astro.currentLocale ?? 'en';
 const frontmatter = {
   title: 'Munich Maker Lab',
   header_image: '/img/bg_front.jpg',
@@ -13,7 +15,9 @@ const frontmatter = {
 <Content frontmatter={frontmatter}>
   <p>
     Das Munich Maker Lab ist ein Makerspace nahe dem Zentrum von München, Deutschland, und bietet Werkzeuge, Ressourcen
-    und Raum für Hacker, Maker und Tüftler aller Art. <a href="/de/about">Mehr erfahren...</a>
+    und Raum für Hacker, Maker und Tüftler aller Art. <a href={getRelativeLocaleUrl(locale, 'about')}
+      >Mehr erfahren...</a
+    >
   </p>
   <hr />
   <!-- Begin Mailchimp Signup Form -->
@@ -73,5 +77,5 @@ const frontmatter = {
     </form>
   </div>
   <h2>Neueste Aktivitäten im Space:</h2>
-  <Posts client:only="vue" />
+  <Posts client:only="vue" locale={Astro.currentLocale ?? 'en'} />
 </Content>

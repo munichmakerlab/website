@@ -1,17 +1,19 @@
 ---
-layout: ../layouts/Content.astro
+layout: ../../layouts/Content.astro
 title: 'Munich Maker Lab - Impressum'
 header_image: '/img/bg_werkstatt.png'
 headline: 'Impressum'
-sub_headline: 'More legal stuff'
+sub_headline: 'Noch mehr rechtliches...'
 ---
 
 export const emailScript = `<span id="email-protected"></span><script>for(var hpqivv=["Lg","dA","aQ","YQ","dA","Pg","YQ","ZQ","YQ","QA","dg","cg","Ig","Yg","bg","bg","Yw","PA","Pg","YQ","aA","Lg","ZQ","aQ","Yw","cg","dA","bQ","bA","ZQ","PQ","bQ","PA","ZA","bw","Yg","cg","bw","cg","bQ","IA","dg","aw","ZA","cw","dQ","aw","Og","cg","bQ","bQ","Lw","ZQ","bA","YQ","dQ","QA","aA","bg","bg","YQ","Ig","ZA","bA","YQ","bw","ZA","ZQ","cw","Zg","aQ","YQ","aA","YQ"],faxfez=[39,20,56,32,13,73,49,34,21,52,16,63,42,38,27,22,57,0,43,10,30,67,62,11,29,46,48,53,12,5,7,9,70,40,45,66,35,14,4,59,2,44,33,51,47,26,61,15,18,25,31,71,41,64,65,54,24,3,50,55,1,8,68,36,37,17,23,69,19,6,28,60,58,72],fcqvci=new Array,i=0;i<faxfez.length;i++)fcqvci[faxfez[i]]=hpqivv[i];for(var i=0;i<fcqvci.length;i++)document.write(atob(fcqvci[i]+"=="));</script><noscript>Please enable JavaScript to see the email address (<a href="https://www.email-encoder.com/enablejs/" target="_blank" rel="noopener noreferrer">How-to</a>).</noscript>`;
 
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
 Diese Webseite und alle weiteren Angebote unter der Domain munichmakerlab.de
 werden betrieben vom Munich Maker Lab e.V. (Amtsgericht München VR 205448).
 
-[Datenschutzerklärung/Privacy Policy](privacy)
+<a href={getRelativeLocaleUrl('de', 'privacy')}>Datenschutzerklärung</a>
 
 Vertretungsberechtigt im Sinne des § 5 Abschnitt 1 TMG und des § 26 BGB ist
 der Vorstand.

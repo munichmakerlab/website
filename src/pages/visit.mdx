@@ -6,6 +6,8 @@ headline: 'Visit'
 sub_headline: 'Come and join us!'
 ---
 
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
 ## Join us on Open Thursday
 
 Open Thursdays are for everyone! You don't need to be a member to join us, and we'll be giving tours!
@@ -16,7 +18,7 @@ Not a club member yet? Come and get to know us – we love meeting new faces!
 
 Every Thursday starting at 6PM.
 
-Can’t make it on Thursday? Drop by anytime the Space status on our website shows open, or join us for one of our other [Events](events)!
+Can’t make it on Thursday? Drop by anytime the Space status on our website shows open, or join us for one of our other <a href={getRelativeLocaleUrl('en', 'events')}>Events</a>!
 
 ## Address
 

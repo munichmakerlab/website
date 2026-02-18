@@ -25,6 +25,14 @@ import { ref, onMounted } from 'vue';
 import Status from './Status.vue';
 import ThemeToggle from './ThemeToggle.vue';
 import HamburgerButton from './HamburgerButton.vue';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+const props = defineProps({
+  locale: {
+    type: String,
+    required: true,
+  },
+});
 
 const doorStatus = ref(null);
 
@@ -36,23 +44,23 @@ onMounted(async () => {
 const links = [
   {
     name: 'Home',
-    path: '/',
+    path: `${getRelativeLocaleUrl(props.locale, '/')}`,
   },
   {
     name: 'About',
-    path: '/about',
+    path: `${getRelativeLocaleUrl(props.locale, '/about')}`,
   },
   {
     name: 'Visit',
-    path: '/visit',
+    path: `${getRelativeLocaleUrl(props.locale, '/visit')}`,
   },
   {
     name: 'Contact',
-    path: '/contact',
+    path: `${getRelativeLocaleUrl(props.locale, '/contact')}`,
   },
   {
     name: 'Events',
-    path: '/events',
+    path: `${getRelativeLocaleUrl(props.locale, '/events/')}`,
   },
   {
     name: 'Wiki',

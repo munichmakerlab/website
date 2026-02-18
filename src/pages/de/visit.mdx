@@ -1,10 +1,12 @@
 ---
 layout: ../../layouts/Content.astro
-title: "Munich Maker Lab - Besuch"
-header_image: "/img/bg_spacestatus.png"
-headline: "Besuch"
-sub_headline: "Komm vorbei und mach mit!"
+title: 'Munich Maker Lab - Besuch'
+header_image: '/img/bg_spacestatus.png'
+headline: 'Besuch'
+sub_headline: 'Komm vorbei und mach mit!'
 ---
+
+import { getRelativeLocaleUrl } from 'astro:i18n';
 
 ## Komm zu unserem Open Thursday
 
@@ -16,7 +18,7 @@ Noch kein Vereinsmitglied? Komm vorbei und lerne uns kennen. Wir freuen uns imme
 
 Jeden Donnerstag ab 18 Uhr.
 
-Du hast donnerstags keine Zeit? Schau einfach vorbei, wenn der Space-Status auf unserer Website „open“ anzeigt, oder besuche eine unserer anderen [Veranstaltungen](events).
+Du hast donnerstags keine Zeit? Schau einfach vorbei, wenn der Space-Status auf unserer Website „open“ anzeigt, oder besuche eine unserer anderen <a href={getRelativeLocaleUrl('de', 'events')}>Veranstaltungen</a>.
 
 ## Adresse
 
