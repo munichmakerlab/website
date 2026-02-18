@@ -16,24 +16,24 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref } from 'vue';
 
 defineProps({
   doorStatus: {
     type: Object,
     required: true,
   },
-})
+});
 
-const modalOpen = ref(false)
+const modalOpen = ref(false);
 
 const openModal = () => {
-  modalOpen.value = true
-}
+  modalOpen.value = true;
+};
 
 const closeModal = () => {
-  modalOpen.value = false
-}
+  modalOpen.value = false;
+};
 </script>
 
 <style>

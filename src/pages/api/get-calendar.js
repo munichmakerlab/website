@@ -26,7 +26,8 @@ export async function GET({ url }) {
 
   const CALENDARS = {
     pretix: 'https://tickets.munichmakerlab.de/mumalab/events/ical/?locale=en',
-    events: 'https://calendar.google.com/calendar/ical/lbd0aa2rlahecp7juvp35hd0k0%40group.calendar.google.com/public/basic.ics'
+    events:
+      'https://calendar.google.com/calendar/ical/lbd0aa2rlahecp7juvp35hd0k0%40group.calendar.google.com/public/basic.ics',
   };
 
   const targetUrl = CALENDARS[source];
@@ -39,7 +40,7 @@ export async function GET({ url }) {
   if (cached !== null) {
     return new Response(cached, {
       status: 200,
-      headers: { "Content-Type": "text/calendar", "X-Cache": "HIT" },
+      headers: { 'Content-Type': 'text/calendar', 'X-Cache': 'HIT' },
     });
   }
 
@@ -49,9 +50,10 @@ export async function GET({ url }) {
     setCached(source, data);
     return new Response(data, {
       status: 200,
-      headers: { "Content-Type": "text/calendar", "X-Cache": "MISS" },
+      headers: { 'Content-Type': 'text/calendar', 'X-Cache': 'MISS' },
     });
   } catch (e) {
+    console.error('Error fetching calendar:', e);
     return new Response(null, { status: 500 });
   }
 }

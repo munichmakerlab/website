@@ -16,6 +16,6 @@ export default defineConfig({
   integrations: [markdoc(), mdx(), icon(), vue()],
   output: 'static',
   adapter: node({
-    mode: 'standalone'
-  })
+    mode: 'standalone',
+  }),
 });
