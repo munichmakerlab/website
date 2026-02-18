@@ -14,11 +14,11 @@ export const de: Translations = {
     seeAll: 'Alle Beiträge ansehen =>',
   },
   navbar: {
-    home: 'Startseite',
+    home: 'Home',
     about: 'Über uns',
     visit: 'Besuch',
     contact: 'Kontakt',
-    events: 'Veranstaltungen',
+    events: 'Events',
     wiki: 'Wiki',
   },
   footer: {

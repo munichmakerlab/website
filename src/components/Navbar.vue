@@ -175,13 +175,14 @@ const toggleCollapse = () => {
 
   .links {
     display: flex;
-    gap: 3vw;
+    gap: 2vw;
   }
 
   a {
     text-decoration: none;
     color: white;
     align-self: flex-end;
+    white-space: nowrap;
   }
 
   .theme-toggle {
