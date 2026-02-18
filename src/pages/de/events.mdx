@@ -1,0 +1,28 @@
+---
+layout: ../../layouts/Content.astro
+title: "Munich Maker Lab - Veranstaltungen"
+header_image: "/img/bg_arduino.png"
+headline: "Veranstaltungen"
+sub_headline: "Das ist los im MuMaLand."
+---
+
+# Willkommen auf der Veranstaltungsseite des Munich Maker Lab
+
+Hier findest du alle kommenden Aktivitäten im Space. Sofern nicht in seltenen Fällen ausdrücklich anders angegeben, ist keine Mitgliedschaft erforderlich, um teilzunehmen. Wir freuen uns auf deinen Besuch.
+
+Veranstaltungen, die <span style="color: #f89538;"><strong>orange markiert</strong></span> sind, können ohne Anmeldung besucht werden. In der Regel handelt es sich dabei um Meetups oder andere offene Events. Regelmäßige Veranstaltungen sind:
+
+- **Plenum:** Ein lockeres Treffen zum Austauschen, Zusammenarbeiten und gemeinsamen Arbeiten an Projekten. Wenn du neu bist und eine Führung durch das Lab möchtest, ist das die perfekte Gelegenheit.
+- **Projekt- und Aufräumtag:** Unser Community-Event, um den Space aufzufrischen, das Lab zu verbessern und gemeinsam an eigenen oder gemeinsamen Projekten zu arbeiten.
+
+Veranstaltungen, die <span style="color: #3788d8;"><strong>blau markiert</strong></span> sind Workshops, für die eine kostenlose Anmeldung über unser Ticketsystem erforderlich ist. Du kannst dich über den jeweiligen Kalendereintrag oder über unser [Workshop-Anmeldesystem](https://tickets.munichmakerlab.de/mumalab/courses/) registrieren. Regelmäßige Workshops sind:
+
+- **Einführung in den 3D-Druck**
+- **Einführung in den Lasercutter**
+- **Einführung in CNC**
+- **Werkstattsicherheitskurse**
+- **Onboarding für neue Mitglieder:** Zu bestimmten Zeiten kannst du auch einfach vorbeikommen und ein Onboarding erhalten. Mehr Informationen findest du in [unserem Wiki](https://wiki.munichmakerlab.de/wiki/Onboarding#Onboarding)
+
+import Calendar from "../../components/Calendar.vue";
+
+<Calendar client:load />
