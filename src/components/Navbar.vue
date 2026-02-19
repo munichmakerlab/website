@@ -43,8 +43,8 @@ const links = [
     path: '/about',
   },
   {
-    name: 'Visit',
-    path: '/visit',
+    name: 'Join us',
+    path: '/join-us',
   },
   {
     name: 'Contact',
