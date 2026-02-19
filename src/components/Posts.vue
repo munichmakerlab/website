@@ -1,6 +1,6 @@
 <template>
   <div class="posts">
-    <Post v-for="post in posts" :post="post" :key="post.id" />
+    <Post v-for="post in posts" :post="post" :key="post.id" :locale="props.locale" />
     <a href="https://chaos.social/@munichmakerlab">{{ t.posts.seeAll }}</a>
   </div>
 </template>
