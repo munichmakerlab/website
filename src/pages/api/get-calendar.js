@@ -23,9 +23,10 @@ function setCached(source, data) {
 export async function GET({ url }) {
   // Get the 'source' param from the request (e.g., /api/get-calendar?source=work)
   const source = url.searchParams.get('source');
+  const locale = url.searchParams.get('locale') === 'de' ? 'de' : 'en';
 
   const CALENDARS = {
-    pretix: 'https://tickets.munichmakerlab.de/mumalab/events/ical/?locale=en',
+    pretix: `https://tickets.munichmakerlab.de/mumalab/events/ical/?locale=${locale}`,
     events:
       'https://calendar.google.com/calendar/ical/lbd0aa2rlahecp7juvp35hd0k0%40group.calendar.google.com/public/basic.ics',
   };
@@ -36,7 +37,8 @@ export async function GET({ url }) {
     return new Response(JSON.stringify({ error: 'Invalid source' }), { status: 400 });
   }
 
-  const cached = getCached(source);
+  const cacheKey = source === 'pretix' ? `${source}:${locale}` : source;
+  const cached = getCached(cacheKey);
   if (cached !== null) {
     return new Response(cached, {
       status: 200,
@@ -47,7 +49,7 @@ export async function GET({ url }) {
   try {
     const response = await fetch(targetUrl);
     const data = await response.text();
-    setCached(source, data);
+    setCached(cacheKey, data);
     return new Response(data, {
       status: 200,
       headers: { 'Content-Type': 'text/calendar', 'X-Cache': 'MISS' },

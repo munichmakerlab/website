@@ -169,7 +169,7 @@ const calendarOptions = computed(() => ({
   },
   eventSources: [
     {
-      url: '/api/get-calendar?source=pretix',
+      url: `/api/get-calendar?source=pretix&locale=${props.locale}`,
       format: 'ics',
       color: '#3788d8',
       label: t.calendar.workshops,
