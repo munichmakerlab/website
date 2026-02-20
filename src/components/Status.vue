@@ -6,24 +6,27 @@
     <div class="modal-window">
       <span class="modal-close">X</span>
       <div :class="`tally ${doorStatus.door}`"></div>
-      {{
-        doorStatus.door === 'open'
-          ? "The Space is currently open! You may come over and hang out. Keep in mind that there is no guarantee that people will be there for an extended period of time (unless it's currently the open thursday)."
-          : 'The Lab is currently closed. A member will need to come in and open it for visitors.'
-      }}
+      {{ doorStatus.door === 'open' ? t.status.open : t.status.closed }}
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
+import { getUiTranslations } from '../i18n/ui/ui-i18n-helper';
 
-defineProps({
+const props = defineProps({
   doorStatus: {
     type: Object,
     required: true,
   },
+  locale: {
+    type: String,
+    required: true,
+  },
 });
+
+const t = computed(() => getUiTranslations(props.locale));
 
 const modalOpen = ref(false);
 

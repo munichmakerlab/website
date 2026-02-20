@@ -4,18 +4,20 @@
       <HamburgerButton :isOpen="!isCollapsed" />
     </div>
     <div class="status-theme-controls show-mobile">
+      <LanguageToggle class="language-toggle-mobile" :locale="props.locale" />
       <ThemeToggle class="theme-toggle-mobile" />
-      <Status v-if="doorStatus" :doorStatus="doorStatus" />
+      <Status v-if="doorStatus" :doorStatus="doorStatus" :locale="props.locale" />
     </div>
   </div>
   <nav :class="isCollapsed ? 'collapsed' : ''">
-    <a class="logo" href="/">Munich Maker Lab</a>
+    <a class="logo" :href="getRelativeLocaleUrl(locale)">Munich Maker Lab</a>
     <div class="links">
       <a v-for="link in links" :key="link.path" :href="link.path">{{ link.name }}</a>
       <div class="show-desktop">
-        <Status v-if="doorStatus" :doorStatus="doorStatus" />
+        <Status v-if="doorStatus" :doorStatus="doorStatus" :locale="props.locale" />
       </div>
       <ThemeToggle class="theme-toggle show-desktop" />
+      <LanguageToggle class="language-toggle show-desktop" :locale="props.locale" />
     </div>
   </nav>
 </template>
@@ -24,7 +26,19 @@
 import { ref, onMounted } from 'vue';
 import Status from './Status.vue';
 import ThemeToggle from './ThemeToggle.vue';
+import LanguageToggle from './LanguageToggle.vue';
 import HamburgerButton from './HamburgerButton.vue';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { getUiTranslations } from '../i18n/ui/ui-i18n-helper';
+
+const props = defineProps({
+  locale: {
+    type: String,
+    required: true,
+  },
+});
+
+const t = getUiTranslations(props.locale);
 
 const doorStatus = ref(null);
 
@@ -35,27 +49,27 @@ onMounted(async () => {
 
 const links = [
   {
-    name: 'Home',
-    path: '/',
+    name: t.navbar.home,
+    path: `${getRelativeLocaleUrl(props.locale, '/')}`,
   },
   {
-    name: 'About',
-    path: '/about',
+    name: t.navbar.about,
+    path: `${getRelativeLocaleUrl(props.locale, '/about')}`,
   },
   {
-    name: 'Visit',
-    path: '/visit',
+    name: t.navbar.visit,
+    path: `${getRelativeLocaleUrl(props.locale, '/visit')}`,
   },
   {
-    name: 'Contact',
-    path: '/contact',
+    name: t.navbar.contact,
+    path: `${getRelativeLocaleUrl(props.locale, '/contact')}`,
   },
   {
-    name: 'Events',
-    path: '/events',
+    name: t.navbar.events,
+    path: `${getRelativeLocaleUrl(props.locale, '/events/')}`,
   },
   {
-    name: 'Wiki',
+    name: t.navbar.wiki,
     path: 'https://wiki.munichmakerlab.de/',
   },
 ];
@@ -124,6 +138,11 @@ const toggleCollapse = () => {
     color: var(--fg);
     margin-right: 4px;
   }
+
+  .language-toggle-mobile {
+    color: var(--fg);
+    margin-right: 4px;
+  }
 }
 
 /* Desktop Menu */
@@ -156,16 +175,23 @@ const toggleCollapse = () => {
 
   .links {
     display: flex;
-    gap: 3vw;
+    gap: 2vw;
   }
 
   a {
     text-decoration: none;
     color: white;
     align-self: flex-end;
+    white-space: nowrap;
   }
 
   .theme-toggle {
+    color: white;
+    align-self: flex-end;
+    filter: drop-shadow(1px 1px 0 #333333);
+  }
+
+  .language-toggle {
     color: white;
     align-self: flex-end;
     filter: drop-shadow(1px 1px 0 #333333);

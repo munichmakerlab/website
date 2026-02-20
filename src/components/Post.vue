@@ -1,7 +1,7 @@
 <template>
   <div class="post">
     <div class="post-date">
-      {{ new Date(post.created_at).toLocaleDateString('en-GB', dateOptions) }}
+      {{ new Date(post.created_at).toLocaleDateString(props.locale, dateOptions) }}
     </div>
     <div v-if="imageAttachments.length" :id="galleryId" :class="gridClass">
       <a
@@ -25,7 +25,16 @@ import { computed, onMounted, onUnmounted } from 'vue';
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
 import 'photoswipe/style.css';
 
-const props = defineProps(['post']);
+const props = defineProps({
+  post: {
+    type: Object,
+    required: true,
+  },
+  locale: {
+    type: String,
+    default: 'en',
+  },
+});
 const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
 
 const imageAttachments = computed(() => props.post.media_attachments.filter((a) => a.type === 'image'));

@@ -1,12 +1,22 @@
 <template>
   <div class="posts">
-    <Post v-for="post in posts" :post="post" :key="post.id" />
-    <a href="https://chaos.social/@munichmakerlab">See all Posts =></a>
+    <Post v-for="post in posts" :post="post" :key="post.id" :locale="props.locale" />
+    <a href="https://chaos.social/@munichmakerlab">{{ t.posts.seeAll }}</a>
   </div>
 </template>
 
 <script setup>
 import Post from './Post.vue';
+import { getUiTranslations } from '../i18n/ui/ui-i18n-helper';
+
+const props = defineProps({
+  locale: {
+    type: String,
+    default: 'en',
+  },
+});
+
+const t = getUiTranslations(props.locale);
 
 const postsUrl = 'https://chaos.social/api/v1/accounts/111578979164883551/statuses';
 

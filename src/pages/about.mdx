@@ -6,6 +6,8 @@ headline: 'About Us'
 sub_headline: "What's the Munich Maker Lab?"
 ---
 
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
 The Munich Maker Lab is a non-profit organization, creating an open community workspace, where you can learn, teach, share, make, hack, create, enjoy or simply relax. We try to create an environment that supports the do-it-yourself, hacker and maker culture by providing workspace, tools, and infrastructure to our members and everyone else.
 
 Everyone is welcome to visit when our website indicates an open status, as we don't have fixed opening times apart from our open Thursday. We are a fully community-driven space and no one is paid for their contributions to the lab.
@@ -15,7 +17,7 @@ While most people at the lab speak German, we have agreed to use English as our 
 
 The Hacking Room Project was started in April 2013 to create a new Hacker-/Makerspace in Munich. After less than a year, in February 2014, we founded the Munich Maker Lab e.V. and moved into our first space, a 25m² room at Werk1 München. A year later, we expanded and moved into new rooms in Obersendling. Since early 2017, we have a industrial space at the Kreativquartier.
 
-Join us at one of our next meetups to find out more: [Visit us](visit)
+Join us at one of our next meetups to find out more: <a href={getRelativeLocaleUrl('en', 'visit')}>Visit us</a>
 
 ## The Community Approach
 
@@ -37,11 +39,11 @@ Membership is not required to use the space — you’re always welcome to just 
 If you decide to join, you can find more information about the onboarding process on our wiki page: [Onboarding](https://wiki.munichmakerlab.de/wiki/Onboarding).
 
 Members enjoy additional benefits, such as the option to get a personal key to the space.  
-For more details, see our [statutes](statutes) and [scale of fees](scaleoffees).
+For more details, see our <a href={getRelativeLocaleUrl('en', 'statutes')}>statutes</a> and <a href={getRelativeLocaleUrl('en', 'scaleoffees')}>scale of fees</a>.
 
 ## More questions?
 
-[Check our Frequently Asked Questions](https://wiki.munichmakerlab.de/wiki/Frequently_Asked_Questions) or [Contact us](contact)
+[Check our Frequently Asked Questions](https://wiki.munichmakerlab.de/wiki/Frequently_Asked_Questions) or <a href={getRelativeLocaleUrl('en', 'contact')}>Contact us</a>
 
 ## Inventory
 
