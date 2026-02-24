@@ -13,7 +13,7 @@
   "dependencies": {
     "@astrojs/markdoc": "^0.15.10",
     "@astrojs/mdx": "^4.3.13",
-    "@astrojs/node": "^9.5.2",
+    "@astrojs/node": "^9.5.4",
     "@astrojs/vue": "^5.1.4",
     "@fullcalendar/core": "^6.1.20",
     "@fullcalendar/daygrid": "^6.1.20",
