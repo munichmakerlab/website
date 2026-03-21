@@ -11,30 +11,30 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
-    "@astrojs/markdoc": "^0.15.10",
-    "@astrojs/mdx": "^4.3.13",
-    "@astrojs/node": "^9.5.2",
-    "@astrojs/vue": "^5.1.4",
+    "@astrojs/markdoc": "^1.0.2",
+    "@astrojs/mdx": "^5.0.2",
+    "@astrojs/node": "^10.0.3",
+    "@astrojs/vue": "^6.0.1",
     "@fullcalendar/core": "^6.1.20",
     "@fullcalendar/daygrid": "^6.1.20",
     "@fullcalendar/icalendar": "^6.1.20",
     "@fullcalendar/list": "^6.1.20",
     "@fullcalendar/vue3": "^6.1.20",
     "@iconify-json/mdi": "^1.2.3",
-    "astro": "^5.17.1",
+    "astro": "^6.0.8",
     "astro-icon": "^1.1.5",
     "photoswipe": "^5.4.4",
     "prettier": "^3.8.1",
     "prettier-plugin-astro": "^0.14.1",
-    "vue": "^3.5.27"
+    "vue": "^3.5.30"
   },
   "devDependencies": {
-    "@eslint/js": "^9.0.0",
-    "eslint": "^9.0.0",
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.1.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-astro": "^1.6.0",
     "eslint-plugin-vue": "^10.8.0",
-    "globals": "^17.3.0",
-    "typescript-eslint": "^8.56.0"
+    "globals": "^17.4.0",
+    "typescript-eslint": "^8.57.1"
   }
 }

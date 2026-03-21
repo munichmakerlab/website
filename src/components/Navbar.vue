@@ -10,7 +10,7 @@
     </div>
   </div>
   <nav :class="isCollapsed ? 'collapsed' : ''">
-    <a class="logo" :href="getRelativeLocaleUrl(locale)">Munich Maker Lab</a>
+    <a class="logo" :href="props.navLinks.home">Munich Maker Lab</a>
     <div class="links">
       <a v-for="link in links" :key="link.path" :href="link.path">{{ link.name }}</a>
       <div class="show-desktop">
@@ -28,12 +28,15 @@ import Status from './Status.vue';
 import ThemeToggle from './ThemeToggle.vue';
 import LanguageToggle from './LanguageToggle.vue';
 import HamburgerButton from './HamburgerButton.vue';
-import { getRelativeLocaleUrl } from 'astro:i18n';
 import { getUiTranslations } from '../i18n/ui/ui-i18n-helper';
 
 const props = defineProps({
   locale: {
     type: String,
+    required: true,
+  },
+  navLinks: {
+    type: Object,
     required: true,
   },
 });
@@ -50,23 +53,23 @@ onMounted(async () => {
 const links = [
   {
     name: t.navbar.home,
-    path: `${getRelativeLocaleUrl(props.locale, '/')}`,
+    path: props.navLinks.home,
   },
   {
     name: t.navbar.about,
-    path: `${getRelativeLocaleUrl(props.locale, '/about')}`,
+    path: props.navLinks.about,
   },
   {
     name: t.navbar.visit,
-    path: `${getRelativeLocaleUrl(props.locale, '/visit')}`,
+    path: props.navLinks.visit,
   },
   {
     name: t.navbar.contact,
-    path: `${getRelativeLocaleUrl(props.locale, '/contact')}`,
+    path: props.navLinks.contact,
   },
   {
     name: t.navbar.events,
-    path: `${getRelativeLocaleUrl(props.locale, '/events/')}`,
+    path: props.navLinks.events,
   },
   {
     name: t.navbar.wiki,

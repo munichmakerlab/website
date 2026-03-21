@@ -2,9 +2,17 @@
 import Hero from '../components/Hero.astro';
 import Footer from '../components/Footer.astro';
 import Navbar from '../components/Navbar.vue';
+import { getRelativeLocaleUrl } from 'astro:i18n';
 
 const { frontmatter } = Astro.props;
 const currentLocale = Astro.currentLocale ?? 'en';
+const navLinks = {
+  home: getRelativeLocaleUrl(currentLocale, '/'),
+  about: getRelativeLocaleUrl(currentLocale, '/about'),
+  visit: getRelativeLocaleUrl(currentLocale, '/visit'),
+  contact: getRelativeLocaleUrl(currentLocale, '/contact'),
+  events: getRelativeLocaleUrl(currentLocale, '/events/'),
+};
 ---
 
 <html lang={currentLocale}>
@@ -36,7 +44,7 @@ const currentLocale = Astro.currentLocale ?? 'en';
     </script>
   </head>
   <body>
-    <Navbar client:only="vue" locale={currentLocale} />
+    <Navbar client:only="vue" locale={currentLocale} navLinks={navLinks} />
     <Hero
       header_image={frontmatter.header_image}
       headline={frontmatter.headline}
