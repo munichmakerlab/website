@@ -64,24 +64,25 @@ const links = [
     path: props.navLinks.visit,
   },
   {
-    name: t.navbar.contact,
-    path: props.navLinks.contact,
-  },
-  {
     name: t.navbar.events,
     path: props.navLinks.events,
   },
+
   {
-    name: t.navbar.wiki,
-    path: 'https://wiki.munichmakerlab.de/',
+    name: t.navbar.join,
+    path: '/join',
+  },
+  {
+    name: t.navbar.contact,
+    path: props.navLinks.contact,
   },
   {
     name: t.navbar.donate,
     path: '/donate',
   },
-  {
-    name: t.navbar.join,
-    path: '/join',
+    {
+    name: t.navbar.wiki,
+    path: 'https://wiki.munichmakerlab.de/',
   },
 ];
 
