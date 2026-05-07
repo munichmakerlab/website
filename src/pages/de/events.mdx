@@ -10,6 +10,10 @@ sub_headline: 'Das ist los im MuMaLand.'
 
 Hier findest du alle kommenden Aktivitäten im Space. Sofern nicht in seltenen Fällen ausdrücklich anders angegeben, ist keine Mitgliedschaft erforderlich, um teilzunehmen. Wir freuen uns auf deinen Besuch.
 
+import Calendar from '../../components/Calendar.vue';
+
+<Calendar client:load locale="de" />
+
 Veranstaltungen, die <span style="color: #f89538;"><strong>orange markiert</strong></span> sind, können ohne Anmeldung besucht werden. In der Regel handelt es sich dabei um Meetups oder andere offene Events. Regelmäßige Veranstaltungen sind:
 
 - **Plenum:** Ein lockeres Treffen zum Austauschen, Zusammenarbeiten und gemeinsamen Arbeiten an Projekten. Wenn du neu bist und eine Führung durch das Lab möchtest, ist das die perfekte Gelegenheit.
@@ -22,7 +26,3 @@ Veranstaltungen, die <span style="color: #3788d8;"><strong>blau markiert</strong
 - **Einführung in CNC**
 - **Werkstattsicherheitskurse**
 - **Onboarding für neue Mitglieder:** Zu bestimmten Zeiten kannst du auch einfach vorbeikommen und ein Onboarding erhalten. Mehr Informationen findest du in [unserem Wiki](https://wiki.munichmakerlab.de/wiki/Onboarding#Onboarding)
-
-import Calendar from '../../components/Calendar.vue';
-
-<Calendar client:load locale="de" />

@@ -20,6 +20,8 @@ const frontmatter = {
     >
   </p>
   <hr />
+  <!-- Vorübergehend ausgeblendet, bis der Newsletter wieder veröffentlicht wird -->
+  <div style="display:none">
   <!-- Begin Mailchimp Signup Form -->
   <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css" />
   <style type="text/css">
@@ -75,6 +77,7 @@ const frontmatter = {
         </div>
       </div>
     </form>
+  </div>
   </div>
   <h2>Neueste Aktivitäten im Space:</h2>
   <Posts client:only="vue" locale={Astro.currentLocale ?? 'en'} />
