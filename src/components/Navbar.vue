@@ -75,6 +75,10 @@ const links = [
     name: t.navbar.wiki,
     path: 'https://wiki.munichmakerlab.de/',
   },
+  {
+    name: t.navbar.donate,
+    path: '/donate',
+  },
 ];
 
 const isCollapsed = ref(true);

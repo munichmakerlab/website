@@ -20,6 +20,7 @@ export const de: Translations = {
     contact: 'Kontakt',
     events: 'Events',
     wiki: 'Wiki',
+    donate: 'Spenden',
   },
   footer: {
     formerChannels: 'Frühere Kanäle:',
