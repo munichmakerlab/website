@@ -21,6 +21,7 @@ export const de: Translations = {
     events: 'Events',
     wiki: 'Wiki',
     donate: 'Spenden',
+    join: 'Mitmachen',
   },
   footer: {
     formerChannels: 'Frühere Kanäle:',

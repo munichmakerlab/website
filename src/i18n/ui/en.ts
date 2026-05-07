@@ -19,6 +19,7 @@ export const en = {
     events: 'Events',
     wiki: 'Wiki',
     donate: 'Donate',
+    join: 'Join Us',
   },
   footer: {
     formerChannels: 'Former channels:',

@@ -79,6 +79,10 @@ const links = [
     name: t.navbar.donate,
     path: '/donate',
   },
+  {
+    name: t.navbar.join,
+    path: '/join',
+  },
 ];
 
 const isCollapsed = ref(true);
