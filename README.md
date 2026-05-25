@@ -35,6 +35,7 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 | `npm run lint`            | Lint the project with ESLint                     |
 | `npm run format:check`    | Check Code Styling with Prettier                 |
+| `npm run format:fix`      | Check Code Styling with Prettier and fix         |
 
 ## More Docs
 
