@@ -2,7 +2,7 @@ MunichMakerLab Website
 
 this website has been built with astro and tries to minimize the gotchas and special purpose additions for maintainabilities sake.
 
-## 🚀 Project Structure
+## Project Structure
 
 Inside of this project, you'll see the following folders and files:
 
@@ -21,7 +21,7 @@ Inside of this project, you'll see the following folders and files:
 To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
 Tl;dr: The actual pages of the website are in [src/pages](/src/pages/) and are mostly markdown. Adding another page should be as easy as just creating another file, copy-pasting the head section and customizing it and the page itself.
 
-## 🧞 Commands
+## Commands
 
 All commands are run from the root of the project, from a terminal:
 
@@ -36,6 +36,6 @@ All commands are run from the root of the project, from a terminal:
 | `npm run lint`            | Lint the project with ESLint                     |
 | `npm run format:check`    | Check Code Styling with Prettier                 |
 
-## 👀 Want to learn more?
+## More Docs
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+[Astr documentation](https://docs.astro.build) or [Discord server](https://astro.build/chat).

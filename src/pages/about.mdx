@@ -1,12 +1,13 @@
 ---
 layout: ../layouts/Content.astro
 title: 'About Us'
-header_image: '/img/bg_make.png'
+header_image: '/img/bg_banner.png'
 headline: 'About Us'
 sub_headline: "What's the Munich Maker Lab?"
 ---
 
 import { getRelativeLocaleUrl } from 'astro:i18n';
+import ImpressionGallery from '../components/ImpressionGallery.astro';
 
 The Munich Maker Lab is a non-profit organization creating an open community workspace where you can learn, teach, share, make, hack, create, enjoy or simply relax. We try to create an environment that supports the do-it-yourself, hacker and maker culture by providing workspace, tools, and infrastructure to our members and everyone else.
 
@@ -18,6 +19,8 @@ While most people at the lab speak German, we have agreed to use English as our 
 The Hacking Room Project was started in April 2013 to create a new Hacker-/Makerspace in Munich. After less than a year, in February 2014, we founded the Munich Maker Lab e.V. and moved into our first space, a 25m² room at Werk1 München. A year later, we expanded and moved into new rooms in Obersendling. Since early 2017, we have a industrial space at the Kreativquartier.
 
 Join us at one of our next meetups to find out more: <a href={getRelativeLocaleUrl('en', 'visit')}>Visit us</a>
+
+
 
 ## The Community Approach
 
@@ -37,7 +40,7 @@ Interested in becoming a member? <a href={getRelativeLocaleUrl('en', 'join')}>Fi
 Membership is not required to use the space — you're always welcome to just drop by and take a look around.  
 
 Members enjoy additional benefits, such as the option to get a personal key to the space.  
-For more details, see our <a href={getRelativeLocaleUrl('en', 'statutes')}>statutes</a> and <a href={getRelativeLocaleUrl('en', 'scaleoffees')}>scale of fees</a>.
+For more details, see our <a href={getRelativeLocaleUrl('en', 'join')}>join page</a>, <a href={getRelativeLocaleUrl('en', 'statutes')}>statutes</a> and <a href={getRelativeLocaleUrl('en', 'scaleoffees')}>scale of fees</a>.
 
 ## More questions?
 
@@ -45,15 +48,17 @@ For more details, see our <a href={getRelativeLocaleUrl('en', 'statutes')}>statu
 
 ## Inventory
 
-You can check out our current setup and machines in our [wiki](https://wiki.munichmakerlab.de)
-
-![3D scan of the Munichmakerlab.](../assets/3d_lab.jpg)
+You can check out most of our current setup and machines in our [wiki](https://wiki.munichmakerlab.de)
 
 ## Workshop Areas
 
 Our space is equipped for a wide range of making and hacking activities:
 
-3D Printing · CNC Routing · Laser Cutting · Electronics · Programming · Digital Media · Woodworking · Metalworking · Welding · Plastics · Textiles · Screenprinting · Bicycle Repair · Food · Pinball · Hacking · DIY · Repair · Art
+3D Printing · CNC Routing · Laser Cutting · Electronics · Programming · Digital Media · Woodworking · Metalworking · Welding · Plastics · Textiles · Screenprinting · Tiffany Glass Art · Bicycle Repair · Food · Pinball · Hacking · DIY · Repair · Art · 
+
+## Impressions
+
+<ImpressionGallery />
 
 ## Part of the Open Workshop Network
 
