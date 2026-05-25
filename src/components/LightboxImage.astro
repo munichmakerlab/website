@@ -1,0 +1,39 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image, getImage } from 'astro:assets';
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  width?: number;
+}
+
+const { src, alt, width = 800 } = Astro.props;
+const full = await getImage({ src, format: 'webp' });
+---
+
+<div class="lightbox-single">
+  <a
+    href={full.src}
+    data-pswp-width={src.width}
+    data-pswp-height={src.height}
+  >
+    <Image src={src} alt={alt} width={width} style="cursor: zoom-in;" />
+  </a>
+</div>
+
+<script>
+  import PhotoSwipeLightbox from 'photoswipe/lightbox';
+  import 'photoswipe/style.css';
+
+  document.querySelectorAll('.lightbox-single').forEach((el, i) => {
+    const id = `lightbox-single-${i}`;
+    el.id = id;
+    const lightbox = new PhotoSwipeLightbox({
+      gallery: `#${id}`,
+      children: 'a',
+      pswpModule: () => import('photoswipe'),
+    });
+    lightbox.init();
+  });
+</script>

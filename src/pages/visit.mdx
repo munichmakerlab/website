@@ -7,6 +7,11 @@ sub_headline: 'Come and join us!'
 ---
 
 import { getRelativeLocaleUrl } from 'astro:i18n';
+import { Image } from 'astro:assets';
+import LightboxImage from '../components/LightboxImage.astro';
+import aerialView from '../assets/Makerlab_Location_Arial_large.png';
+import entranceImg from '../assets/entrance.jpg';
+import kreativquartierPlan from '../assets/Makerlab_Location_2.webp';
 
 ## Join us for Open Community Thursday
 
@@ -44,15 +49,15 @@ Our space has a big label in front with "Munich Maker Lab". The entry is in the 
 ></iframe>
 <br />
 <small>[Show bigger map](https://www.openstreetmap.org/node/3426114357#map=19/48.15884/11.55063)</small>
-
-![Areal view where we are](../assets/Makerlab_Location_Arial_large.png)
+<br />
+<LightboxImage src={aerialView} alt="Aerial view of our location" width={1200} />
 
 ## Entrance
 
-![Picture of entrance](../assets/entrance.jpg)
+<LightboxImage src={entranceImg} alt="Picture of entrance" width={600} />
 
 ## Part of the Kreativquartier
 
 Munich Maker Lab is located inside the [Kreativquartier München](https://www.kreativquartier-muenchen.de/), a vibrant creative district in the heart of Munich. The area is home to many other studios, workshops, cultural spaces and events – so there's always plenty to explore around us. If you're visiting us, take some time to discover what else the neighborhood has to offer!
 
-![Plan Kreativlabor](../assets/MakerLab_Location.jpg)
+<LightboxImage src={kreativquartierPlan} alt="Plan Kreativquartier" width={1200} />

@@ -12,6 +12,8 @@ const navLinks = {
   visit: getRelativeLocaleUrl(currentLocale, '/visit'),
   contact: getRelativeLocaleUrl(currentLocale, '/contact'),
   events: getRelativeLocaleUrl(currentLocale, '/events/'),
+  join: getRelativeLocaleUrl(currentLocale, '/join'),
+  donate: getRelativeLocaleUrl(currentLocale, '/donate'),
 };
 ---
 
@@ -68,6 +70,7 @@ const navLinks = {
     color-scheme: light;
     font-family: 'Lora', Arial, Helvetica, sans-serif;
     font-size: 20px;
+    line-height: 1.75;
     --bg: #ffffff;
     --fg: #404040;
     --muted: #666666;
@@ -105,21 +108,22 @@ const navLinks = {
   }
 
   a {
-    color: var(--fg);
+    color: var(--link);
+    text-underline-offset: 3px;
+    text-decoration-color: color-mix(in srgb, var(--link) 40%, transparent);
+    transition: text-decoration-color 0.15s ease, color 0.15s ease;
   }
-  .content {
-    width: 50vw;
-    margin: auto;
-    margin-top: 5rem;
+  a:hover {
+    text-decoration-color: var(--link);
   }
 
-  @media (max-width: 950px) {
-    .content {
-      width: 90vw;
-    }
-    .content img {
-      max-width: 100%;
-      height: auto;
-    }
+  .content {
+    max-width: 1400px;
+    width: 90%;
+    margin: 5rem auto 0;
+  }
+  .content img {
+    max-width: 100%;
+    height: auto;
   }
 </style>

@@ -7,6 +7,10 @@ sub_headline: 'Komm vorbei und mach mit!'
 ---
 
 import { getRelativeLocaleUrl } from 'astro:i18n';
+import LightboxImage from '../../components/LightboxImage.astro';
+import aerialView from '../../assets/Makerlab_Location_Arial_large.png';
+import entranceImg from '../../assets/entrance.jpg';
+import kreativquartierPlan from '../../assets/Makerlab_Location_2.webp';
 
 ## Komm zum Open Community Thursday
 
@@ -44,13 +48,15 @@ Wenn du durch den Haupteingang der Dachauerstr. 112 gehst, halte dich fast gerad
 ></iframe>
 
 <br />
-
 <small>[Größere Karte anzeigen](https://www.openstreetmap.org/node/3426114357#map=19/48.15884/11.55063)</small>
+<br />
+<LightboxImage src={aerialView} alt="Luftaufnahme unseres Standorts" width={1200} />
 
 ## Eingang
 
-![Bild des Eingangs](../../assets/entrance.jpg)
+<LightboxImage src={entranceImg} alt="Bild des Eingangs" width={600} />
 
 ## Teil des Kreativquartiers
 
 Das Munich Maker Lab befindet sich im [Kreativquartier München](https://www.kreativquartier-muenchen.de/), einem lebendigen Kreativviertel im Herzen Münchens. Das Viertel beherbergt viele weitere Studios, Werkstätten, Kulturräume und Veranstaltungen – es gibt also immer viel zu entdecken. Wenn du uns besuchst, lohnt es sich, auch einen Blick auf das übrige Angebot im Viertel zu werfen!
+<LightboxImage src={kreativquartierPlan} alt="Plan Kreativquartier" width={1200} />

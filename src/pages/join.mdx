@@ -8,7 +8,7 @@ sub_headline: 'Become part of the community!'
 
 import { getRelativeLocaleUrl } from 'astro:i18n';
 
-Membership fees are the backbone of the Munich Maker Lab. They cover our rent, keep our tools and equipment running, and make it possible to host workshops and events every week. As a member, you get 24/7 key access to the space — and you directly support a community where makers, tinkerers and beginners help each other grow.
+Membership fees are the backbone of the Munich Maker Lab. They cover our rent, keep our tools and equipment running, and make it possible to host workshops and events every week. As a member, you get 24/7 key access to the space – and you directly support a community where makers, tinkerers and beginners help each other grow.
 
 For more details about our mission and current membership fees, see our <a href={getRelativeLocaleUrl('en', 'statutes')}>statutes</a> and <a href={getRelativeLocaleUrl('en', 'scaleoffees')}>scale of fees</a>.
 
@@ -51,36 +51,44 @@ Becoming a member of Munich Maker Lab is straightforward. Here's a quick overvie
 For full details on the membership and onboarding process, visit our [Onboarding wiki page](https://wiki.munichmakerlab.de/wiki/Onboarding).
 
 <style>{`
-    .become-a-member-bullet-list
-    ul {
-        list-style-type: none;
-    }
-    li {
-        position: relative;
-        margin: 0;
-        padding-bottom: 1em;
-        padding-left: 20px;
-    }
-    li:before {
-        background-color: #fff;
-        width: 2px;
-        content: '';
-        position: absolute;
-        top: 0px;
-        bottom: 0px;
-        left: 5px;
-    }
-    li::after {
-        content: '';
-        position: absolute;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' aria-hidden='true' viewBox='0 0 32 32' focusable='false'%3E%3Ccircle stroke='none' fill='%23fff' cx='16' cy='16' r='16'%3E%3C/circle%3E%3C/svg%3E");
-        background-repeat: no-repeat;
-        background-size: contain;
-        left: 0;
-        top: 5px;
-        width: 12px;
-        height: 12px;
-    }
-    li:first-child:before { top: 14px;  }
-    li:last-child:before { height: 6px; }
+  .become-a-member-bullet-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+    counter-reset: step-counter;
+  }
+  .become-a-member-bullet-list li {
+    position: relative;
+    padding-bottom: 1.5em;
+    padding-left: 2.75rem;
+    counter-increment: step-counter;
+  }
+  .become-a-member-bullet-list li::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 26px;
+    bottom: 0;
+    width: 2px;
+    background-color: var(--link);
+    opacity: 0.35;
+  }
+  .become-a-member-bullet-list li:last-child::before {
+    display: none;
+  }
+  .become-a-member-bullet-list li::after {
+    content: counter(step-counter);
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 22px;
+    height: 22px;
+    background-color: var(--link);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 22px;
+  }
 `}</style>

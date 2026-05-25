@@ -20,15 +20,11 @@ Das Hacking Room Project wurde im April 2013 ins Leben gerufen, um einen neuen H
 
 Besuche eines unserer nächsten Treffen, um mehr zu erfahren: <a href={getRelativeLocaleUrl('de', 'visit')}>Besuch uns</a>
 
-Unsere Mission
+## Unsere Mission
 
 Wir glauben, dass Technologie am besten durch Bauen, Experimentieren und gemeinsames Teilen verstanden wird. In unserer Community arbeiten Menschen an allem – von 3D-Druck und Elektronik bis hin zu Programmierung, digitaler Kunst und alternativer Infrastruktur. Wir veranstalten Workshops, Meetups und offene Projektnächte und stellen dafür Werkzeuge, Raum und Community bereit. Jede und jeder ist willkommen – ob erfahrene Ingenieurin oder einfach neugierig auf die Frage, wie Dinge funktionieren.
 
-Weitere Details findest du in unserer <a href={getRelativeLocaleUrl('de', 'statutes')}>Satzung</a>.
-
-## Impressionen
-
-<ImpressionGallery />
+Weitere Details zu unserer Vereinsmission findest du in unserer <a href={getRelativeLocaleUrl('de', 'statutes')}>Satzung</a>.
 
 ## Der Community-Ansatz
 
@@ -42,13 +38,12 @@ Im Kern funktioniert das Munich Maker Lab am besten, wenn Menschen es gemeinsam 
 
 ## Organisation und Mitgliedschaft
 
-Wir sind ein gemeinnütziger Verein, der vollständig ehrenamtlich betrieben wird.  
+Wir sind ein gemeinnütziger Verein, der vollständig ehrenamtlich betrieben wird.
+
+Eine Mitgliedschaft ist nicht erforderlich, um den Raum zu nutzen – du kannst jederzeit einfach vorbeikommen und dich umsehen.
+Mitglieder genießen zusätzliche Vorteile, wie zum Beispiel die Möglichkeit, einen persönlichen Schlüssel für den Raum zu erhalten.
+
 Möchtest du Mitglied werden? <a href={getRelativeLocaleUrl('de', 'join')}>Hier erfährst du, wie es geht</a>.
-
-Eine Mitgliedschaft ist nicht erforderlich, um den Raum zu nutzen. Du kannst jederzeit vorbeikommen und dich umsehen.
-
-Mitglieder genießen zusätzliche Vorteile, wie zum Beispiel die Möglichkeit, einen persönlichen Schlüssel für den Raum zu erhalten.  
-Weitere Details findest du auf unserer <a href={getRelativeLocaleUrl('de', 'join')}>Mitmach-Seite</a>, in unserer <a href={getRelativeLocaleUrl('de', 'statutes')}>Satzung</a> und unserer <a href={getRelativeLocaleUrl('de', 'scaleoffees')}>Beitragsordnung</a>.
 
 ## Weitere Fragen?
 
@@ -64,7 +59,36 @@ Unser aktuelles Setup und unsere Maschinen kannst du in unserem [Wiki](https://w
 
 Unser Space ist für eine Vielzahl von Making- und Hacking-Aktivitäten ausgestattet:
 
-3D-Druck · CNC-Fräse · Laserschneiden · Elektronik · Programmieren · Digitale Medien · Holzbearbeitung · Metallbearbeitung · Schweißen · Kunststoff · Textil · Siebdruck · Tiffany-Glaskunst · Fahrrad · Lebensmittel · Flipper · Hacking · DIY · Reparatur · Kunst
+<div class="workshop-tags">
+  {['3D-Druck', 'CNC-Fräse', 'Laserschneiden', 'Elektronik', 'Programmieren',
+    'Digitale Medien', 'Holzbearbeitung', 'Metallbearbeitung', 'Schweißen', 'Kunststoff',
+    'Textil', 'Siebdruck', 'Tiffany-Glaskunst', 'Fahrrad', 'Lebensmittel',
+    'Flipper', 'Hacking', 'DIY', 'Reparatur', 'Kunst'].map(tag => (
+    <span class="workshop-tag">{tag}</span>
+  ))}
+</div>
+
+<style>{`
+  .workshop-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 1rem 0;
+  }
+  .workshop-tag {
+    background: transparent;
+    color: var(--link);
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    padding: 3px 13px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+`}</style>
+
+## Impressionen
+
+<ImpressionGallery />
 
 ## Teil des Netzwerks offener Werkstätten
 

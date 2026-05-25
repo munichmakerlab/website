@@ -70,7 +70,7 @@ const links = [
 
   {
     name: t.navbar.join,
-    path: '/join',
+    path: props.navLinks.join,
   },
   {
     name: t.navbar.contact,
@@ -78,7 +78,7 @@ const links = [
   },
   {
     name: t.navbar.donate,
-    path: '/donate',
+    path: props.navLinks.donate,
   },
   {
     name: t.navbar.wiki,

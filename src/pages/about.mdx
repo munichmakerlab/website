@@ -40,7 +40,32 @@ In essence, the Munich Maker Lab works best when people _make it happen_ – tog
 
 Our space is equipped for a wide range of making and hacking activities:
 
-3D Printing · CNC Routing · Laser Cutting · Electronics · Programming · Digital Media · Woodworking · Metalworking · Welding · Plastics · Textiles · Screenprinting · Tiffany Glass Art · Bicycle Repair · Food · Pinball · Hacking · DIY · Repair · Art
+<div class="workshop-tags">
+  {['3D Printing', 'CNC Routing', 'Laser Cutting', 'Electronics', 'Programming',
+    'Digital Media', 'Woodworking', 'Metalworking', 'Welding', 'Plastics',
+    'Textiles', 'Screenprinting', 'Tiffany Glass Art', 'Bicycle Repair',
+    'Food', 'Pinball', 'Hacking', 'DIY', 'Repair', 'Art'].map(tag => (
+    <span class="workshop-tag">{tag}</span>
+  ))}
+</div>
+
+<style>{`
+  .workshop-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 1rem 0;
+  }
+  .workshop-tag {
+    background: transparent;
+    color: var(--link);
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    padding: 3px 13px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+`}</style>
 
 ## Organization & Membership
 
