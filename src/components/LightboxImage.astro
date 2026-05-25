@@ -13,11 +13,7 @@ const full = await getImage({ src, format: 'webp' });
 ---
 
 <div class="lightbox-single">
-  <a
-    href={full.src}
-    data-pswp-width={src.width}
-    data-pswp-height={src.height}
-  >
+  <a href={full.src} data-pswp-width={src.width} data-pswp-height={src.height}>
     <Image src={src} alt={alt} width={width} style="cursor: zoom-in;" />
   </a>
 </div>
