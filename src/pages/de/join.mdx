@@ -1,95 +1,50 @@
 ---
 layout: ../../layouts/Content.astro
 title: 'Munich Maker Lab - Mitmachen'
-header_image: '/img/bg_make.png'
+header_image: '/img/bg_bench.png'
 headline: 'Mitmachen'
 sub_headline: 'Werde Teil der Community!'
 ---
 
 import { getRelativeLocaleUrl } from 'astro:i18n';
+import StepList from '../../components/StepList.astro';
 
-Mitgliedsbeiträge sind das Rückgrat des Munich Maker Lab. Sie decken unsere Miete, halten unsere Werkzeuge und Geräte am Laufen und ermöglichen es, jede Woche Workshops und Events anzubieten. Als Mitglied erhältst du 24/7-Zugang zum Space mit eigenem Schlüssel – und unterstützt direkt eine Community, in der sich Maker, Bastler und Einsteiger gegenseitig helfen.
+Mitgliedsbeiträge sind das Rückgrat des Munich Maker Lab. Sie decken unsere Miete, halten Werkzeuge und Geräte am Laufen und ermöglichen die Workshops und Events, die hier Woche für Woche stattfinden. Als Mitglied bekommst du einen eigenen Schlüssel und damit 24/7-Zugang zum Makerspace – und unterstützt gleichzeitig direkt eine Community, in der sich Maker, Bastler und Einsteiger gegenseitig weiterhelfen.
 
-Weitere Details zu unserer Mission und den aktuellen Mitgliedsbeiträgen findest du in unserer <a href={getRelativeLocaleUrl('de', 'statutes')}>Satzung</a> und unserer <a href={getRelativeLocaleUrl('de', 'scaleoffees')}>Beitragsordnung</a>.
+Mehr zu unserer Mission und den aktuellen Mitgliedsbeiträgen findest du in unserer <a href={getRelativeLocaleUrl('de', 'statutes')}>Satzung</a> und unserer <a href={getRelativeLocaleUrl('de', 'scaleoffees')}>Beitragsordnung</a>.
 
-Mitglied im Munich Maker Lab zu werden ist unkompliziert. Hier ist ein kurzer Überblick, wie es funktioniert – von deinem ersten Besuch bis zu deinem eigenen Schlüssel.
+Mitglied im Munich Maker Lab zu werden ist unkompliziert. Hier ein kurzer Überblick, wie der Weg von deinem ersten Besuch bis zum eigenen Schlüssel aussieht.
 
 ## Dein Weg zur Mitgliedschaft
 
-<div class="become-a-member-bullet-list">
-  <ul>
-    <li>
-      **Besuche uns an einem Open Thursday** – Komm vorbei, schau dir den Space und die Werkzeuge an und lerne die
-      Community kennen. Wir zeigen dir alles und geben dir eine Führung.
-    </li>
-    <li>
-      **Mitgliedschaft beantragen** – Wenn du mitmachen möchtest, fülle das
-      [Mitgliedsformular](https://wiki.munichmakerlab.de/images/e/ee/2026_Mitgliedsantrag_-_Bi-Lingual_-_Digital.pdf)
-      aus und schick es an die auf dem Formular angegebene Adresse.
-    </li>
-    <li>
-      **Auf Bestätigung warten** – Du erhältst eine E-Mail, sobald dein Antrag bearbeitet wurde. In der Zwischenzeit
-      kannst du den Space bereits während der offenen Zeiten nutzen. Tritt auch gerne unserem Community-Chat unter
-      [chat.munichmakerlab.de](https://chat.munichmakerlab.de/) bei.
-    </li>
-    <li>
-      **Onboarding absolvieren** – Die Teilnahme an einem Onboarding ist Voraussetzung für einen Schlüssel. Alle Details
-      zu Terminen und Ablauf findest du auf unserer
-      [Onboarding-Wiki-Seite](https://wiki.munichmakerlab.de/wiki/Onboarding).
-    </li>
-    <li>
-      **Werkzeugeinführungen buchen** – Um Geräte wie die CNC-Fräse, den Lasercutter, 3D-Drucker oder größere
-      Werkstattmaschinen (Tischkreissäge, Gehrungssäge usw.) nutzen zu dürfen, ist eine kurze Einführung erforderlich.
-      Diese können auf [tickets.munichmakerlab.de](https://tickets.munichmakerlab.de/) gebucht werden.
-    </li>
-    <li>
-      **Willkommen im Munich Maker Lab!** – Du bist jetzt offizielles Mitglied unserer Community. Wir sind gespannt, was
-      du als Nächstes baust.
-    </li>
-  </ul>
-</div>
+<StepList>
+  <li>
+    **Besuche uns an einem Open Thursday** – Komm vorbei, schau dir den Makerspace und die Werkzeuge an und lerne die
+    Community kennen. Wir zeigen dir gerne alles und führen dich durch den Makerspace.
+  </li>
+  <li>
+    **Mitgliedschaft beantragen** – Wenn du dabei sein möchtest, fülle das
+    [Mitgliedsformular](https://wiki.munichmakerlab.de/images/e/ee/2026_Mitgliedsantrag_-_Bi-Lingual_-_Digital.pdf) aus
+    und schick es digital an die auf dem Formular angegebene E-Mail-Adresse.
+  </li>
+  <li>
+    **Auf Bestätigung warten** – Sobald dein Antrag bearbeitet ist, bekommst du eine E-Mail von uns. In der Zwischenzeit
+    kannst du den Makerspace schon während der offenen Zeiten nutzen. Komm außerdem gerne in unseren Community-Chat
+    unter [chat.munichmakerlab.de](https://chat.munichmakerlab.de/).
+  </li>
+  <li>
+    **Onboarding absolvieren** – Das Onboarding ist Voraussetzung für deinen eigenen Schlüssel. Alle Details zu Terminen
+    und Ablauf findest du auf unserer [Onboarding-Wiki-Seite](https://wiki.munichmakerlab.de/wiki/Onboarding).
+  </li>
+  <li>
+    **Werkzeugeinführungen buchen** – Um Geräte wie die CNC-Fräse, den Lasercutter, die 3D-Drucker oder größere
+    Werkstattmaschinen (Tischkreissäge, Kappsäge usw.) eigenständig nutzen zu dürfen, brauchst du eine kurze Einweisung.
+    Termine kannst du auf [tickets.munichmakerlab.de](https://tickets.munichmakerlab.de/) buchen.
+  </li>
+  <li>
+    **Willkommen im Munich Maker Lab!** – Du bist jetzt offizielles Mitglied unserer Community. Wir sind gespannt, was
+    du als Nächstes baust.
+  </li>
+</StepList>
 
-Alle Details zum Mitgliedschafts- und Onboarding-Prozess findest du auf unserer [Onboarding-Wiki-Seite](https://wiki.munichmakerlab.de/wiki/Onboarding).
-
-<style>{`
-  .become-a-member-bullet-list ul {
-    list-style: none;
-    padding: 0;
-    margin: 1.5rem 0;
-    counter-reset: step-counter;
-  }
-  .become-a-member-bullet-list li {
-    position: relative;
-    padding-bottom: 1.5em;
-    padding-left: 2.75rem;
-    counter-increment: step-counter;
-  }
-  .become-a-member-bullet-list li::before {
-    content: '';
-    position: absolute;
-    left: 10px;
-    top: 26px;
-    bottom: 0;
-    width: 2px;
-    background-color: var(--link);
-    opacity: 0.35;
-  }
-  .become-a-member-bullet-list li:last-child::before {
-    display: none;
-  }
-  .become-a-member-bullet-list li::after {
-    content: counter(step-counter);
-    position: absolute;
-    left: 0;
-    top: 2px;
-    width: 22px;
-    height: 22px;
-    background-color: var(--link);
-    color: #fff;
-    font-size: 0.7rem;
-    font-weight: 700;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 22px;
-  }
-`}</style>
+Alle Details zum Mitgliedschafts- und Onboarding-Ablauf findest du auf unserer [Onboarding-Wiki-Seite](https://wiki.munichmakerlab.de/wiki/Onboarding).

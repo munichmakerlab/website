@@ -1,0 +1,74 @@
+---
+const { locale = 'en' } = Astro.props;
+const label = locale === 'de' ? 'Newsletter abonnieren' : 'Subscribe to our newsletter';
+const placeholder = locale === 'de' ? 'E-Mail-Adresse' : 'email address';
+const buttonText = locale === 'de' ? 'Abonnieren' : 'Subscribe';
+---
+
+<div class="newsletter-signup">
+  <form
+    action="https://munichmakerlab.us17.list-manage.com/subscribe/post?u=94f0ec65af1fbaa81f38cfc6b&id=5181b4bf00"
+    method="post"
+    id="mc-embedded-subscribe-form"
+    name="mc-embedded-subscribe-form"
+    class="validate"
+    target="_blank"
+    novalidate
+  >
+    <label for="mce-EMAIL">{label}</label>
+    <div class="newsletter-row">
+      <input type="email" name="EMAIL" id="mce-EMAIL" placeholder={placeholder} required />
+      <!-- honeypot: do not remove -->
+      <div style="position: absolute; left: -5000px;" aria-hidden="true">
+        <input type="text" name="b_94f0ec65af1fbaa81f38cfc6b_5181b4bf00" tabindex="-1" value="" />
+      </div>
+      <button type="submit" name="subscribe" id="mc-embedded-subscribe">{buttonText}</button>
+    </div>
+  </form>
+</div>
+
+<style>
+  .newsletter-signup {
+    margin: 1rem 0;
+  }
+
+  .newsletter-signup label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+  }
+
+  .newsletter-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .newsletter-signup input[type='email'] {
+    flex: 1;
+    min-width: 200px;
+    padding: 8px 12px;
+    font-size: 0.95rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--bg);
+    color: var(--fg);
+  }
+
+  .newsletter-signup button {
+    padding: 8px 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    background: var(--link);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: opacity 0.15s ease;
+  }
+
+  .newsletter-signup button:hover {
+    opacity: 0.85;
+  }
+</style>

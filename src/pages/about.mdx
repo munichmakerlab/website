@@ -8,15 +8,16 @@ sub_headline: "What's the Munich Maker Lab?"
 
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import ImpressionGallery from '../components/ImpressionGallery.astro';
+import WorkshopAreas from '../components/WorkshopAreas.astro';
 
 The Munich Maker Lab is a non-profit organization creating an open community workspace where you can learn, teach, share, make, hack, create, enjoy or simply relax. We try to create an environment that supports the do-it-yourself, hacker and maker culture by providing workspace, tools, and infrastructure to our members and everyone else.
 
 Everyone is welcome to visit when our website indicates an open status, as we don't have fixed opening times apart from our open Thursday. We are a fully community-driven space and no one is paid for their contributions to the lab.
-Our members are an diverse group of tech-savvy and non-tech individuals alike. They come to build and explore new things, work on their personal projects, create improvements for the lab, make art, learn new skills or simply hang out – we're also a kind of social club where people gather and connect.
+Our members are a diverse group of tech-savvy and non-tech individuals alike. They come to build and explore new things, work on their personal projects, create improvements for the lab, make art, learn new skills or simply hang out – we're also a kind of social club where people gather and connect.
 
 While most people at the lab speak German, we have agreed to use English as our written language and in our formal meetups so that international people can join as well.
 
-The Hacking Room Project was started in April 2013 to create a new Hacker-/Makerspace in Munich. After less than a year, in February 2014, we founded the Munich Maker Lab e.V. and moved into our first space, a 25m² room at Werk1 München. A year later, we expanded and moved into new rooms in Obersendling. Since early 2017, we have a industrial space at the Kreativquartier.
+The Hacking Room Project was started in April 2013 to create a new Hacker-/Makerspace in Munich. After less than a year, in February 2014, we founded the Munich Maker Lab e.V. and moved into our first space, a 25m² room at Werk1 München. A year later, we expanded and moved into new rooms in Obersendling. Since early 2017, we have an industrial space at the Kreativquartier.
 
 Join us at one of our next meetups to find out more: <a href={getRelativeLocaleUrl('en', 'visit')}>Visit us</a>
 
@@ -24,7 +25,7 @@ Join us at one of our next meetups to find out more: <a href={getRelativeLocaleU
 
 We believe that technology is best understood by building, experimenting and sharing together. Our community gathers to work on everything from 3D printing and electronics to programming, digital art and alternative infrastructure. We host workshops, meetups and open project nights and provide the tools, space, and community to make it happen. Everyone is welcome – whether you're a seasoned engineer or just curious about how things work.
 
-For more details about our's club mission please check out our <a href={getRelativeLocaleUrl('en', 'statutes')}>Statutes</a>.
+For more details about our club's mission, please check out our <a href={getRelativeLocaleUrl('en', 'statutes')}>Statutes</a>.
 
 ## The Community Approach
 
@@ -40,8 +41,8 @@ In essence, the Munich Maker Lab works best when people _make it happen_ – tog
 
 Our space is equipped for a wide range of making and hacking activities:
 
-<div class="workshop-tags">
-  {[
+<WorkshopAreas
+  tags={[
     '3D Printing',
     'CNC Routing',
     'Laser Cutting',
@@ -62,32 +63,17 @@ Our space is equipped for a wide range of making and hacking activities:
     'DIY',
     'Repair',
     'Art',
-  ].map((tag) => (
-    <span class="workshop-tag">{tag}</span>
-  ))}
-</div>
-
-<style>{`
-  .workshop-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin: 1rem 0;
-  }
-  .workshop-tag {
-    background: transparent;
-    color: var(--link);
-    border: 1px solid currentColor;
-    border-radius: 999px;
-    padding: 3px 13px;
-    font-size: 0.85rem;
-    white-space: nowrap;
-  }
-`}</style>
+  ]}
+>
+  <p>
+    We are always open to exploring new areas and expanding our possibilities – if there's a tool or machine that would
+    benefit the community, we're happy to look into acquiring it.
+  </p>
+</WorkshopAreas>
 
 ## Organization & Membership
 
-We are a non-profit organization run entirely by volunteers.
+We are a non-profit organization run entirely by volunteers. As a community makerspace, we do not offer paid services of any kind – we are not a commercial workshop, studio, or service provider.
 
 Membership is not required to use the space – you're always welcome to just drop by and take a look around.
 Members enjoy additional benefits, such as the option to get a personal key to the space.
