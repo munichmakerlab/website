@@ -52,3 +52,14 @@ See [README.md](./README.md) for project structure and development commands.
 - Keep the site **simple and clean**. Avoid unnecessary features, dependencies or complexity.
 - Prefer static output. Minimise client-side JavaScript – use `client:only` or `client:load` directives only where truly necessary.
 - Run `npm run lint` and `npm run format:fix` before committing.
+
+---
+
+## SEO
+
+- Every page must have a `description` frontmatter field (plain-text, ≤ 160 characters). MDX pages use YAML frontmatter; `*.astro` pages add it to the `frontmatter` object in the script block.
+- Page `title` should follow the pattern **"Page Name – Munich Maker Lab"** (en dash, not hyphen). The home page is the exception and uses just "Munich Maker Lab".
+- The `Content.astro` layout automatically renders `<meta name="description">`, `<link rel="canonical">`, hreflang alternates and Open Graph tags from frontmatter. Do not add these manually in individual pages.
+- When adding a new page, add it in both `src/pages/` (EN) and `src/pages/de/` (DE) so the sitemap and hreflang links stay consistent.
+- The sitemap is generated automatically by `@astrojs/sitemap` on build. No manual sitemap editing is needed.
+- Do not add `noindex` or `robots` meta tags without a documented reason.
