@@ -17,10 +17,8 @@ const frontmatter = {
 
 <Content frontmatter={frontmatter}>
   <p>
-    Das Munich Maker Lab ist ein Makerspace nahe dem Zentrum von München. Wir bieten Werkzeuge, Ressourcen
-    und Platz für Hacker, Maker und Tüftler aller Art. <a href={getRelativeLocaleUrl(locale, 'about')}
-      >Mehr erfahren ...</a
-    >
+    Das Munich Maker Lab ist ein Makerspace nahe dem Zentrum von München. Wir bieten Werkzeuge, Ressourcen und Platz für
+    Hacker, Maker und Tüftler aller Art. <a href={getRelativeLocaleUrl(locale, 'about')}>Mehr erfahren ...</a>
   </p>
   <hr />
   <h2>Folge uns</h2>
@@ -29,6 +27,4 @@ const frontmatter = {
   <hr />
   <h2>Neueste Aktivitäten aus dem Makerspace:</h2>
   <Posts client:only="vue" locale={Astro.currentLocale ?? 'en'} />
-
-
 </Content>
