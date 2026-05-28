@@ -7,7 +7,9 @@ import { getRelativeLocaleUrl } from 'astro:i18n';
 const locale = Astro.currentLocale ?? 'en';
 const frontmatter = {
   title: 'Munich Maker Lab',
-  header_image: '/img/bg_front.jpg',
+  header_image: '/img/bg_front.webp',
+  description:
+    'Das Munich Maker Lab ist ein offener Community-Makerspace in München. Komm zum Lernen, Bauen, Hacken und Kreieren.',
   headline: 'Munich Maker Lab',
   sub_headline: 'Münchens feinster Makerspace',
 };
@@ -15,8 +17,10 @@ const frontmatter = {
 
 <Content frontmatter={frontmatter}>
   <p>
-    Das Munich Maker Lab ist ein Makerspace nahe dem Zentrum von München. Wir bieten Werkzeuge, Ressourcen und Platz für
-    Hacker, Maker und Tüftler aller Art. <a href={getRelativeLocaleUrl(locale, 'about')}>Mehr erfahren ...</a>
+    Das Munich Maker Lab ist ein Makerspace nahe dem Zentrum von München. Wir bieten Werkzeuge, Ressourcen
+    und Platz für Hacker, Maker und Tüftler aller Art. <a href={getRelativeLocaleUrl(locale, 'about')}
+      >Mehr erfahren ...</a
+    >
   </p>
   <hr />
   <h2>Folge uns</h2>
@@ -25,4 +29,6 @@ const frontmatter = {
   <hr />
   <h2>Neueste Aktivitäten aus dem Makerspace:</h2>
   <Posts client:only="vue" locale={Astro.currentLocale ?? 'en'} />
+
+
 </Content>
