@@ -1,29 +1,42 @@
-MunichMakerLab Website
+# MunichMakerLab Website
 
-this website has been built with astro and tries to minimize the gotchas and special purpose additions for maintainabilities sake.
+This website is built with [Astro](https://astro.build) and tries to minimize complexity and special-purpose additions for maintainability's sake.
+
+For AI/Human coding guidelines see [AGENTS.md](./AGENTS.md).
+
+---
 
 ## Project Structure
 
-Inside of this project, you'll see the following folders and files:
+The actual pages are in [`src/pages/`](/src/pages/) and are mostly Markdown/MDX. Adding a new page is as simple as creating a new file, copying the frontmatter from an existing page and customising it.
 
 ```text
 /
-├── public/
-│   └── favicon.svg
+├── public/               # Static assets (fonts, images, manifest)
 ├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
+│   ├── assets/           # Processed assets (images referenced in pages)
+│   ├── components/       # Reusable Astro/Vue components
+│   ├── i18n/ui/          # UI translation strings (en.ts, de.ts)
+│   ├── layouts/          # Page layouts (Content.astro wraps all pages)
+│   └── pages/            # English pages (default)
+│       └── de/           # German translations of each page
 └── package.json
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-Tl;dr: The actual pages of the website are in [src/pages](/src/pages/) and are mostly markdown. Adding another page should be as easy as just creating another file, copy-pasting the head section and customizing it and the page itself.
+---
 
-## Commands
+## Internationalisation (i18n)
 
-All commands are run from the root of the project, from a terminal:
+- **English** is the default language. All pages live directly in `src/pages/`.
+- **German** translations live in `src/pages/de/` and mirror the English pages.
+- When adding or editing a page, always update **both** language versions.
+- UI strings (navigation, footer, etc.) are managed in `src/i18n/ui/en.ts` and `src/i18n/ui/de.ts`.
+
+---
+
+## Development Commands
+
+All commands are run from the root of the project:
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
@@ -34,9 +47,12 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 | `npm run lint`            | Lint the project with ESLint                     |
-| `npm run format:check`    | Check Code Styling with Prettier                 |
-| `npm run format:fix`      | Check Code Styling with Prettier and fix         |
+| `npm run format:check`    | Check code styling with Prettier                 |
+| `npm run format:fix`      | Fix code styling with Prettier                   |
 
-## More Docs
+---
 
-[Astr documentation](https://docs.astro.build) or [Discord server](https://astro.build/chat).
+## Further Reading
+
+- [Astro documentation](https://docs.astro.build)
+- [Astro Discord server](https://astro.build/chat)

@@ -19,9 +19,10 @@ const frontmatter = {
     Hacker, Maker und Tüftler aller Art. <a href={getRelativeLocaleUrl(locale, 'about')}>Mehr erfahren ...</a>
   </p>
   <hr />
+  <h2>Folge uns</h2>
+  Folge uns in den sozialen Medien, um über die neuesten Nachrichten und Aktivitäten im Space auf dem Laufenden zu bleiben:
+  <SocialLinks />
+  <hr />
   <h2>Neueste Aktivitäten aus dem Makerspace:</h2>
   <Posts client:only="vue" locale={Astro.currentLocale ?? 'en'} />
-  <hr />
-  Folge uns in den sozialen Medien, um über die neuesten Nachrichten und Aktivitäten im Space auf dem Laufenden zu bleiben:
-  <SocialLinks locale={locale} />
 </Content>
