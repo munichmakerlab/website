@@ -1,0 +1,38 @@
+---
+import SocialMediaLinks from './SocialMediaLinks.astro';
+---
+
+<div class="social-links">
+  <SocialMediaLinks showLabels={true} />
+</div>
+
+<style>
+  .social-links :global(.links) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .social-links :global(.links > a) {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    color: var(--fg);
+    font-size: 1rem;
+    padding: 0.5rem 0.8rem;
+    border: 1px solid var(--muted, #ccc);
+    border-radius: 0.4rem;
+    transition: opacity 0.2s;
+  }
+
+  .social-links :global(.links > a:hover) {
+    opacity: 0.7;
+  }
+
+  .social-links :global(.links > a svg) {
+    width: 1.4rem;
+    height: 1.4rem;
+    flex-shrink: 0;
+  }
+</style>

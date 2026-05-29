@@ -1,45 +1,87 @@
 ---
 layout: ../layouts/Content.astro
-title: 'About Us'
-header_image: '/img/bg_make.png'
+title: 'About Us – Munich Maker Lab'
+description: "Learn about the Munich Maker Lab – our mission, community, workshop areas and how to get involved in Munich's open makerspace."
+header_image: '/img/bg_banner.webp'
 headline: 'About Us'
 sub_headline: "What's the Munich Maker Lab?"
 ---
 
 import { getRelativeLocaleUrl } from 'astro:i18n';
+import ImpressionGallery from '../components/ImpressionGallery.astro';
+import WorkshopAreas from '../components/WorkshopAreas.astro';
 
-The Munich Maker Lab is a non-profit organization creating an open community workspace where you can learn, teach, share, make, hack, create, enjoy or simply relax. We try to create an environment that supports the do-it-yourself, hacker and maker culture by providing workspace, tools, and infrastructure to our members and everyone else.
+The Munich Maker Lab is a non-profit organization creating an open community workspace where you can learn, teach, share, make, hack, create, enjoy or simply relax. We try to create an environment that supports the do-it-yourself, hacker and maker culture by providing workspace, tools and infrastructure to our members and everyone else.
 
-Everyone is welcome to visit when our website indicates an open status, as we don't have fixed opening times apart from our open Thursday. We are a fully community-driven space and no one is paid for their contributions to the lab.
-Our members are an diverse group of tech-savvy and non-tech individuals alike. They come to build and explore new things, work on their personal projects, create improvements for the lab, make art, learn new skills or simply hang out – we're also a kind of social club where people gather and connect.
+Everyone is welcome to visit when our website indicates an open status, as we don't have fixed opening times apart from our open community Thursday – all members have 24/7 access to the Maker Lab. We are a fully community-driven space and no one is paid for their contributions to the lab.
+Our members are a diverse group of tech-savvy and non-tech individuals alike. They come to build and explore new things, work on their personal projects, create improvements for the lab, make art, learn new skills or simply hang out – we're also a kind of social club where people gather and connect.
 
 While most people at the lab speak German, we have agreed to use English as our written language and in our formal meetups so that international people can join as well.
 
-The Hacking Room Project was started in April 2013 to create a new Hacker-/Makerspace in Munich. After less than a year, in February 2014, we founded the Munich Maker Lab e.V. and moved into our first space, a 25m² room at Werk1 München. A year later, we expanded and moved into new rooms in Obersendling. Since early 2017, we have a industrial space at the Kreativquartier.
+The Hacking Room Project was started in April 2013 to create a new Hacker-/Makerspace in Munich. After less than a year, in February 2014, we founded the Munich Maker Lab e.V. and moved into our first space, a 25m² room at Werk1 München. A year later, we expanded and moved into new rooms in Obersendling. Since early 2017, we have an industrial space at the Kreativquartier.
 
 Join us at one of our next meetups to find out more: <a href={getRelativeLocaleUrl('en', 'visit')}>Visit us</a>
 
+> **Note:** Munich and the surrounding area are home to several makerspaces and open workshops. If you are looking for a specific space, please make sure you have found the right one – it is easy to mix things up. You can [search for other spaces in the region](https://offene-werkstaetten.org/de/werkstatt-suche).
+
+## Our Mission
+
+We believe that technology is best understood by building, experimenting and sharing together. Our community gathers to work on everything from 3D printing and electronics to programming, digital art and alternative infrastructure. We host workshops, meetups and open project nights and provide the tools, space and community to make it happen. Everyone is welcome – whether you're a seasoned engineer or just curious about how things work.
+
+For more details about our club's mission, please check out our <a href={getRelativeLocaleUrl('en', 'statutes')}>Statutes</a>.
+
 ## The Community Approach
 
-At the Munich Maker Lab, we believe that great things happen when people take initiative, just like in open‑source software projects. Our space thrives because members and visitors contribute their time, ideas and skills to make it better. Whether it’s maintaining tools, organizing events, or developing new projects, everything only happens when someone takes it on.
+At the Munich Maker Lab, we believe that great things happen when people take initiative, just like in open‑source software projects. Our space thrives because members and visitors contribute their time, ideas and skills to make it better. Whether it’s maintaining tools, organizing events or developing new projects, everything only happens when someone takes it on.
 
 We try to keep our organization and processes as open and transparent as possible. Everyone is welcome to get involved, suggest improvements and share responsibility. This approach can feel a bit unusual at first, especially if you’re used to more structured or hierarchical organizations, but it gives everyone the chance to shape the community and the space itself.
 
 You don’t need a formal role to help out. Supporting the community can be as simple as taking on a small task, helping with one of our “Mini‑Jobs” or joining an open lab project. Every contribution, no matter how small, helps the space grow and stay alive.
 
-In essence, the Munich Maker Lab works best when people _make it happen_ — together.
+In essence, the Munich Maker Lab works best when people _make it happen_ – together.
+
+## Workshop Areas
+
+Our space is equipped for a wide range of making and hacking activities:
+
+<WorkshopAreas
+  tags={[
+    '3D Printing',
+    'CNC Routing',
+    'Laser Cutting',
+    'Electronics',
+    'Programming',
+    'Digital Media',
+    'Woodworking',
+    'Metalworking',
+    'Welding',
+    'Plastics',
+    'Textiles',
+    'Screenprinting',
+    'Tiffany Glass Art',
+    'Bicycle Repair',
+    'Food',
+    'Pinball',
+    'Hacking',
+    'DIY',
+    'Repair',
+    'Art',
+  ]}
+>
+  <p>
+    We are always open to exploring new areas and expanding our possibilities – if there's a tool or machine that would
+    benefit the community, we're happy to look into acquiring it.
+  </p>
+</WorkshopAreas>
 
 ## Organization & Membership
 
-We are a non-profit organization run entirely by volunteers.  
-If you’d like to support us regularly and become a member, simply fill out our [membership form](https://wiki.munichmakerlab.de/wiki/Become_a_Member).  
-You can send it by email (see details on the form), bring it to the Munich Maker Lab in person, or send it by mail.
+We are a non-profit organization run entirely by volunteers. As a community makerspace, we do not offer paid services of any kind – we are not a commercial workshop, studio or service provider.
 
-Membership is not required to use the space — you’re always welcome to just drop by and take a look around.  
-If you decide to join, you can find more information about the onboarding process on our wiki page: [Onboarding](https://wiki.munichmakerlab.de/wiki/Onboarding).
+Membership is not required to use the space – you're always welcome to just drop by and take a look around.
+Members enjoy additional benefits, such as the option to get a personal key to the space.
 
-Members enjoy additional benefits, such as the option to get a personal key to the space.  
-For more details, see our <a href={getRelativeLocaleUrl('en', 'statutes')}>statutes</a> and <a href={getRelativeLocaleUrl('en', 'scaleoffees')}>scale of fees</a>.
+Interested in becoming a member? <a href={getRelativeLocaleUrl('en', 'join')}>Find out how to join</a>.
 
 ## More questions?
 
@@ -47,24 +89,16 @@ For more details, see our <a href={getRelativeLocaleUrl('en', 'statutes')}>statu
 
 ## Inventory
 
-You can check out our current setup and machines in our [wiki](https://wiki.munichmakerlab.de)
+You can check out most of our current setup and machines in our [wiki](https://wiki.munichmakerlab.de)
 
-![3D scan of the Munichmakerlab.](../assets/3d_lab.jpg)
+## Impressions
+
+<ImpressionGallery />
+
+## Part of the Open Workshop Network
+
+Munich Maker Lab is part of [Verbund Offener Werkstätten](https://offene-werkstaetten.org/werkstatt/munichmakerlab), a directory of open workshops and makerspaces across Germany and beyond. If you're travelling or looking for a space near you, it's a great place to discover other interesting locations in the maker and open workshop community.
 
 ## Support us
 
-We need to pay rent for our space, maintenance for tools and we'd also like
-to support projects that happen at the space. To do so, we need money. We try
-to cover our fixed costs with membership fees.
-
-If you like what we do, and want to give us a quick boost: we also take
-donations. Since we are a non-profit organisation according to German law, we
-can send you a receipt, and you can hand it in with your taxes. Here's our
-bank details:
-
-> Munich Maker Lab e.V.  
-> IBAN: DE25701500001003311071  
-> BIC: SSKMDEMMXXX  
-> Bank: Stadtsparkasse München
-
-Make sure to send us an email, so we can get you your receipt.
+Like what we do? You can support us with a donation – find all the details on our <a href={getRelativeLocaleUrl('en', 'donate')}>Donate</a> page.

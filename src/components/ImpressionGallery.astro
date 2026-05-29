@@ -1,0 +1,75 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image, getImage } from 'astro:assets';
+
+const rawModules = import.meta.glob<{ default: ImageMetadata }>(
+  '../assets/impressions/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}',
+  { eager: true },
+);
+
+const images = await Promise.all(
+  Object.values(rawModules).map(async (mod) => {
+    const src = mod.default;
+    const full = await getImage({ src, format: 'webp' });
+    return { src, fullSrc: full.src, width: src.width, height: src.height };
+  }),
+);
+---
+
+{
+  images.length > 0 && (
+    <div id="impressions-gallery" class="impressions-grid">
+      {images.map(({ src, fullSrc, width, height }) => (
+        <a href={fullSrc} data-pswp-width={width} data-pswp-height={height}>
+          <Image src={src} alt="" width={600} height={400} />
+        </a>
+      ))}
+    </div>
+  )
+}
+
+<script>
+  import PhotoSwipeLightbox from 'photoswipe/lightbox';
+  import 'photoswipe/style.css';
+
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: '#impressions-gallery',
+    children: 'a',
+    pswpModule: () => import('photoswipe'),
+  });
+  lightbox.init();
+</script>
+
+<style>
+  .impressions-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin: 1rem 0;
+  }
+
+  .impressions-grid a {
+    display: block;
+    overflow: hidden;
+    border-radius: 6px;
+    aspect-ratio: 4/3;
+  }
+
+  .impressions-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .impressions-grid img:hover {
+    transform: scale(1.03);
+  }
+
+  @media (max-width: 600px) {
+    .impressions-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

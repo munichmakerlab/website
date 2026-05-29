@@ -11,9 +11,12 @@ import vue from '@astrojs/vue';
 
 import node from '@astrojs/node';
 
+import sitemap from '@astrojs/sitemap';
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [markdoc(), mdx(), icon(), vue()],
+  site: 'https://munichmakerlab.de',
+  integrations: [markdoc(), mdx(), icon(), vue(), sitemap()],
   output: 'static',
   adapter: node({
     mode: 'standalone',
@@ -21,5 +24,9 @@ export default defineConfig({
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'de'],
+    routing: {
+      prefixDefaultLocale: false,
+      redirectToDefaultLocale: false,
+    },
   },
 });

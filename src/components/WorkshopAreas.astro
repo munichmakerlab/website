@@ -1,0 +1,30 @@
+---
+interface Props {
+  tags: string[];
+}
+
+const { tags } = Astro.props;
+---
+
+<div class="workshop-tags">
+  {tags.map((tag) => <span class="workshop-tag">{tag}</span>)}
+</div>
+<slot />
+
+<style>
+  .workshop-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 1rem 0;
+  }
+  .workshop-tag {
+    background: transparent;
+    color: var(--fg);
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    padding: 3px 13px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+</style>

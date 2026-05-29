@@ -209,6 +209,21 @@ const calendarOptions = computed(() => ({
   --fc-list-event-hover-bg-color: var(--card);
 }
 
+/* Smaller event text */
+.calendar-container :deep(.fc-event-title),
+.calendar-container :deep(.fc-event-time),
+.calendar-container :deep(.fc-list-event-title),
+.calendar-container :deep(.fc-list-event-time) {
+  font-size: 0.8rem;
+}
+
+/* Reset global link color so FullCalendar's own color system controls text */
+.calendar-container :deep(a) {
+  color: inherit;
+  text-decoration: none;
+  text-decoration-color: initial;
+}
+
 .event-popover {
   position: fixed; /* Fixed allows it to float over everything regardless of calendar scroll */
   z-index: 1000;

@@ -1,24 +1,33 @@
 ---
 layout: ../../layouts/Content.astro
-title: 'Munich Maker Lab - Besuch'
-header_image: '/img/bg_spacestatus.png'
+title: 'Besuch – Munich Maker Lab'
+description: 'Besuch das Munich Maker Lab. Jeden Donnerstag Open Community Thursday – keine Mitgliedschaft nötig. Adresse, Anfahrt und Barrierefreiheit.'
+header_image: '/img/bg_spacestatus.webp'
 headline: 'Besuch'
 sub_headline: 'Komm vorbei und mach mit!'
 ---
 
 import { getRelativeLocaleUrl } from 'astro:i18n';
+import LightboxImage from '../../components/LightboxImage.astro';
+import aerialView from '../../assets/Makerlab_Location_Arial_large.png';
+import entranceImg from '../../assets/entrance.jpg';
+import kreativquartierPlan from '../../assets/Makerlab_Location_2.webp';
 
-## Komm zu unserem Open Thursday
+## Komm zum Open Community Thursday
 
-Der Open Thursday ist für alle da. Du musst kein Mitglied sein, um vorbeizukommen, und wir bieten auch Führungen an.
+Jeden Donnerstag ab 18 Uhr öffnet das Munich Maker Lab seine Türen für alle – keine Mitgliedschaft nötig, kein festes Programm, keine Anmeldung. Einfach vorbeikommen.
 
-Es ist Donnerstag und Zeit für ein weiteres Vereinstreffen des MuMaLab e.V. Wir haben 3D-Drucker, eine CNC-Fräse, einen großen Lasercutter, Arduinos, Holz- und Metallwerkzeuge sowie kalte Getränke, alles in der gemütlichen Atmosphäre unserer großen Industriehalle. Komm vorbei, hilf mit, tausche dich aus und lerne neue Leute kennen.
+Ob du an einem eigenen Projekt tüfteln, neue Ideen ausprobieren oder einfach abhängen und Gleichgesinnte kennenlernen willst – der Open Community Thursday ist genau das Richtige für dich. Wir haben 3D-Drucker, eine CNC-Fräse, einen großen Lasercutter, Mikrocontroller, Holz- und Metallwerkzeuge und kalte Getränke – alles in unserer weitläufigen Industriehalle.
 
-Noch kein Vereinsmitglied? Komm vorbei und lerne uns kennen. Wir freuen uns immer über neue Gesichter.
+Du bist zum ersten Mal hier? Wir geben dir gerne eine kleine Führung, damit du das Maker Lab kennenlernst, sehen kannst, was hier alles möglich ist, und unsere Community triffst. Neue Gesichter sind immer willkommen!
 
-Jeden Donnerstag ab 18 Uhr.
+**Wann:** Jeden Donnerstag ab 18 Uhr
 
-Du hast donnerstags keine Zeit? Schau einfach vorbei, wenn der Space-Status auf unserer Website „open“ anzeigt, oder besuche eine unserer anderen <a href={getRelativeLocaleUrl('de', 'events')}>Veranstaltungen</a>.
+**Wer:** Alle – Mitglieder und Nicht-Mitglieder gleichermaßen
+
+**Kosten:** Eintritt frei
+
+Du kannst donnerstags nicht? Schau auf unserer Website nach dem aktuellen Status des Maker Labs für spontane Öffnungszeiten oder stöbere in unseren <a href={getRelativeLocaleUrl('de', 'events')}>Veranstaltungen</a> nach weiteren Gelegenheiten, vorbeizukommen.
 
 ## Adresse
 
@@ -28,7 +37,7 @@ Dachauerstr. 112h
 
 ## So findest du uns
 
-Wenn du durch den Haupteingang der Dachauerstr. 112 gehst, halte dich fast geradeaus und gehe in das Gebäude mit den zwei weißen Garagentoren.
+Vor unserem Maker Lab hängt ein großes Schild mit „Munich Maker Lab”. Der Eingang ist das rechte der beiden weißen Garagentore.
 
 <iframe
   frameborder="0"
@@ -40,9 +49,20 @@ Wenn du durch den Haupteingang der Dachauerstr. 112 gehst, halte dich fast gerad
 ></iframe>
 
 <br />
-
 <small>[Größere Karte anzeigen](https://www.openstreetmap.org/node/3426114357#map=19/48.15884/11.55063)</small>
+<br />
+<LightboxImage src={aerialView} alt="Luftaufnahme unseres Standorts" width={1200} />
 
 ## Eingang
 
-![Bild des Eingangs](../../assets/entrance.jpg)
+<LightboxImage src={entranceImg} alt="Bild des Eingangs" width={400} />
+
+## Barrierefreiheit
+
+Im Munich Maker Lab ist jeder willkommen und wir bemühen uns, auf besondere Bedürfnisse einzugehen. Unser Makerspace ist mit dem Rollstuhl zugänglich. Leider befinden sich unsere Toiletten im Keller und sind nicht barrierefrei – in der näheren Umgebung gibt es jedoch rollstuhlgerechte Toiletten. Wenn du besondere Anforderungen hast, schreib uns am besten vorab eine Nachricht, damit wir sicherstellen können, dass bei deinem Besuch alles passt: <a href={getRelativeLocaleUrl('de', 'contact')}>Kontaktiere uns</a>
+
+## Teil des Kreativquartiers
+
+Das Munich Maker Lab liegt mitten im [Kreativquartier München](https://www.kreativquartier-muenchen.de/), einem lebendigen Kreativviertel im Herzen Münchens. Im Quartier gibt es zahlreiche weitere Studios, Werkstätten, Kulturräume und Veranstaltungen – rund um uns ist also immer was los. Wenn du uns besuchst, lohnt sich auch ein Blick auf den Rest des Viertels!
+
+<LightboxImage src={kreativquartierPlan} alt="Plan Kreativquartier" width={1200} />

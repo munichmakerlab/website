@@ -64,12 +64,21 @@ const links = [
     path: props.navLinks.visit,
   },
   {
+    name: t.navbar.events,
+    path: props.navLinks.events,
+  },
+
+  {
+    name: t.navbar.join,
+    path: props.navLinks.join,
+  },
+  {
     name: t.navbar.contact,
     path: props.navLinks.contact,
   },
   {
-    name: t.navbar.events,
-    path: props.navLinks.events,
+    name: t.navbar.donate,
+    path: props.navLinks.donate,
   },
   {
     name: t.navbar.wiki,

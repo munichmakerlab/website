@@ -3,8 +3,8 @@ import type { Translations } from './ui-i18n-helper';
 export const de: Translations = {
   hello: 'Hallo',
   status: {
-    open: 'Der Space ist derzeit geöffnet! Du kannst vorbeikommen und abhängen. Beachte, dass nicht garantiert ist, dass Leute für längere Zeit da sein werden (es sei denn, es ist gerade der offene Donnerstag).',
-    closed: 'Das Lab ist derzeit geschlossen. Ein Mitglied muss kommen und es für Besucher öffnen.',
+    open: 'Das Maker Lab ist gerade geöffnet! Du kannst vorbeikomme. Bitte beachte: Es kann sein, dass nicht durchgehend jemand da ist (außer am Offenen Community Donnerstag).',
+    closed: 'Das Maker Lab ist gerade geschlossen. Ein Mitglied muss erst vorbeikommen und es für Gäste öffnen.',
   },
   calendar: {
     workshops: 'Workshops',
@@ -20,6 +20,8 @@ export const de: Translations = {
     contact: 'Kontakt',
     events: 'Events',
     wiki: 'Wiki',
+    donate: 'Spenden',
+    join: 'Mitmachen',
   },
   footer: {
     formerChannels: 'Frühere Kanäle:',

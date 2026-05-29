@@ -1,45 +1,53 @@
 ---
 layout: ../../layouts/Content.astro
-title: 'Über uns'
-header_image: '/img/bg_make.png'
+title: 'Über uns – Munich Maker Lab'
+description: 'Erfahre mehr über das Munich Maker Lab – unsere Mission, Community, Werkbereiche und wie du dich in Münchens offenem Makerspace einbringen kannst.'
+header_image: '/img/bg_banner.webp'
 headline: 'Über uns'
 sub_headline: 'Was ist das Munich Maker Lab?'
 ---
 
 import { getRelativeLocaleUrl } from 'astro:i18n';
+import ImpressionGallery from '../../components/ImpressionGallery.astro';
+import WorkshopAreas from '../../components/WorkshopAreas.astro';
 
-Das Munich Maker Lab ist eine gemeinnützige Organisation, die einen offenen Community-Workspace schafft, in dem du lernen, lehren, teilen, bauen, hacken, gestalten, Spaß haben oder einfach entspannen kannst. Wir möchten ein Umfeld schaffen, das die Do-it-yourself-, Hacker- und Maker-Kultur unterstützt, indem wir unseren Mitgliedern und allen anderen Arbeitsplätze, Werkzeuge und Infrastruktur zur Verfügung stellen.
+Das Munich Maker Lab ist ein gemeinnütziger Verein, der einen offenen Community-Makerspace betreibt – einen Ort, an dem du lernen, lehren, teilen, bauen, hacken, gestalten, Spaß haben oder einfach entspannen kannst. Wir möchten ein Umfeld schaffen, das die Do-it-yourself-, Hacker- und Maker-Kultur fördert, indem wir unseren Mitgliedern und allen anderen Werkstätten, Werkzeuge und Infrastruktur zur Verfügung stellen.
 
-Jede Person ist willkommen, uns zu besuchen, wenn unsere Website einen offenen Status anzeigt, da wir außer unserem offenen Donnerstag keine festen Öffnungszeiten haben. Wir sind ein vollständig gemeinschaftsgetragener Raum und niemand wird für seinen Beitrag zum Lab bezahlt.
-Unsere Mitglieder sind eine vielfältige Gruppe aus technikaffinen und nicht-technischen Menschen. Sie kommen, um Neues zu bauen und zu entdecken, an eigenen Projekten zu arbeiten, das Lab zu verbessern, Kunst zu schaffen, neue Fähigkeiten zu lernen oder einfach Zeit miteinander zu verbringen. Wir sind auch eine Art sozialer Treffpunkt, an dem Menschen zusammenkommen und sich vernetzen.
+Du bist herzlich willkommen, vorbeizukommen, wenn unsere Website einen offenen Status anzeigt – feste Öffnungszeiten haben wir, abgesehen vom Offenen Community Donnerstag, nicht – die Mitglieder selbst verfügen über 24/7 Zugang. Unser Makerspace wird vollständig von der Community getragen, und niemand wird für seinen Beitrag bezahlt.
+Unsere Mitglieder sind eine bunt gemischte Gruppe: von technikaffinen bis hin zu nicht-technischen Menschen. Sie kommen, um Neues zu bauen und zu entdecken, an eigenen Projekten zu arbeiten, das Lab zu verbessern, Kunst zu schaffen, neue Fähigkeiten zu lernen oder einfach Zeit miteinander zu verbringen – wir sind auch ein bisschen sozialer Treffpunkt, an dem Menschen zusammenkommen und sich vernetzen.
 
-Obwohl die meisten Menschen im Lab Deutsch sprechen, haben wir uns darauf geeinigt, Englisch als Schriftsprache und bei formellen Treffen zu verwenden, damit auch internationale Personen teilnehmen können.
+Auch wenn die meisten Leute im Makerspace Deutsch sprechen, haben wir uns darauf geeinigt, Englisch als Schriftsprache und in offiziellen Treffen zu verwenden, damit auch internationale Mitglieder unkompliziert mitmachen können.
 
-Das Hacking Room Project wurde im April 2013 ins Leben gerufen, um einen neuen Hacker- und Makerspace in München zu schaffen. Weniger als ein Jahr später, im Februar 2014, gründeten wir den Verein Munich Maker Lab e.V. und zogen in unseren ersten Raum, ein 25 m² großes Zimmer im Werk1 München. Ein Jahr später erweiterten wir uns und zogen in neue Räume in Obersendling. Seit Anfang 2017 verfügen wir über eine Industriefläche im Kreativquartier.
+Das Hacking Room Project wurde im April 2013 ins Leben gerufen, um einen neuen Hacker- und Makerspace in München zu schaffen. Schon im Februar 2014 – knapp ein Jahr später – haben wir den Verein Munich Maker Lab e.V. gegründet und sind in unseren ersten Standort gezogen: einen winzigen, 25 m² kleinen Raum im Werk1 München. Ein Jahr später folgte der Umzug in größere Räumlichkeiten in Obersendling, und seit Anfang 2017 sind wir mit einer eigenen Industriehalle im Kreativquartier zuhause.
 
-Besuche eines unserer nächsten Treffen, um mehr zu erfahren: <a href={getRelativeLocaleUrl('de', 'visit')}>Besuch uns</a>
+Komm zu einem unserer nächsten Treffen und erfahre mehr: <a href={getRelativeLocaleUrl('de', 'visit')}>Besuch uns</a>
 
-## Der Community-Ansatz
+> **Hinweis:** In München und der Umgebung gibt es mehrere Makerspaces und offene Werkstätten. Wenn du nach einem bestimmten Space suchst, schau bitte kurz nach, ob du auch den richtigen gefunden hast – es ist leicht, die Angebote zu verwechseln. Du kannst [nach anderen Spaces in der Region suchen](https://offene-werkstaetten.org/de/werkstatt-suche).
 
-Im Munich Maker Lab sind wir überzeugt, dass Großartiges entsteht, wenn Menschen Initiative ergreifen, ähnlich wie bei Open-Source-Softwareprojekten. Unser Raum lebt davon, dass Mitglieder und Besucherinnen und Besucher ihre Zeit, Ideen und Fähigkeiten einbringen, um ihn weiterzuentwickeln. Ob es um die Wartung von Werkzeugen, die Organisation von Veranstaltungen oder die Entwicklung neuer Projekte geht, alles geschieht, weil jemand die Verantwortung übernimmt.
+## Unsere Mission
 
-Wir bemühen uns, unsere Organisation und Prozesse so offen und transparent wie möglich zu gestalten. Jede Person ist eingeladen, sich einzubringen, Verbesserungen vorzuschlagen und Verantwortung zu übernehmen. Dieser Ansatz kann zunächst ungewohnt wirken, besonders wenn man stärker strukturierte oder hierarchische Organisationen kennt, bietet jedoch allen die Möglichkeit, die Gemeinschaft und den Raum aktiv mitzugestalten.
+Wir sind überzeugt, dass man Technologie am besten versteht, wenn man sie gemeinsam baut, ausprobiert und sein Wissen teilt. In unserer Community arbeiten Menschen an den unterschiedlichsten Themen – von 3D-Druck und Elektronik über Programmierung und digitale Kunst bis hin zu alternativer Infrastruktur. Dafür veranstalten wir Workshops, Meetups und offene Projektabende und stellen Werkzeuge, Platz und eine aktive Community zur Verfügung. Alle sind willkommen – egal ob mit langjähriger Engineering-Erfahrung oder einfach nur neugierig, wie Dinge funktionieren.
 
-Man braucht keine formelle Rolle, um zu helfen. Unterstützung kann so einfach sein wie die Übernahme einer kleinen Aufgabe, die Mithilfe bei einem unserer „Mini-Jobs“ oder die Beteiligung an einem offenen Lab-Projekt. Jeder Beitrag, egal wie klein, hilft dem Raum zu wachsen und lebendig zu bleiben.
+Mehr zu unserem Vereinszweck findest du in unserer <a href={getRelativeLocaleUrl('de', 'statutes')}>Satzung</a>.
 
-Im Kern funktioniert das Munich Maker Lab am besten, wenn Menschen es gemeinsam möglich machen.
+## Der Community-Gedanke
+
+Im Munich Maker Lab sind wir überzeugt, dass Großartiges dann entsteht, wenn Menschen einfach loslegen – ähnlich wie in Open-Source-Projekten. Unser Makerspace lebt davon, dass Mitglieder und Gäste ihre Zeit, ihre Ideen und ihre Fähigkeiten einbringen und ihn dadurch besser machen. Egal ob Werkzeuge gewartet, Events organisiert oder neue Projekte gestartet werden: All das passiert nur, weil jemand es in die Hand nimmt.
+
+Wir versuchen, unsere Organisation und unsere Abläufe so offen und transparent wie möglich zu halten. Alle sind eingeladen, sich einzubringen, Verbesserungen vorzuschlagen und Verantwortung zu übernehmen. Dieser Ansatz wirkt anfangs vielleicht ungewohnt, vor allem, wenn man stärker strukturierte oder hierarchische Organisationen gewohnt ist – er gibt aber allen die Chance, die Community und den Makerspace aktiv mitzugestalten.
+
+Du brauchst keine offizielle Rolle, um mitzuhelfen. Unterstützung kann so einfach sein wie eine kleine Aufgabe zu übernehmen, bei einem unserer „Mini-Jobs“ mitzumachen oder dich an einem offenen Lab-Projekt zu beteiligen. Jeder Beitrag, egal wie klein, trägt dazu bei, dass der Makerspace wächst und lebendig bleibt.
+
+Kurz gesagt: Das Munich Maker Lab funktioniert dann am besten, wenn wir gemeinsam _make it happen_.
 
 ## Organisation und Mitgliedschaft
 
-Wir sind ein gemeinnütziger Verein, der vollständig ehrenamtlich betrieben wird.
-Wenn du uns regelmäßig unterstützen und Mitglied werden möchtest, fülle einfach unser [Mitgliedsformular](https://wiki.munichmakerlab.de/wiki/Become_a_Member) aus.
-Du kannst es per E-Mail (Details stehen auf dem Formular), persönlich im Munich Maker Lab abgeben oder per Post schicken.
+Wir sind ein gemeinnütziger Verein und werden komplett ehrenamtlich betrieben. Als Community-Makerspace bieten wir keine kostenpflichtigen Dienstleistungen an – wir sind weder ein kommerzieller Betrieb noch ein Atelier oder Dienstleister.
 
-Eine Mitgliedschaft ist nicht erforderlich, um den Raum zu nutzen. Du kannst jederzeit vorbeikommen und dich umsehen.
-Wenn du dich für eine Mitgliedschaft entscheidest, findest du weitere Informationen zum Aufnahmeprozess auf unserer Wiki-Seite: [Onboarding](https://wiki.munichmakerlab.de/wiki/Onboarding).
+Eine Mitgliedschaft ist nicht nötig, um den Makerspace zu besuchen – du kannst jederzeit einfach vorbeikommen und dich umsehen.
+Mitglieder bekommen darüber hinaus weitere Vorteile, zum Beispiel die Möglichkeit, einen eigenen Schlüssel zum Makerspace zu erhalten.
 
-Mitglieder genießen zusätzliche Vorteile, wie zum Beispiel die Möglichkeit, einen persönlichen Schlüssel für den Raum zu erhalten.
-Weitere Details findest du in unserer <a href={getRelativeLocaleUrl('de', 'statutes')}>Satzung</a> und unserer <a href={getRelativeLocaleUrl('de', 'scaleoffees')}>Beitragsordnung</a>.
+Du möchtest Mitglied werden? <a href={getRelativeLocaleUrl('de', 'join')}>Hier erfährst du, wie es geht</a>.
 
 ## Weitere Fragen?
 
@@ -49,17 +57,48 @@ Weitere Details findest du in unserer <a href={getRelativeLocaleUrl('de', 'statu
 
 Unser aktuelles Setup und unsere Maschinen kannst du in unserem [Wiki](https://wiki.munichmakerlab.de) einsehen.
 
-![3D-Scan des Munich Maker Lab.](../../assets/3d_lab.jpg)
+## Werkbereiche
+
+Unser Makerspace ist für viele verschiedene Making- und Hacking-Aktivitäten ausgestattet:
+
+<WorkshopAreas
+  tags={[
+    '3D-Druck',
+    'CNC-Fräse',
+    'Laserschneiden',
+    'Elektronik',
+    'Programmieren',
+    'Digitale Medien',
+    'Holzbearbeitung',
+    'Metallbearbeitung',
+    'Schweißen',
+    'Kunststoff',
+    'Textil',
+    'Siebdruck',
+    'Tiffany-Glaskunst',
+    'Fahrrad',
+    'Lebensmittel',
+    'Flipper',
+    'Hacking',
+    'DIY',
+    'Reparatur',
+    'Kunst',
+  ]}
+>
+  <p>
+    Wir sind immer offen dafür, neue Bereiche zu erschließen und unsere Möglichkeiten zu erweitern – wenn ein Werkzeug
+    oder eine Maschine der Community etwas bringt, schauen wir gerne, ob wir sie anschaffen können.
+  </p>
+</WorkshopAreas>
+
+## Impressionen
+
+<ImpressionGallery />
+
+## Teil des Verbunds Offener Werkstätten
+
+Das Munich Maker Lab ist Teil des [Verbunds Offener Werkstätten](https://offene-werkstaetten.org/werkstatt/munichmakerlab) – einem Verzeichnis offener Werkstätten und Makerspaces in Deutschland und darüber hinaus. Wenn du gerade auf Reisen bist oder einen Makerspace in deiner Nähe suchst, findest du dort viele weitere spannende Orte aus der Maker- und Offene-Werkstätten-Community.
 
 ## Unterstütze uns
 
-Wir müssen Miete für unsere Räume zahlen, Werkzeuge instand halten und möchten außerdem Projekte unterstützen, die im Space stattfinden. Dafür benötigen wir finanzielle Mittel. Unsere Fixkosten versuchen wir über Mitgliedsbeiträge zu decken.
-
-Wenn dir gefällt, was wir tun, und du uns kurzfristig unterstützen möchtest, freuen wir uns auch über Spenden. Da wir nach deutschem Recht eine gemeinnützige Organisation sind, können wir dir eine Spendenquittung ausstellen, die du steuerlich geltend machen kannst. Hier sind unsere Bankdaten:
-
-> Munich Maker Lab e.V.
-> IBAN: DE25701500001003311071
-> BIC: SSKMDEMMXXX
-> Bank: Stadtsparkasse München
-
-Bitte sende uns eine E-Mail, damit wir dir deine Spendenquittung zukommen lassen können.
+Gefällt dir, was wir machen? Mit einer Spende kannst du uns direkt unterstützen – alle Details findest du auf unserer <a href={getRelativeLocaleUrl('de', 'donate')}>Spenden-Seite</a>.

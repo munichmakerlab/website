@@ -12,7 +12,20 @@ const navLinks = {
   visit: getRelativeLocaleUrl(currentLocale, '/visit'),
   contact: getRelativeLocaleUrl(currentLocale, '/contact'),
   events: getRelativeLocaleUrl(currentLocale, '/events/'),
+  join: getRelativeLocaleUrl(currentLocale, '/join'),
+  donate: getRelativeLocaleUrl(currentLocale, '/donate'),
 };
+
+const siteUrl = 'https://munichmakerlab.de';
+const pathname = Astro.url.pathname;
+const basePath = pathname.startsWith('/de/') ? pathname.slice(3) : pathname === '/de' ? '/' : pathname;
+const canonicalUrl = Astro.url.href;
+const enAlternateUrl = siteUrl + getRelativeLocaleUrl('en', basePath);
+const deAlternateUrl = siteUrl + getRelativeLocaleUrl('de', basePath);
+
+const fallbackDescription =
+  "Munich Maker Lab – Munich's open community makerspace. A place to learn, build, hack and create together.";
+const description = frontmatter.description ?? fallbackDescription;
 ---
 
 <html lang={currentLocale}>
@@ -20,6 +33,11 @@ const navLinks = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{frontmatter.title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang="en" href={enAlternateUrl} />
+    <link rel="alternate" hreflang="de" href={deAlternateUrl} />
+    <link rel="alternate" hreflang="x-default" href={enAlternateUrl} />
 
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <link rel="shortcut icon" href="/favicon.ico" />
@@ -27,13 +45,10 @@ const navLinks = {
     <meta name="apple-mobile-web-app-title" content="Mumalab" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Munich Maker Lab" />
-    <meta property="og:url" content="https://munichmakerlab.de" />
+    <meta property="og:title" content={frontmatter.title} />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content="https://munichmakerlab.de/web-app-manifest-512x512.png" />
-    <meta
-      property="og:description"
-      content="Munich's freshest makerspace! Join us in making and hacking whatever your heart desires."
-    />
+    <meta property="og:description" content={description} />
     <script is:inline>
       (function () {
         const stored = localStorage.getItem('theme');
@@ -68,6 +83,7 @@ const navLinks = {
     color-scheme: light;
     font-family: 'Lora', Arial, Helvetica, sans-serif;
     font-size: 20px;
+    line-height: 1.75;
     --bg: #ffffff;
     --fg: #404040;
     --muted: #666666;
@@ -105,21 +121,24 @@ const navLinks = {
   }
 
   a {
-    color: var(--fg);
+    color: var(--link);
+    text-underline-offset: 3px;
+    text-decoration-color: color-mix(in srgb, var(--link) 40%, transparent);
+    transition:
+      text-decoration-color 0.15s ease,
+      color 0.15s ease;
   }
-  .content {
-    width: 50vw;
-    margin: auto;
-    margin-top: 5rem;
+  a:hover {
+    text-decoration-color: var(--link);
   }
 
-  @media (max-width: 950px) {
-    .content {
-      width: 90vw;
-    }
-    .content img {
-      max-width: 100%;
-      height: auto;
-    }
+  .content {
+    max-width: 1400px;
+    width: 90%;
+    margin: 5rem auto 0;
+  }
+  .content img {
+    max-width: 100%;
+    height: auto;
   }
 </style>

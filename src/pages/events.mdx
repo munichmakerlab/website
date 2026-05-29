@@ -1,7 +1,8 @@
 ---
 layout: ../layouts/Content.astro
-title: 'Munich Maker Lab - Events'
-header_image: '/img/bg_arduino.png'
+title: 'Events – Munich Maker Lab'
+description: 'Upcoming events, workshops and meetups at the Munich Maker Lab. Browse our calendar and register for workshops.'
+header_image: '/img/bg_program.webp'
 headline: 'Events'
 sub_headline: 'This is what is going on at the MuMaLand.'
 ---
@@ -10,12 +11,16 @@ sub_headline: 'This is what is going on at the MuMaLand.'
 
 Here you'll find all upcoming activities at the space. Unless in rare cases where it will be stated, no membership is required to attend. We do look forward to seeing you!
 
-Events <strong style="color: #f89538;">marked in orange</strong> can be attended without registration - usually meetups or other open events. Regular events are:
+import Calendar from '../components/Calendar.vue';
 
-- Plenum: A casual get-together to chat, collaborate, and work on projects. If you're new and want a tour of the lab, this is the perfect opportunity!
-- Project and Cleanup Day: Our community event to refresh the space, improve the lab, and work on personal or group projects together.
+<Calendar client:load />
 
-Events <strong style="color: #3788d8;">marked in blue</strong> are workshops that do require a (free) registration in our ticketing system to attend. You can register via the calendar entry or by visiting our [Workshop Registration System](https://tickets.munichmakerlab.de/mumalab/courses/). Regular workshops are:
+Events <strong style="color: #f89538;">marked with orange dot</strong> can be attended without registration - usually meetups or other open events. Regular events are:
+
+- Plenum: A casual get-together to chat, collaborate and work on projects. If you're new and want a tour of the lab, this is the perfect opportunity!
+- Project and Cleanup Day: Our community event to refresh the space, improve the lab and work on personal or group projects together.
+
+Events <strong style="color: #3788d8;">marked with blue dot</strong> are workshops that do require a (free) registration in our ticketing system to attend. You can register via the calendar entry or by visiting our [Workshop Registration System](https://tickets.munichmakerlab.de/mumalab/courses/). Regular workshops are:
 
 - 3D Printing Introduction
 - Laser Cutter Introduction
@@ -23,6 +28,13 @@ Events <strong style="color: #3788d8;">marked in blue</strong> are workshops tha
 - Workshop Safety Courses
 - Onboarding for New Members: You can also just stop by at certain times to get an onboarding. Learn more at [our wiki](https://wiki.munichmakerlab.de/wiki/Onboarding#Onboarding)
 
-import Calendar from '../components/Calendar.vue';
+## Subscribe to our Calendars
 
-<Calendar client:load />
+You can subscribe to our calendar feeds directly in your calendar app:
+
+- [Open Events & Meetups (Google Calendar)](webcal://calendar.google.com/calendar/ical/lbd0aa2rlahecp7juvp35hd0k0%40group.calendar.google.com/public/basic.ics)
+- [Workshops & Ticketed Events (Pretix)](webcal://tickets.munichmakerlab.de/mumalab/events/ical/?locale=en)
+
+## More Events in Munich
+
+Looking for more maker and open workshop events in Munich? Check out [Munich Makes](https://calendar.munichmakes.de/), a community calendar collecting events from makerspaces and open workshops across the city.

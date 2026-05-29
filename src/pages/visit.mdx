@@ -1,24 +1,34 @@
 ---
 layout: ../layouts/Content.astro
-title: 'Munich Maker Lab - Visit'
-header_image: '/img/bg_spacestatus.png'
+title: 'Visit – Munich Maker Lab'
+description: 'Visit the Munich Maker Lab. Open Community Thursday every week – no membership required. Address, directions and accessibility info.'
+header_image: '/img/bg_opendoors.webp'
 headline: 'Visit'
 sub_headline: 'Come and join us!'
 ---
 
 import { getRelativeLocaleUrl } from 'astro:i18n';
+import { Image } from 'astro:assets';
+import LightboxImage from '../components/LightboxImage.astro';
+import aerialView from '../assets/Makerlab_Location_Arial_large.png';
+import entranceImg from '../assets/entrance.jpg';
+import kreativquartierPlan from '../assets/Makerlab_Location_2.webp';
 
-## Join us on Open Thursday
+## Join us for Open Community Thursday
 
-Open Thursdays are for everyone! You don't need to be a member to join us, and we'll be giving tours!
+Every Thursday from 6 PM, Munich Maker Lab opens its doors to everyone – no membership needed, no agenda required. Just show up.
 
-It's Thursday, and time for another MuMaLab e.V. club meeting! We have 3D printers, a CNC router, a huge laser cutter, Arduinos, wood & metal tools and cold drinks. All in the cozy atmosphere of our big industrial-style hall. Come by to help out, chat and meet new people!
+Whether you want to tinker on a personal project, explore new ideas or simply hang out and meet like-minded people, Open Community Thursday is the place to be. We have 3D printers, a CNC router, a large laser cutter, Arduinos, wood & metal tools and cold drinks – all inside our spacious industrial-style hall.
 
-Not a club member yet? Come and get to know us – we love meeting new faces!
+New here? We offer guided tours so you can see the space, discover what's possible and get to know the community. We love meeting new faces!
 
-Every Thursday starting at 6PM.
+**When:** Every Thursday, starting at 6 PM
 
-Can’t make it on Thursday? Drop by anytime the Space status on our website shows open, or join us for one of our other <a href={getRelativeLocaleUrl('en', 'events')}>Events</a>!
+**Who:** Everyone – members and non-members alike
+
+**Cost:** Free to visit
+
+Can't make it on a Thursday? Check the Space status on our website for spontaneous open hours or browse our <a href={getRelativeLocaleUrl('en', 'events')}>Events</a> for other opportunities to visit.
 
 ## Address
 
@@ -28,8 +38,7 @@ Dachauerstr. 112h
 
 ## Find the space
 
-Coming in through the main entry of Dachauerstr. 112, head into the building
-almost straight ahead, with the two white garage doors.
+Our space has a big label in front with "Munich Maker Lab". The entry is in the right of the two white garage doors.
 
 <iframe
   frameborder="0"
@@ -41,7 +50,19 @@ almost straight ahead, with the two white garage doors.
 ></iframe>
 <br />
 <small>[Show bigger map](https://www.openstreetmap.org/node/3426114357#map=19/48.15884/11.55063)</small>
+<br />
+<LightboxImage src={aerialView} alt="Aerial view of our location" width={1200} />
 
 ## Entrance
 
-![Picture of entrance](../assets/entrance.jpg)
+<LightboxImage src={entranceImg} alt="Picture of entrance" width={400} />
+
+## Accessibility
+
+Everyone is welcome at the Munich Maker Lab and we do our best to accommodate special needs. Our space is accessible by wheelchair. Unfortunately, our bathrooms are located in the basement and are not wheelchair accessible – however, there are accessible bathrooms in the surrounding area. If you have specific accessibility requirements, please drop us a message beforehand so we can make sure everything is ready for your visit: <a href={getRelativeLocaleUrl('en', 'contact')}>Contact us</a>
+
+## Part of the Kreativquartier
+
+Munich Maker Lab is located inside the [Kreativquartier München](https://www.kreativquartier-muenchen.de/), a vibrant creative district in the heart of Munich. The area is home to many other studios, workshops, cultural spaces and events – so there's always plenty to explore around us. If you're visiting us, take some time to discover what else the neighborhood has to offer!
+
+<LightboxImage src={kreativquartierPlan} alt="Plan Kreativquartier" width={1200} />
