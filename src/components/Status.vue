@@ -7,6 +7,12 @@
       <span class="modal-close">X</span>
       <div :class="`tally ${doorStatus.door}`"></div>
       {{ doorStatus.door === 'open' ? t.status.open : t.status.closed }}
+      <p class="status-hint">
+        {{ t.status.historyHint }}
+        <a href="https://status.munichmakerlab.de" target="_blank" rel="noopener noreferrer">
+          {{ t.status.historyLinkLabel }}
+        </a>
+      </p>
     </div>
   </div>
 </template>
@@ -116,5 +122,15 @@ const closeModal = () => {
   max-height: 80%;
   overflow-y: auto;
   text-align: center;
+}
+
+.status-hint {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+.status-hint a {
+  color: inherit;
+  text-decoration: underline;
 }
 </style>
