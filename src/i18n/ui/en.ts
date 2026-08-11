@@ -29,4 +29,33 @@ export const en = {
     privacyPolicy: 'Privacy Policy',
     editOnGithub: 'Edit this page on',
   },
+  contactForm: {
+    name: 'Name',
+    namePlaceholder: 'Your name',
+    nameMissing: 'Please provide your name.',
+    email: 'Email address',
+    emailPlaceholder: 'you@example.com',
+    emailMissing: 'Please provide your email address.',
+    emailInvalid: 'Please provide a valid email address.',
+    subject: 'Subject',
+    subjectPlaceholder: 'What is this about?',
+    subjectMissing: 'Please provide a subject.',
+    message: 'Message',
+    messagePlaceholder: 'How can we help?',
+    messageMissing: 'Please enter your message.',
+    fileNote:
+      'This form cannot take attachments. If you need to send us files, just mention it here – we will reply by email and you can attach them to your answer.',
+    submit: 'Send message',
+    sending: 'Sending …',
+    success: 'Thanks! Your message has been sent.',
+    error: 'Something went wrong. Please try again later.',
+    captchaMissing: 'Please load and solve the spam protection before sending.',
+    captchaConsent:
+      'To protect this form from spam we use hCaptcha. Loading it sets cookies and transfers your IP address to Intuition Machines, Inc. in the USA. Nothing is loaded until you click the button.',
+    captchaConsentButton: 'Load spam protection',
+    captchaTrialNote:
+      'We are trialling hCaptcha for now to get a long-term handle on spam. We know it is not the most privacy-friendly option and intend to replace it soon.',
+    privacyNote: 'Your details are transmitted solely to answer your enquiry. More information in our',
+    privacyLinkLabel: 'privacy policy',
+  },
 } as const;

@@ -1,0 +1,382 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { getUiTranslations } from '../i18n/ui/ui-i18n-helper';
+
+interface Props {
+  /** Which mailbox the message is delivered to. */
+  recipient?: 'info' | 'vorstand';
+  locale?: string;
+  /**
+   * Renders the hCaptcha widget. Set to false to fall back to honeypot-only
+   * spam protection – see the privacy note in AGENTS.md before changing.
+   */
+  captcha?: boolean;
+}
+
+/**
+ * Web3Forms access keys. These are public by design – they only authorise
+ * delivery to the mailbox they were issued for and carry no account access.
+ */
+const ACCESS_KEYS: Record<string, string> = {
+  info: '1800e3ce-5da4-4b3e-bfa3-6c3f1d5ca463',
+  vorstand: '0d08005a-a531-481f-9cd7-851a4be6b2f8',
+};
+
+/** Shared hCaptcha site key of the Web3Forms free plan (zero-config integration). */
+const HCAPTCHA_SITE_KEY = '50b2fe65-b00b-4b9e-ad62-3ba471098be2';
+
+const { recipient = 'info', locale = Astro.currentLocale ?? 'en', captcha = true } = Astro.props;
+const t = getUiTranslations(locale).contactForm;
+const accessKey = ACCESS_KEYS[recipient] ?? ACCESS_KEYS.info;
+const privacyUrl = getRelativeLocaleUrl(locale, '/privacy');
+---
+
+<form
+  class="contact-form"
+  action="https://api.web3forms.com/submit"
+  method="POST"
+  novalidate
+  data-contact-form
+  data-recipient={recipient}
+  data-sending={t.sending}
+  data-success={t.success}
+  data-error={t.error}
+  data-captcha-missing={t.captchaMissing}
+>
+  <input type="hidden" name="access_key" value={accessKey} />
+
+  {/* Honeypot: hidden from users, bots that tick it get rejected. */}
+  <input type="checkbox" name="botcheck" class="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+  <div class="field">
+    <label for={`cf-name-${recipient}`}>{t.name}</label>
+    <input id={`cf-name-${recipient}`} type="text" name="name" placeholder={t.namePlaceholder} required />
+    <p class="feedback empty-feedback">{t.nameMissing}</p>
+  </div>
+
+  <div class="field">
+    <label for={`cf-email-${recipient}`}>{t.email}</label>
+    <input id={`cf-email-${recipient}`} type="email" name="email" placeholder={t.emailPlaceholder} required />
+    <p class="feedback empty-feedback">{t.emailMissing}</p>
+    <p class="feedback invalid-feedback">{t.emailInvalid}</p>
+  </div>
+
+  <div class="field">
+    <label for={`cf-subject-${recipient}`}>{t.subject}</label>
+    <input id={`cf-subject-${recipient}`} type="text" name="subject" placeholder={t.subjectPlaceholder} required />
+    <p class="feedback empty-feedback">{t.subjectMissing}</p>
+  </div>
+
+  <div class="field">
+    <label for={`cf-message-${recipient}`}>{t.message}</label>
+    <textarea id={`cf-message-${recipient}`} name="message" rows="6" placeholder={t.messagePlaceholder} required
+    ></textarea>
+    <p class="feedback empty-feedback">{t.messageMissing}</p>
+    <p class="file-note">{t.fileNote}</p>
+  </div>
+
+  {
+    captcha && (
+      <div class="field">
+        {/*
+          hCaptcha sets cookies and transfers data to the US, so it is not
+          loaded until the visitor asks for it. That keeps the page free of
+          consent-requiring storage until they actively opt in.
+        */}
+        <div class="captcha-consent" data-captcha-consent>
+          <p class="captcha-consent-text">{t.captchaConsent}</p>
+          <p class="captcha-trial-note">{t.captchaTrialNote}</p>
+          <button type="button" class="captcha-consent-button" data-captcha-load>
+            {t.captchaConsentButton}
+          </button>
+        </div>
+        <div class="h-captcha" data-sitekey={HCAPTCHA_SITE_KEY} hidden />
+        <p class="feedback captcha-feedback">{t.captchaMissing}</p>
+      </div>
+    )
+  }
+
+  <button type="submit">{t.submit}</button>
+
+  <p class="privacy-note">
+    {t.privacyNote}{' '}
+    <a href={privacyUrl}>{t.privacyLinkLabel}</a>
+  </p>
+
+  <p class="result" data-contact-result role="status" aria-live="polite"></p>
+</form>
+
+<script>
+  const forms = document.querySelectorAll<HTMLFormElement>('form[data-contact-form]');
+
+  forms.forEach((form) => {
+    const result = form.querySelector<HTMLElement>('[data-contact-result]');
+    if (!result) return;
+
+    const messages = {
+      sending: form.dataset.sending ?? '',
+      success: form.dataset.success ?? '',
+      error: form.dataset.error ?? '',
+    };
+    const recipient = form.dataset.recipient ?? 'info';
+
+    // Click-to-load consent gate: hCaptcha is only fetched once the visitor
+    // opts in, so no third-party storage happens on page load.
+    const consent = form.querySelector<HTMLElement>('[data-captcha-consent]');
+    const widget = form.querySelector<HTMLElement>('.h-captcha');
+
+    form.querySelector<HTMLButtonElement>('[data-captcha-load]')?.addEventListener('click', () => {
+      if (!consent || !widget) return;
+      consent.hidden = true;
+      widget.hidden = false;
+
+      const script = document.createElement('script');
+      script.src = 'https://js.hcaptcha.com/1/api.js';
+      script.async = true;
+      script.defer = true;
+      document.head.appendChild(script);
+    });
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      form.classList.add('was-validated');
+
+      if (!form.checkValidity()) {
+        form.querySelector<HTMLElement>(':invalid')?.focus();
+        return;
+      }
+
+      // hCaptcha injects its response textarea into the form only once solved,
+      // so this has to be looked up at submit time rather than upfront.
+      const captchaField = form.querySelector<HTMLTextAreaElement>('textarea[name="h-captcha-response"]');
+      const captchaSolved = !form.querySelector('.h-captcha') || Boolean(captchaField?.value);
+      form.classList.toggle('captcha-missing', !captchaSolved);
+      if (!captchaSolved) return;
+
+      const payload: Record<string, FormDataEntryValue> = Object.fromEntries(new FormData(form));
+      payload.subject = `ContactForm: ${String(payload.subject ?? '')} (${recipient})`;
+
+      result.style.display = '';
+      result.classList.remove('is-success', 'is-error');
+      result.textContent = messages.sending;
+
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(payload),
+        });
+
+        const data = await response.json().catch(() => null);
+
+        if (response.ok) {
+          result.classList.add('is-success');
+          result.textContent = messages.success;
+          form.reset();
+          form.classList.remove('was-validated');
+        } else {
+          // Visitors get the localised message; the API's own wording goes to
+          // the console (and inline during development) so failures such as a
+          // rejected captcha token are diagnosable instead of silent.
+          const detail = typeof data?.message === 'string' ? data.message : `HTTP ${response.status}`;
+          console.error('[ContactForm] Web3Forms rejected the submission:', response.status, data);
+          result.classList.add('is-error');
+          result.textContent = import.meta.env.DEV ? `${messages.error} (${detail})` : messages.error;
+        }
+      } catch (error) {
+        console.error('[ContactForm] Could not reach Web3Forms:', error);
+        result.classList.add('is-error');
+        result.textContent = messages.error;
+      }
+
+      (window as unknown as { hcaptcha?: { reset: () => void } }).hcaptcha?.reset();
+
+      window.setTimeout(() => {
+        result.style.display = 'none';
+      }, 8000);
+    });
+  });
+</script>
+
+<style>
+  .contact-form {
+    margin: 1.5rem 0;
+    max-width: 40rem;
+  }
+
+  .botcheck {
+    position: absolute;
+    left: -5000px;
+  }
+
+  .field {
+    margin-bottom: 1.25rem;
+  }
+
+  .contact-form label {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    display: block;
+    width: 100%;
+    padding: 8px 12px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--fg);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    transition:
+      border-color 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+
+  .contact-form textarea {
+    resize: vertical;
+    min-height: 8rem;
+  }
+
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder {
+    color: var(--muted);
+  }
+
+  .contact-form input:focus-visible,
+  .contact-form textarea:focus-visible {
+    outline: none;
+    border-color: var(--link);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--link) 25%, transparent);
+  }
+
+  .contact-form button {
+    padding: 8px 24px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #fff;
+    background: var(--link);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+  }
+
+  .contact-form button:hover {
+    opacity: 0.85;
+  }
+
+  .feedback {
+    display: none;
+    margin: 0.35rem 0 0;
+    font-size: 0.85rem;
+    color: #dc3545;
+  }
+
+  .was-validated :placeholder-shown:invalid ~ .empty-feedback,
+  .was-validated :not(:placeholder-shown):invalid ~ .invalid-feedback {
+    display: block;
+  }
+
+  .was-validated input:invalid,
+  .was-validated textarea:invalid {
+    border-color: #dc3545;
+  }
+
+  .captcha-consent {
+    padding: 0.9rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--card);
+  }
+
+  .captcha-consent-text {
+    margin: 0 0 0.75rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .captcha-trial-note {
+    margin: 0 0 0.75rem;
+    padding-left: 0.7rem;
+    border-left: 2px solid var(--border);
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .captcha-consent-button {
+    padding: 6px 16px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--fg);
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    cursor: pointer;
+    transition:
+      border-color 0.15s ease,
+      color 0.15s ease;
+  }
+
+  .captcha-consent-button:hover {
+    border-color: var(--link);
+    color: var(--link);
+  }
+
+  .h-captcha:not([hidden]) {
+    /* Reserve the widget's height so the button does not jump on load. */
+    min-height: 78px;
+  }
+
+  .captcha-missing .captcha-feedback {
+    display: block;
+  }
+
+  .file-note {
+    margin: 0.5rem 0 0;
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .privacy-note {
+    margin: 1rem 0 0;
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .result {
+    margin: 0.75rem 0 0;
+    font-size: 0.9rem;
+  }
+
+  .result.is-success {
+    color: #15803d;
+  }
+
+  .result.is-error {
+    color: #dc3545;
+  }
+
+  :global([data-theme='dark']) .result.is-success {
+    color: #4ade80;
+  }
+
+  :global([data-theme='dark']) .result.is-error {
+    color: #f87171;
+  }
+
+  :global([data-theme='dark']) .feedback {
+    color: #f87171;
+  }
+</style>
