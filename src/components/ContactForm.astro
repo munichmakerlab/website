@@ -108,10 +108,10 @@ const privacyUrl = getRelativeLocaleUrl(locale, '/privacy');
 </form>
 
 <script>
-  const forms = document.querySelectorAll<HTMLFormElement>('form[data-contact-form]');
+  const forms = document.querySelectorAll('form[data-contact-form]');
 
   forms.forEach((form) => {
-    const result = form.querySelector<HTMLElement>('[data-contact-result]');
+    const result = form.querySelector('[data-contact-result]');
     if (!result) return;
 
     const messages = {
