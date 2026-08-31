@@ -23,9 +23,6 @@ const ACCESS_KEYS: Record<string, string> = {
   vorstand: '0d08005a-a531-481f-9cd7-851a4be6b2f8',
 };
 
-/** Shared hCaptcha site key of the Web3Forms free plan (zero-config integration). */
-const HCAPTCHA_SITE_KEY = '50b2fe65-b00b-4b9e-ad62-3ba471098be2';
-
 const { recipient = 'info', locale = Astro.currentLocale ?? 'en', captcha = true } = Astro.props;
 const t = getUiTranslations(locale).contactForm;
 const accessKey = ACCESS_KEYS[recipient] ?? ACCESS_KEYS.info;
@@ -91,7 +88,7 @@ const privacyUrl = getRelativeLocaleUrl(locale, '/privacy');
             {t.captchaConsentButton}
           </button>
         </div>
-        <div class="h-captcha" data-sitekey={HCAPTCHA_SITE_KEY} hidden />
+        <div class="h-captcha" data-captcha="true" hidden />
         <p class="feedback captcha-feedback">{t.captchaMissing}</p>
       </div>
     )
@@ -132,7 +129,7 @@ const privacyUrl = getRelativeLocaleUrl(locale, '/privacy');
       widget.hidden = false;
 
       const script = document.createElement('script');
-      script.src = 'https://js.hcaptcha.com/1/api.js';
+      script.src = 'https://web3forms.com/client/script.js';
       script.async = true;
       script.defer = true;
       document.head.appendChild(script);
