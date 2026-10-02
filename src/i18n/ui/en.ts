@@ -12,6 +12,7 @@ export const en = {
   },
   posts: {
     seeAll: 'See all Posts =>',
+    videoLabel: 'Video from the post',
   },
   navbar: {
     home: 'Home',
