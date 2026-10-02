@@ -1,8 +1,10 @@
 <template>
   <div class="post">
-    <div class="post-date">
-      {{ new Date(post.created_at).toLocaleDateString(props.locale, dateOptions) }}
-    </div>
+    <a class="post-date" :href="post.url" target="_blank" rel="noopener noreferrer">
+      <time :datetime="post.created_at">
+        {{ new Date(post.created_at).toLocaleDateString(props.locale, dateOptions) }}
+      </time>
+    </a>
     <div v-if="imageAttachments.length" :id="galleryId" :class="gridClass">
       <a
         v-for="attachment in imageAttachments"
@@ -16,6 +18,22 @@
         <img :src="attachment.preview_url" :alt="attachment.description || ''" loading="lazy" />
       </a>
     </div>
+    <video
+      v-for="attachment in videoAttachments"
+      :key="attachment.id"
+      class="post-video"
+      :src="attachment.url"
+      :poster="attachment.preview_url"
+      :width="attachment.meta?.original?.width"
+      :height="attachment.meta?.original?.height"
+      :aria-label="attachment.description || t.posts.videoLabel"
+      :controls="attachment.type === 'video'"
+      :autoplay="attachment.type === 'gifv'"
+      :loop="attachment.type === 'gifv'"
+      muted
+      playsinline
+      preload="none"
+    ></video>
     <div class="post-content" v-html="post.content"></div>
   </div>
 </template>
@@ -24,6 +42,7 @@
 import { computed, onMounted, onUnmounted } from 'vue';
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
 import 'photoswipe/style.css';
+import { getUiTranslations } from '../i18n/ui/ui-i18n-helper';
 
 const props = defineProps({
   post: {
@@ -35,9 +54,15 @@ const props = defineProps({
     default: 'en',
   },
 });
+const t = getUiTranslations(props.locale);
 const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
 
 const imageAttachments = computed(() => props.post.media_attachments.filter((a) => a.type === 'image'));
+
+// Mastodon uses "gifv" for short looping animations (converted GIFs)
+const videoAttachments = computed(() =>
+  props.post.media_attachments.filter((a) => a.type === 'video' || a.type === 'gifv'),
+);
 
 const galleryId = computed(() => `gallery-${props.post.id}`);
 
@@ -70,36 +95,57 @@ onUnmounted(() => {
 
 <style scoped>
 .post {
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 20px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
   width: 100%;
   max-width: 750px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 12px;
+  gap: 1rem;
 }
 
 .post-content {
   width: 100%;
+  line-height: 1.6;
+}
+
+.post-content :deep(p) {
+  margin: 0 0 0.75rem;
+}
+
+.post-content :deep(p:last-child) {
+  margin-bottom: 0;
 }
 
 @media (max-width: 950px) {
   .post {
-    padding: 10px;
+    padding: 1rem;
   }
 }
 
 .post-date {
   font-size: 0.8rem;
   color: var(--muted);
-  margin-bottom: 10px;
-  align-self: flex-end;
+  text-decoration: none;
+  align-self: flex-start;
+}
+
+.post-date:hover,
+.post-date:focus-visible {
+  text-decoration: underline;
 }
 
 :deep(.hashtag) {
   font-size: 0.8rem;
+  text-decoration: none;
+}
+
+:deep(.hashtag:hover),
+:deep(.hashtag:focus-visible) {
+  text-decoration: underline;
 }
 
 .media-grid {
@@ -123,6 +169,15 @@ onUnmounted(() => {
   object-fit: cover;
   display: block;
   cursor: pointer;
+}
+
+.post-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+  border-radius: 8px;
+  background: var(--card);
 }
 
 .grid-1 {

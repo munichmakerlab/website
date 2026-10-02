@@ -14,6 +14,7 @@ export const de: Translations = {
   },
   posts: {
     seeAll: 'Alle Beiträge ansehen =>',
+    videoLabel: 'Video aus dem Beitrag',
   },
   navbar: {
     home: 'Home',
